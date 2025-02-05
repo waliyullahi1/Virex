@@ -1,0 +1,421 @@
+[
+    {
+       "countryName": "USA",
+        "image": "usa"
+
+    },
+    {
+       "countryName": "US",
+        "image": "us"
+
+    },
+    {
+       "countryName": "UK",
+        "image": "uka"
+
+    },
+    {
+        "countryName": "UK 2",
+         "image": "uka"
+ 
+     },
+    {
+       "countryName": "Swaziland",
+        "image": "swaziland"
+
+    },
+
+
+    {
+       "countryName": "Anguilla",
+        "image": "anguilla"
+
+    },
+
+    {
+       "countryName": "Barbados",
+        "image": "barbados"
+
+    },
+
+    {
+       "countryName": "Belgium",
+        "image": "belgium"
+
+    },
+    {
+       "countryName": "Bosnia",
+        "image": "bosnia"
+
+    },
+    {
+       "countryName": "Cayman Islands",
+        "image": "iiii"
+
+    },
+
+   
+    {
+       "countryName": "Cyprus",
+        "image": "cyprus"
+
+    },
+
+    {
+       "countryName": "Estonia",
+        "image": "estonia"
+
+    },
+
+    {
+       "countryName": "France",
+        "image": "france"
+
+    },
+    {
+       "countryName": "Germany",
+        "image": "germany"
+
+    },
+
+    {
+       "countryName": "Grenada",
+        "image": "grenada"
+
+    },
+    
+    {
+       "countryName": "Guatemala",
+        "image": "guatemala"
+
+    },
+    {
+       "countryName": "Latvia",
+        "image": "latvia"
+
+    },
+    {
+       "countryName": "Lesotho",
+        "image": "Lesotho"
+    },
+    {
+       "countryName": "Lithuania",
+        "image": "Lithuania"
+
+    },
+    {
+       "countryName": "Mexico",
+        "image": "Mexico"
+
+    },
+    {
+       "countryName": "moldova",
+        "image": "moldova"
+
+    },
+    {
+       "countryName": "Netherlands",
+        "image": "netherlands"
+
+    },
+    {
+       "countryName": "Nicaragua",
+        "image": "Nicaragua"
+
+    },
+    {
+       "countryName": "Peru",
+        "image": "Peru"
+
+    },
+
+    {
+       "countryName": "Poland",
+        "image": "Poland"
+
+    },
+    {
+       "countryName": "Romania",
+        "image": "Romania"
+
+    },
+    {
+       "countryName": "Spain",
+        "image": "spain"
+
+    },
+    
+    {
+       "countryName": "Sudan",
+        "image": "sudan"
+
+    },
+    
+    {
+       "countryName": "Switzerland",
+        "image": "Switzerland"
+
+    },
+    {
+       "countryName": "Tunisia",
+        "image": "Tunisia"
+
+    },
+    {
+       "countryName": "UAE",
+        "image": "UAE"
+
+    },
+    {
+       "countryName": "venezuala",
+        "image": "venezuala"
+
+    },
+    {
+       "countryName": "Zimbabwe",
+        "image": "Zimbabwe"
+
+    },
+    {
+       "countryName": "Argentina",
+        "image": "Argentina"
+
+    },
+    {
+       "countryName": "Afghanistan",
+        "image": "af"
+
+    },
+    {
+       "countryName": "Cameroon",
+        "image": "Cameroon"
+
+    },
+    {
+       "countryName": "Burkina Faso",
+        "image": "Burkina_faso"
+
+    },
+    {
+       "countryName": "Columbia",
+        "image": "Columbia"
+
+    },
+    {
+       "countryName": "Congo",
+        "image": "Congo"
+
+    },
+    {
+       "countryName": "Egypt",
+        "image": "Egypt"
+
+    },
+    {
+       "countryName": "Ethiopia",
+        "image": "Ethiopia"
+
+    },
+    {
+       "countryName": "Finland",
+        "image": "fin"
+
+    },
+    {
+       "countryName": "Gambia",
+        "image": "Gambia"
+
+    },
+    {
+       "countryName": "Indonesia",
+        "image": "Indonesia"
+
+    },
+    {
+       "countryName": "Iran",
+        "image": "Iran"
+
+    },
+    {
+       "countryName": "Iraq",
+        "image": "Iraq"
+
+    },
+    {
+       "countryName": "Ireland",
+        "image": "Ireland"
+
+    },
+    {
+       "countryName": "Kenya",
+        "image": "Kenya"
+
+    },
+    {
+       "countryName": "Malawi",
+        "image": "Malawi"
+
+    },
+    {
+       "countryName": "Malaysia",
+        "image": "Malaysia"
+
+    },
+    {
+       "countryName": "New Guinea",
+        "image": "NewGuinea"
+
+    },
+    {
+       "countryName": "Nigeria",
+        "image": "Nigeria"
+
+    },
+    {
+       "countryName": "Philippines",
+        "image": "Philippines"
+
+    },
+    {
+       "countryName": "Qatar",
+        "image": "Qatar"
+
+    },
+    {
+       "countryName": "South Africa",
+        "image": "sagm"
+
+    },
+    {
+       "countryName": "Thailand",
+        "image": "Thailand"
+
+    },
+    {
+       "countryName": "Togo",
+        "image": "togo"
+
+    },
+    {
+       "countryName": "Turkey",
+        "image": "Turkey"
+
+    },
+    {
+       "countryName": "Uganda",
+        "image": "Uganda"
+
+    },
+    {
+       "countryName": "Hong Kong",
+        "image": "HongKong"
+
+    },
+    {
+       "countryName": "Italy",
+        "image": "taly"
+
+    },
+    {
+       "countryName": "Jamaica",
+        "image": "Jamaica"
+
+    },
+    {
+       "countryName": "Morocco",
+        "image": "Morocco"
+
+    },
+    {
+       "countryName": "Portugal",
+        "image": "Portugal"
+
+    },
+    {
+       "countryName": "Saudi Arabia",
+        "image": "Saudi"
+
+    },
+    {
+       "countryName": "Sweden",
+        "image": "Sweden"
+
+    },
+    {
+       "countryName": "China",
+        "image": "China"
+
+    },
+    {
+       "countryName": "Senegal",
+        "image": "Senegal"
+
+    },
+    {
+       "countryName": "Russia",
+        "image": "Russia"
+
+    },
+    {
+       "countryName": "Algeria",
+        "image": "geria"
+
+    },
+    {
+       "countryName": " Ghana",
+        "image": "Ghana"
+
+    },
+
+    {
+       "countryName": "Tanzania",
+        "image": "tanzania"
+
+    },
+    {
+       "countryName": "Israel",
+        "image": "is"
+
+    },
+    {
+       "countryName": "Brazil",
+        "image": "Brazil"
+
+    },
+    {
+       "countryName": "Angola",
+        "image": "Angola"
+
+    },
+    {
+       "countryName": "ARMENIA",
+        "image": "ARMENIA"
+
+    },
+    {
+       "countryName": "Gabon",
+        "image": "gabon"
+
+    },
+    {
+       "countryName": "Guyana",
+        "image": "Guyana"
+
+    },
+    {
+       "countryName": "India",
+        "image": "india"
+
+    },
+    {
+       "countryName": "Ivory Coast",
+        "image": "lag"
+
+    }
+    
+    
+]
+   
+    
+    
+    
