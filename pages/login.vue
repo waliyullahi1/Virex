@@ -1,129 +1,136 @@
 <template>
-    <div class="flex w-full overflow-x-hidden  justify-center   h-screen">
-      <div class="flex  container   justify-center b items-center h-full   ">
-        <div class=" s sm:w-[400px]  w-full  px-4  h-fit">
-  
-  
-          <div class="     h-full px-2 m font-sans  relative ">
-            <div class=" w-full flex justify-center ">
-              <img src="../assets/images/logo.png" alt="" >
+  <div class="flex w-full content justify-center   h-screen">
+    <div class="flex m-auto container w-full justify-center b items-center h-full  sm:mx-0 ">
+      <div class="s sm:w-[400px]  w-full  px-4  h-fit">
+
+
+        <div class="   h-full px-2 m font-sans  relative ">
+          <div class=" w-full flex justify-center ">
+            <img src="../assets/images/logo.png" alt="" >
+          </div>
+          <div class="   l justify-between w-full">
+            <div class=" bg-tertiary py-2 rounded-xl my-5 px-3  h-fit ">
+            
+              <h3 class="  font-medium text-lg text-white">User login</h3>
+             
             </div>
-            <div class="   l justify-between w-full">
-              <div class="bg-tertiary py-2 rounded-xl my-5 px-3  h-fit ">
-              
-                <h3 class="  font-medium text-lg text-white">User Login</h3>
-               
+
+            <!-- First Form -->
+            <transition name="slide-stagger" mode="out-in">
+              <div v class="text-left inset-0 staggered-form">
+                <form @submit.prevent="">
+                  <FormInput v-for="(input, index) in register" :key="index" :oninput="input.oninput" 
+                    :type="input.type" v-model:inputValue="userData[input.modelKey]" :minlength="input.minlength"
+                    :label="input.label" :class="`staggered-input delay-${index}`" ></FormInput>
+                  <div class=" flex w-full gap-5">
+                    <ButtonsTertiary  type="submit"  :arrow=true class="mt-16 width-full" width="full">Login</ButtonsTertiary>
+                    <ButtonsPrimary type="button" @clicked="$router.push({path: '/register'})" :arrow=true class="mt-16 width-full" width="full">Register</ButtonsPrimary>
+                    
+                  </div>
+                  
+                  <TypographyP @click="cancel_Forgetpage" class=" text-primary cursor-pointer mt-4 font-semibold text-center">Forget Password</TypographyP>
+                </form>
               </div>
-  
-              <!-- First Form -->
-              <transition name="slide-stagger" mode="out-in">
-                <div v-if="!hidden_first_form" class="text-left inset-0 staggered-form">
-                  <form @submit.prevent="first_handleSubmit">
-                    <FormInput v-for="(input, index) in register" :key="index" :oninput="input.oninput"
-                      :type="input.type" v-model:inputValue="userData[input.modelKey]" :minlength="input.minlength"
-                      :label="input.label" :class="`staggered-input delay-${index}`" ></FormInput>
-  
-                    <div class=" flex w-full gap-5">
-                        <ButtonsTertiary type="submit" :arrow=true class="mt-16 width-full" width="full">Login</ButtonsTertiary>
-                        <ButtonsPrimary   type="button"  @clicked="$router.push({path: '/register'})"  :arrow=true class="mt-16 width-full" width="full">Register</ButtonsPrimary>
-                        
-  
-                    </div>
-                    
-                    <TypographyP class=" text-primary cursor-pointer mt-4 font-semibold text-center" @click="cancel">Forget Password</TypographyP>
-                    
-                  </form>
-                </div>
-              </transition>
-  
-              <Forgetpage :cancel_forgetPage="cancell_forget"  @cancel_forgetPage="cancel"></Forgetpage>
-  
-            </div>
+            </transition>
+
+
+            
           </div>
         </div>
+        <div class="  h-9 w-1 overflow-hidden ">
+          <Forgetpage class=""  @cancel_forget="cancel_Forgetpage"  :cancel_forgetPage="cancel_forgetPages"></Forgetpage>
+        </div>
+        
       </div>
     </div>
-  </template>
-  
-  <script setup>
-  
- 
-  
-  
-  const cancell_forget = ref(false)
-  
-  const userData = reactive({ 
-    email: '',
-    phone_Number: '',
-    password: '',
+  </div>
+</template>
 
-  })
-
-  
-  const register = [
-    { type: 'text', label: 'Phone no/email', modelKey: 'email', minlength: "1",  },
-    { type: 'text', label: 'Password', modelKey: 'Password', minlength: "6" },
-    
-  ];
+<script setup>
 
 
 
+
+
+const userData = reactive({
+  "email/phone": '',
+  phone_Number: '',
+  password: '',
+
+
+})
+
+
+
+
+
+
+
+const cancel_forgetPages = ref(false)
+
+
+
+
+const register = [
+  { type: 'text', label: 'Email/Phone', modelKey: 'email/phone', minlength: 1,  },
+  { type: 'password', label: 'Password', modelKey: 'password', minlength: 11,  },
+];
+
+
+
+
+
+
+
+const cancel_Forgetpage = ()=>{
+  console.log('dsfgdfsd');
   
+  cancel_forgetPages.value = !cancel_forgetPages.value
   
-  
-  const cancel = ()=> {
-    console.log('ggggg');
-    cancell_forget.value = !cancell_forget.value
-    
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  </script>
-  
-  <style scoped>
-  
-  
-  /* Define keyframe for staggered sliding effect */
-  @keyframes staggeredSlideIn {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-  
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  .staggered-input {
+}
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<style scoped>
+
+
+/* Define keyframe for staggered sliding effect */
+@keyframes staggeredSlideIn {
+  from {
+    transform: translateX(100%);
     opacity: 0;
-    animation: staggeredSlideIn 0.5s forwards;
   }
-  
-  .staggered-form .staggered-input.delay-0 {
-    animation-delay: 0s;
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
-  
-  .staggered-form .staggered-input.delay-1 {
-    animation-delay: 0.2s;
-  }
-  
-  .staggered-form .staggered-input.delay-2 {
-    animation-delay: 0.4s;
-  }
-  </style>
+}
+
+.staggered-input {
+  opacity: 0;
+  animation: staggeredSlideIn 0.5s forwards;
+}
+
+.staggered-form .staggered-input.delay-0 {
+  animation-delay: 0s;
+}
+
+.staggered-form .staggered-input.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.staggered-form .staggered-input.delay-2 {
+  animation-delay: 0.4s;
+}
+</style>

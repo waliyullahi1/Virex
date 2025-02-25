@@ -13,9 +13,10 @@
           @input="updateValue"
           ref="input"
           :required="required"
+          :class="addStyleBorder? ' border-2 focus:boder-2 focus:border-2 border-primary':' border focus:boder '"
           class="w-full input-field focus:shadow-primary shadow-sm focus:border focus:border-primary bg-white h-[2.6rem] px- border  rounded-[5px]"
         />
-        <label :for="labelId" class="input-label  text-slate-600">
+        <label :for="labelId" class="input-label  text-slate-600" :class="nolabel?'hidden':'block'">
           <span class="py-0 px-1 bg-white">{{ label }}</span>
         </label>
         </div>
@@ -32,6 +33,14 @@
     extraClass: String,
     error: Boolean,
     label: String,
+    nolabel:{
+      type:Boolean,
+      default:false
+    },
+    addStyleBorder:{
+      type:Boolean,
+      default:false
+    },
     required: {
       type: Boolean,
       default: true,
@@ -42,7 +51,7 @@
     disabled: Boolean,
     placeholder: String,
     inputValue: String,
-    minlength:  {
+    minlength:  { 
       type: Number,
       default: 1,
     },

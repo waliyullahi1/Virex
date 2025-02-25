@@ -17,9 +17,9 @@
 
             <!-- First Form -->
             <transition name="slide-stagger" mode="out-in">
-              <div v-if="!hidden_first_form" class="text-left inset-0 staggered-form">
-                <form @submit.prevent="first_handleSubmit">
-                  <FormInput v-for="(input, index) in register" :key="index" :oninput="input.oninput"
+              <div v class="text-left inset-0 staggered-form">
+                <form @submit.prevent="">
+                  <FormInput v-for="(input, index) in register" :key="index" :oninput="input.oninput" 
                     :type="input.type" v-model:inputValue="userData[input.modelKey]" :minlength="input.minlength"
                     :label="input.label" :class="`staggered-input delay-${index}`" ></FormInput>
 
@@ -74,9 +74,9 @@ const userData = reactive({
 
 
 const register = [
-  { type: 'text', label: 'First Name', modelKey: 'firstName', minlength: "1",  },
-  { type: 'text', label: 'Phone Number', modelKey: 'Phone_Number', minlength: "11", oninput: (event) => { event.target.value = event.target.value.replace(/[^0-9]/g, '') }, },
-  { type: 'email', label: 'Email', modelKey: 'email', minlength: "11",  },
+  { type: 'text', label: 'First Name', modelKey: 'full_name', minlength: 1,  },
+  { type: 'text', label: 'Phone Number', modelKey: 'phone_Number', minlength: 11, oninput: (event) => { event.target.value = event.target.value.replace(/[^0-9]/g, '') }, },
+  { type: 'email', label: 'Email', modelKey: 'email', minlength: 11,  },
 ];
 
 

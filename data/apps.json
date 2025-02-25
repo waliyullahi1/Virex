@@ -489,7 +489,7 @@
      },
      
      {
-        "appName": "AmazonWeb US ",
+        "appName": "AmazonWeb US",
          "image": "Amazon",
          "price":"",
          "available":["USA","USA 2"]
@@ -597,6 +597,13 @@
          "price":"",
          "available":["USA"]
      },
+
+     {
+      "appName": "Gmail UK",
+       "image": "Gmail UK",
+       "price":"",
+       "available":["USA"]
+   },
      {
         "appName": "Lazada A1",
          "image": "Lazada",
@@ -634,11 +641,159 @@
          "available":["USA"]
      },
      {
-        "appName": "Poshmark",
+        "appName": "poshmark",
          "image": "Poshmark",
          "price":"",
          "available":["USA"]
      },
+     {
+      "appName": "OffGamers",
+       "image": "offGamers",
+       "price":"",
+       "available":["USA"]
+   },
+   {
+      "appName": "Inboxdollars",
+       "image": "Inboxdollars",
+       "price":"",
+       "available":["USA"]
+   },
+   {
+      "appName": "Letgo",
+       "image": "Letgo",
+       "price":"",
+       "available":["USA"]
+   },
+   {
+      "appName": "Earnhoney",
+       "image": "Earnhoney",
+       "price":"",
+       "available":["USA"]
+   },
+   {
+      "appName": "Swagbucks",
+       "image": "Swagbucks",
+       "price":"",
+       "available":["USA"]
+   },
+   {
+      "appName": "Other",
+       "image": "Other",
+       "price":"",
+       "available":["USA"]
+   },
+   {
+      "appName": "EbayUS2",
+       "image": "EbayUS2",
+       "price":"",
+       "available":["USA"]
+   },
+   {
+      "appName": "Flypay",
+       "image": "Flypay",
+       "price":"",
+       "available":["USA"]
+   },
+   {
+      "appName": "Payactiv",
+       "image": "Payactiv",
+       "price":"",
+       "available":["USA"]
+   },
+     {
+      "appName": "SurveyJunkie",
+       "image": "SurveyJunkie",
+       "price":"",
+       "available":["USA"]
+   }, 
+     {
+      "appName": "Poshmark",
+       "image": "Poshmark",
+       "price":"",
+       "available":["USA"]
+   },
+   {
+      "appName": "Go2Bank",
+       "image": "Go2Bank",
+       "price":"",
+       "available":["USA"]
+   },  {
+      "appName": "Hopi",
+       "image": "Hopi",
+       "price":"",
+       "available":["USA"]
+   },  {
+      "appName": "Moneylion",
+       "image": "Moneylion",
+       "price":"",
+       "available":["USA"]
+   },  {
+      "appName": "Smoreapp",
+       "image": "Smoreapp",
+       "price":"",
+       "available":["USA"]
+   },  
+   
+   {
+      "appName":"Valued Opinions",
+       "image": "ValuedOpinions",
+       "price":"",
+       "available":["USA"]
+   },  
+
+   {
+      "appName":"Brigit",
+       "image": "Brigit",
+       "price":"",
+       "available":["USA"]
+   },  
+   {
+      "appName":"Nike",
+       "image": "Nike",
+       "price":"",
+       "available":["USA"]
+   },  
+   {
+      "appName":"Nikeus",
+       "image": "Nikeus",
+       "price":"",
+       "available":["USA"]
+   },
+   {
+      "appName": "2RedBeans",
+       "image": "2RedBeans",
+       "price":"",
+       "available":["USA"]
+   },  {
+      "appName": "Okcupid A1",
+       "image": "OkcupidA1",
+       "price":"",
+       "available":["USA"]
+   }, 
+   {
+      "appName": "Okcupid",
+       "image": "Okcupid",
+       "price":"",
+       "available":["USA"]
+   }, 
+   {
+      "appName": "Keybase A1",
+       "image": "KeybaseA1",
+       "price":"",
+       "available":["USA"]
+   },
+   {
+      "appName": "Keybase",
+       "image": "KeybaseA1",
+       "price":"",
+       "available":["USA"]
+   },
+   {
+      "appName": "KakaoTalk A1",
+       "image": "KakaoTalkA1",
+       "price":"",
+       "available":["USA"]
+   },
      {
         "appName": "Telegram",
          "image": "Telegram",
@@ -646,11 +801,74 @@
          "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
      },
      {
+      "appName": "JD A1",
+       "image": "JDA1",
+       "price":"",
+       "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
+   },
+   {
+      "appName": "Paxful A1",
+       "image": "PaxfulA1",
+       "price":"",
+       "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
+   },
+   {
+      "appName": "QQ A1",
+       "image": "QQA1",
+       "price":"",
+       "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
+   },
+   {
+      "appName": "Craigslist A1",
+       "image": "CraigslistA1",
+       "price":"",
+       "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
+   },
+   {
+      "appName": "CS",
+       "image": "CS",
+       "price":"",
+       "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
+   },
+   {
+      "appName": "Ozan SuperApp",
+       "image": "OzanSuperApp",
+       "price":"",
+       "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
+   },
+   {
+      "appName": "Whatsapp USA 2",
+       "image": "WhatsappUSA2",
+       "price":"",
+       "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
+   },
+     {
         "appName": "Whatsapp",
          "image": "Whatsapp",
          "price":"",
          "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
      },
+     {
+      "appName": "CashApp",
+       "image": "CashApp",
+       "price":"",
+       "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
+   },
+
+   {
+      "appName": "Poshmark",
+       "image": "Poshmark",
+       "price":"",
+       "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
+   },
+   {
+      "appName": "CashApp 2",
+       "image": "CashApp",
+       "price":"",
+       "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
+   },
+   
+  
      {
         "appName": "Wing",
          "image": "Wing",
@@ -699,6 +917,13 @@
          "price":"",
          "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
      },
+
+     {
+      "appName": "Oracon",
+       "image": "Oracon",
+       "price":"",
+       "available":["UK 2","UK","India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland","USA 2"]
+   },
      {
         "appName": "Netflix A1",
          "image": "Netflix",
@@ -711,6 +936,13 @@
          "price":"",
          "available":["USA"]
      },
+     {
+      "appName": "Coupons",
+       "image": "Coupons",
+       "price":"",
+       "available":["USA"]
+   },
+     
      {
         "appName": "Shopkick",
          "image": "Shopkick",
@@ -759,6 +991,18 @@
          "price":"",
          "available":["India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland"]
      },
+     {
+      "appName": "Linode",
+       "image": "Linode",
+       "price":"",
+       "available":["India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland"]
+   },
+   {
+      "appName": "Taptap Send",
+       "image": "LaptapSend",
+       "price":"",
+       "available":["India","Guyana","Gabon","ARMENIA","Angola","Brazil","Tanzania","Israel","Ghana","Algeria","Russia","Senegal","China","Yemen","Ukraine","Sweden","Saudi Arabia","Portugal","Morocco","Jamaica","Italy","Hong Kong","Uganda","Turkey","Togo","Thailand","South Africa","Qatar","Philippines","Nigeria","New Guinea","Malaysia","Malawi","Kenya","Ireland","Iraq","Iran","Indonesia","Gambia","Finland","Ethiopia","Egypt","Congo","Columbia","Burkina Faso","Columbia","Cameroon","Afghanistan","Argentina","Zimbabwe","Venezuela","Uzbekistan","UAE","Tunisia","Switzerland","Sudan","Spain","Romania","Poland","Peru","Nicaragua","Netherlands","Moldova","Mexico","Lithuania","Lesotho","Latvia","Ivory Coast","Guatemala","Grenada","Germany","France","Estonia","Czech Republic","Cyprus","Cayman Islands","Bosnia","Belgium","Barbados","Armenia","Anguilla","Swaziland"]
+   },
      {
         "appName": "Dentcoin",
          "image": "Dent",
@@ -982,6 +1226,13 @@
          "price":"",
          "available":["USA","USA 2"]
      },
+
+     {
+      "appName": "Nays",
+       "image": "Nays",
+       "price":"",
+       "available":["USA","USA 2"]
+   },
      {
         "appName": "Paypal",
          "image": "Paypal",

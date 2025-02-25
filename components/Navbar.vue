@@ -1,6 +1,6 @@
 <template>
     <div class="  ">
-        <div class=" w-full md:h-20 h-14"> </div>
+        <div class="  bg-secondary w-full md:h-20 h-14"> </div>
         <div :class="top?' transition transform  -translate-y-36':'translate-y-0 transition transform '" class=" fixed top-0 z-50 shadow-md  w-[100%] flex justify-center md:h-20 h-14 bg-white   mx-auto l">
             <div class="  container mxo  pt-  w-full z-30    bg top-0 ">
 
@@ -99,35 +99,6 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
 });
 </script>
-
-<!-- 
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-
-let menu_revealed = ref(true);
-let mobile_nav = ref(false)
-
-
-let flex = ref(true);
-let scrollPosition = ref(0);
-let top = ref(false);
-
-let lastScrollPosition = 0;
-
-// 
-const  toggleMenu = ()=>  {
-    console.log('waliuggg');
-    
-            mobile_nav = !mobile_nav;
-            menu_revealed = !menu_revealed;
-        }
-
-
-
-defineProps({
-  headertext: Boolean
-});
-</script> -->
 
 <style>
 /* Active link should be blue */

@@ -1,62 +1,67 @@
 <template>
-    <div  :class="cancel_forgetPage?'   h-screen':'  h-0'" class="fixed transform bg-black  bg-opacity-65 w-[100%] left-0 top-2 flex justify-center  h-screen">
-        <div class=" w-[350px]     h-fit  p-5  bg-white"
-        :class="cancel_forgetPage?' transition transform  translate-y-10':'-translate-y-72 transition transform '"
+    <div  >
+        <div  class="fixed transform bg-black bg-opacity-55 pt-10 px-4  w-[100%] left-0 top-2 flex justify-center  h-screen"
+        :class="cancel_forgetPage ? ' transition transform h-svh translate-y-0  ' :' h-36 -translate-y-[100rem]'" 
         >
-            <div class="  duration-500  border-b border-white  mx-auto  sm:flex block gap-5 container ">
-                <TypographyH4 class=" text-center"> Forgot Password?</TypographyH4>
-            </div>
-            <div class=" text-center">
-                <TypographyP>Enter your email and we will send new password to your Inbox.</TypographyP>
-            </div>
-
-            <form class="" @submit.prevent="first_handleSubmit">
-                <FormInput v-for="(input, index) in forget_password" :key="index" :oninput="input.oninput"
-                    :type="input.type" v-model:inputValue="userData[input.modelKey]" :minlength="input.minlength"
-                    :label="input.label" :class="`staggered-input delay-${index}`"></FormInput>
-
-                <div class=" flex mt-4 w-full gap-5">
-                    <ButtonsTertiary type="submit" class="mt-  width-full" >Send
-                    </ButtonsTertiary>
-                    <ButtonsPrimary type="button" @clicked="cancel" 
-                        class="" >Cancel</ButtonsPrimary>
-
-
+            <div class=" w-[350px]     h-fit  p-5  bg-white"
+                :class="cancel_forgetPage ? ' transition transform  translate-y-0' : ' transition transform '">
+                <div class="  duration-500  border-b border-white  mx-auto  sm:flex block gap-5 container ">
+                   <button type="button" ><TypographyH4 class=" text-center"> Forgot Password?</TypographyH4></button> 
+                </div>
+                <div class=" text-center">
+                    <TypographyP>Enter your email and we will send new password to your Inbox.</TypographyP>
                 </div>
 
-            </form>
+                <form class="" @submit.prevent="first_handleSubmit">
+                    <FormInput v-for="(input, index) in forget_password" :key="index" :oninput="input.oninput"
+                        :type="input.type" v-model:inputValue="userData[input.modelKey]" :minlength="input.minlength"
+                        :label="input.label" :class="`staggered-input delay-${index}`"></FormInput>
 
+                    <div class=" flex mt-4 w-full gap-5">
+                        <ButtonsTertiary type="submit" class="mt-  width-full">Send
+                        </ButtonsTertiary>
+                        <ButtonsPrimary type="button" @clicked="cancel" class="">Cancel</ButtonsPrimary>
+
+
+                    </div>
+
+                </form>
+
+            </div>
         </div>
+
     </div>
 
 </template>
 
 <script setup>
 //data
-import { defineEmits } from 'vue';
+
 
 const userData = reactive({
     email: '',
 })
 
 const forget_password = [
-    { type: 'text', label: 'Email', modelKey: 'email', minlength: "1", },
+    { type: 'text', label: 'Email', modelKey: 'email', minlength: 1, },
 ];
 //POPS
 const props = defineProps({
-    cancel_forgetPage : {
+    cancel_forgetPage: {
         type: Boolean,
-        default: false,
+        default: true,
     }
 })
 //Function
-// Emit Event to Parent
-const emit = defineEmits(['cancel_forgetPage']); 
 
-const cancel = ()=>{
-    emit('cancel_forgetPage');
-    
-    
+
+// Emit Event to Parent
+const emit = defineEmits(['cancel_forget']);
+
+const cancel = () => {
+    emit('cancel_forget');
+
+
 }
 </script>
 
