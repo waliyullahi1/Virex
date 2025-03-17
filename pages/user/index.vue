@@ -122,7 +122,7 @@
           <section class="  rounded-lg shadow-lg bg-white mb-20 p-2  md:p-5">
             <div
               class=" w-full py-3 flex ddd justify-between items-center  bg-tertiary rounded-lg text-white px-3 mb-5">
-              <p class="text-[14px] font-medium">Your Numbers ()</p>
+              <p class="text-[14px] font-medium">Your Numbers ( Last 25 )</p>
             </div>
 
             <p class="text-[13px] bg-red-500 py-2 px-2 text-white" @click="getnumber()">All numbers are not eligible to
@@ -152,7 +152,7 @@
 
                   <tbody>
                     <tr v-for="(item, index) in data.slice(0, 10)" :key="index"
-                      :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'" class=" border-b-[1px] border-black">
+                      :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'" class=" border-b-[1px] hover:bg-zinc-200  border-black">
                       <td class="text-center font-boldc px-3 py-0.5"> {{ item.Phone_Number }}</td>
                       <td class="text-center min-w-52  px-3 py-0.5">{{ item.Activation_Code }}</td>
                       <td class="text-center py-0.5 px-3">{{ item.transactiondate }}</td>
@@ -160,7 +160,7 @@
                       <td class="text-center py-0.5 px-3">{{ item.App }}</td>
                       <td class="text-center py-0.5 px-3">
                         <button @click="getOtp(item)" class=" text-white px-2 py-0.5 rounded">
-                          <img src="@/assets/images/svg/reload.svg" alt="relaad" class="w-4" srcset="">
+                          <img src="@/assets/images/svg/reload.svg" alt="relaad" class="min-w-4 w-4" srcset="">
                         </button>
                       </td>
                     </tr>

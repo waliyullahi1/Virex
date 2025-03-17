@@ -45,11 +45,11 @@
                   </thead>
                   <tbody>
                     <tr v-for="(user, index) in number_history.slice(0, 30)" :key="index"  :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'" class=" border-b-[1px] border-black">
-                      <td class="text-center py-3"> {{ user.Phone_Number }}</td>
-                      <td class="text-center py-3">{{ user.App }}</td>
-                      <td class="text-center py-3">{{ user.Country }}</td>
-                      <td class="text-center py-3">{{ user.transactiondate }}</td>
-                      <td class="text-center whitespace-nowrap py-3">{{ user.Activation_Code }}</td>
+                      <td class="text-center py-0.5 px-3"> {{ user.Phone_Number }}</td>
+                      <td class="text-center py-0.5 px-3">{{ user.App }}</td>
+                      <td class="text-center py-0.5 px-3">{{ user.Country }}</td>
+                      <td class="text-center py-0.5 px-3">{{ user.transactiondate }}</td>
+                      <td class="text-center py-0.5 px-3  min-w-52">{{ user.Activation_Code }}</td>
                     </tr>
                   </tbody>
                 </table>

@@ -12,13 +12,13 @@
                     <TypographyP>Enter your email and we will send new password to your Inbox.</TypographyP>
                 </div>
 
-                <form class="" @submit.prevent="first_handleSubmit">
+                <form class="" @submit.prevent="forgetPassword">
                     <FormInput v-for="(input, index) in forget_password" :key="index" :oninput="input.oninput"
                         :type="input.type" v-model:inputValue="userData[input.modelKey]" :minlength="input.minlength"
                         :label="input.label" :class="`staggered-input delay-${index}`"></FormInput>
 
                     <div class=" flex mt-4 w-full gap-5">
-                        <ButtonsTertiary type="submit" class="mt-  width-full">Send
+                        <ButtonsTertiary type="submit"  class="mt-  width-full" :loading="loadingBtn">Send
                         </ButtonsTertiary>
                         <ButtonsPrimary type="button" @clicked="cancel" class="">Cancel</ButtonsPrimary>
 
@@ -36,11 +36,14 @@
 
 <script setup>
 //data
-
-
+import axios from "axios";
+const toast = useToast();
+const loadingBtn = ref(false)
 const userData = reactive({
     email: '',
 })
+
+
 
 const forget_password = [
     { type: 'text', label: 'Email', modelKey: 'email', minlength: 1, },
@@ -53,6 +56,52 @@ const props = defineProps({
     }
 })
 //Function
+const nofit = (title, description, color = "red") => {
+  toast.add({
+    title: title,
+    description: description,
+    color: color,
+  });
+}
+
+const forgetPassword = async () => {
+    console.log();
+    
+    loadingBtn.value = true
+
+
+try {
+  const response = await axios({
+    url: "http://localhost:3500/resetpassword/requestPasswordReset",
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    withCredentials: true,
+    data: { email: userData.email }
+  });
+console.log(response.sucess);
+console.log(response);
+
+ console.log('finished');
+ 
+ loadingBtn.value = false
+
+
+} catch (error) {
+    console.log(error.data);
+    loadingBtn.value = false
+  if (error.response) {
+    nofit('Error', error.response.data.message, "red")
+    console.error(error)
+
+  }
+}
+
+
+
+
+
+
+}
 
 
 // Emit Event to Parent
