@@ -1,11 +1,11 @@
 <template>
 
     <div class="bg-slate-50">
-      <UserNavbar page_tittle="Account Settings" class=" text-[poppins] w-full hiddn "></UserNavbar>
+      <UserNavbar page_tittle="Account Settings" class=" text-[poppins] w-full hiddn " :pagelaod="pagelaod"></UserNavbar>
   
       <div class="  flex mt-5  gap-3 ">
-        <div class=" h-3  bg lg:block md:block flex-none bg-orange-400 min-w-56  hidden   ml-[1rem] "></div>
-        <div class=" md:mx-4 px-4   w-full  shrink  flex-initial ">
+        <div class=" h-3  bg lg:block md:block flex-none bg-orage-400 lg:min-w-56 md:min-w-7 hidden  ml-[1rem] "></div>
+        <div class=" md:mx-4 px-4   w-full  flex justify-center shrink  flex-initial ">
           <div class=" container pb-52  mx-auto flex gap-1 flex-col justify-center ">
   
             <!-- FOR NAME CHANGE -->
@@ -16,9 +16,10 @@
               </div>
               <div class=" relative">
   
-                <div  action="" class=" flex w-full gap-4">
+                <div  action="" class=" md:flex block w-full gap-4">
                     <FormInput  type="text" v-model:inputValue="user.full_name" :minlength="1" class=" w-full" label="Full name"></FormInput>
                     <FormInput  type="text" :disabled="true" v-model:inputValue="user.email" :minlength="1" class=" w-full" label="Email"></FormInput>
+                    <FormInput  type="text" :disabled="true" v-model:inputValue="user.phoneNumber" :minlength="1" class=" w-full" label="Phone Number"></FormInput>
                 </div>
   
   
@@ -35,10 +36,10 @@
               </div>
               <div class=" relative">
   
-                <div  action="" class=" flex w-full gap-4">
-                    <FormInput  type="password" v-model:inputValue="user.full_name" :minlength="1" class=" w-full" label="Current Password"></FormInput>
-                    <FormInput  type="password" :disabled="true" v-model:inputValue="user.email" :minlength="1" class=" w-full"label="New Password"></FormInput>
-                    <FormInput  type="password" :disabled="true" v-model:inputValue="user.email" :minlength="1" class=" w-full"label="Confirm Password"></FormInput>
+                <div  action="" class=" md:flex block w-full gap-4">
+                    <FormInput  type="password" v-model:inputValue="user.currentpassword" :minlength="1" class=" w-full" label="Current Password"></FormInput>
+                    <FormInput  type="password"  v-model:inputValue="user.newpassword" :minlength="1" class=" w-full"label="New Password"></FormInput>
+                    <FormInput  type="password"  v-model:inputValue="user.confirm" :minlength="1" class=" w-full"label="Confirm Password"></FormInput>
                 </div>
   
   
@@ -98,16 +99,42 @@
   
   <script setup>
   import { ref, onMounted } from 'vue'
-  
- 
+  import { fetchUserData } from '@/stores/dashboard'
 
-  
+  definePageMeta({
+  middleware: "auth",
+});
+
+const pagelaod = ref(false)
   const user = ref({
     full_name: ' waliu idowu',
-    email: '',
+    email: 'dhfshueh@gmail.com',
+    phoneNumber:'',
+    currentpassword:'',
+    newpassword:'',
   });
 
   
+
+
+  const store = fetchUserData()
+
+  watch(() => store.userData, (newData) => {   
+   user.value.email = newData.email; 
+   user.value.phoneNumber = newData.phone;
+   user.value.full_name = newData.full_name;
+   pagelaod.value = true
+});
+
+// watch(() => store.userData, (newData) => {   
+//    user.email = newData.email
+//    user.phoneNumber = newData.phone
+//   user.full_name = newData.full_name; 
+//   console.log(  user.email, 'ddd vbxfxvsa');
+  
+//     pagelaod.value = true
+// });
+
   </script>
   
   

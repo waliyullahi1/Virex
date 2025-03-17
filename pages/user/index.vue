@@ -1,11 +1,12 @@
 <template>
 
   <div class="bg-slate-50">
-    <UserNavbar page_tittle="Buy Phone Number" class=" text-[poppins] w-full hiddn "></UserNavbar>
+    <UserNavbar page_tittle="  Buy Number" :pagelaod="pagelaod" class=" text-[poppins] w-full hiddn "></UserNavbar>
+
 
     <div class="  flex mt-5 gap-3 ">
-      <div class=" h-3  bg lg:block md:block flex-none bg-orange-400 min-w-56  hidden   ml-[1rem] "></div>
-      <div class=" md:mx-4 px-4   w-full  shrink  flex-initial ">
+      <div class=" h-3  bg lg:block md:block flex-none bg-orage-400 lg:min-w-56 md:min-w-7 hidden  ml-[1rem] "></div>
+      <div class="sm:mx-4 mx-0 sm:px-2 px-0  w-full  shrink  flex-initial ">
         <div class=" pb-52 container   mx-auto flex gap-6 flex-col justify-center ">
 
           <!-- RECENT COUNTRY CHOICE -->
@@ -15,12 +16,24 @@
             </div>
             <div class=" relative">
 
-              <div>
-                <div v-if="!appfound[0]" class=" absolute flex items-center justify-center  w-full ">
-                  <p class=" text-2xl text-center "></p>
-                </div>
-                <div id="apps" class=" py-5  px-3 grid-cols-3 gap-4 w grid min-h-[120px] overflow-y-scroll">
+              <div class=" min-h-[120px]">
 
+                <div id="apps" class=" py-5  px-3 md:grid-cols-4 sm:grid-cols-2 grid-cols-1   gap-4 w grid overflow-y-scroll">
+
+                  <div v-for="item in recentCountryUserChoose" @click="shows(item)"
+                    :class="{ 'bg-black hover:bg-black   text-white': item.countryName === selected }"
+                    class="flex   gap-3 hover:border-primary transform duration-300    cursor-pointer text-center items-center w-full h-fit border border-black py-1 px-2 rounded shadowss"
+                    :key="item.countryName">
+                    <img :src="`/countryimage/${(item.countryName ?? '').replace(/\s+/g, '').toLowerCase()}.png`"
+                      class=" w-7" :alt="item.countryName" />
+
+
+                    <h3 class=" w-full text-[14px] font-medium text-center">{{ item.countryName }}</h3>
+                  </div>
+
+                </div>
+                <div v-if="!recentCountryUserChoose[0]" class="  flex items-center justify-center   w-full ">
+                  <p class=" text-[16px] font-medium">No Country as selected.</p>
                 </div>
               </div>
 
@@ -74,7 +87,7 @@
 
               <div>
                 <div v-if="!appfound[0]" class="  flex items-center justify-center   w-full ">
-                  <p class=" text-2xl text-center ">Choose a Country first.</p>
+                  <p class=" text-[16px] font-medium">No Country as selected.</p>
                 </div>
                 <div id="apps"
                   class=" cursor-pointer py-5  px-3  lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-4 w grid max-h-[250px] overflow-y-scroll">
@@ -83,10 +96,11 @@
                     class="flex cursor-pointers gap-3 text-center items-center w-full border border-black py-1 px-2 rounded shadowss"
                     :key="item.app">
 
-                    <img :src="`/appsImage/${(item.app ?? '').replace(/\s+/g, '').toLowerCase()}.png`" class="w-7" :alt="item.app || 'App Image'" />
+                    <img :src="`/appsImage/${(item.app ?? '').replace(/\s+/g, '').toLowerCase()}.png`" class="w-7"
+                      :alt="item.app || 'App Image'" />
                     <h3 class=" w-full text-[14px] font-medium  overflow-visible text-center">{{
                       item.app
-                      }}</h3>
+                    }}</h3>
 
                     <div
                       class="  text-[10px] flex gap-1 font-medium  px-3 py-[2px] border-green-700 rounded-xl w-fit hfit border  text-end">
@@ -104,7 +118,7 @@
 
           </section>
 
-           <!-- COPY SMS MESSAGE  -->
+          <!-- COPY SMS MESSAGE  -->
           <section class="  rounded-lg shadow-lg bg-white mb-20 p-2  md:p-5">
             <div
               class=" w-full py-3 flex ddd justify-between items-center  bg-tertiary rounded-lg text-white px-3 mb-5">
@@ -117,7 +131,7 @@
               number.
               We never charge money for numbers it only charge for sms/codes.</p>
             <!-- <button @click="autmaticOtp()">jjjj</button> -->
-            <div class="w  m  overflow-x-auto  text-[15px] ul   h-fit w-full        mb-20   mt-  " >
+            <div class="w  m  overflow-x-auto  text-[15px] ul   h-fit w-full        mb-20   mt-  ">
               <div class="  mt-4 relative   h-full ">
                 <div :class="isotpLoadFinished ? 'hidden' : 'flex'" class=" h-full w-full absolute">
                   <div class=" flex justify-center    items-center  bg-opacity-20 h-full w-full bg-primary">
@@ -125,7 +139,7 @@
                   </div>
                 </div>
                 <table class=" font-semibold ov w-full  bg-white  text-sm">
-                  <thead>
+                  <thead class=" w-full">
                     <tr class=" border-b-2 b  border-b-tertiary  h-10">
                       <th class="text-center pb-1  w-[9rem] ">Phone Number</th>
                       <th class="text-center  w-[9rem]">Activation Code</th>
@@ -135,26 +149,37 @@
                       <th class="text-center">Get Code</th>
                     </tr>
                   </thead>
+
                   <tbody>
-                    <tr v-for="(user, index) in 10" :key="index">
-                      <td class="text-center py-3"> dsvnv{{ user.phone }}</td>
-                      <td class="text-center py-3">fdbjfoi{{ user.activationCode }}</td>
-                      <td class="text-center py-3">fvnsdn{{ user.orderTime }}</td>
-                      <td class="text-center py-3">fvsndui{{ user.country }}</td>
-                      <td class="text-center py-3">dccbdiu{{ user.app }}</td>
-                      <td class="text-center py-3">
-                        <button class="bg-blue-500 text-white px-2 py-1 rounded">Get Code</button>
+                    <tr v-for="(item, index) in data.slice(0, 10)" :key="index"
+                      :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'" class=" border-b-[1px] border-black">
+                      <td class="text-center font-boldc px-3 py-0.5"> {{ item.Phone_Number }}</td>
+                      <td class="text-center min-w-52  px-3 py-0.5">{{ item.Activation_Code }}</td>
+                      <td class="text-center py-0.5 px-3">{{ item.transactiondate }}</td>
+                      <td class="text-center py-0.5 px-3">{{ item.Country }}</td>
+                      <td class="text-center py-0.5 px-3">{{ item.App }}</td>
+                      <td class="text-center py-0.5 px-3">
+                        <button @click="getOtp(item)" class=" text-white px-2 py-0.5 rounded">
+                          <img src="@/assets/images/svg/reload.svg" alt="relaad" class="w-4" srcset="">
+                        </button>
                       </td>
                     </tr>
                   </tbody>
+
                 </table>
+                <TypographyP @click="router.push('/user/number_history')"
+                  class=" text-preprimary cursor-pointer mt-4 text-sm  text-center">View All Numbers</TypographyP>
+                <div v-if="!data[0]" class="  h-36 flex justify-center items-center  w-full      ">
+
+                  <p @click="router.push(link.path)" class="text-[16px] font-medium">No Number History </p>
+                </div>
 
               </div>
 
             </div>
 
           </section>
-        </div> 
+        </div>
 
 
       </div>
@@ -166,13 +191,20 @@
 
 
 <script setup>
+import axios from "axios";
+definePageMeta({
+  middleware: "auth",
+});
+
+
 import { ref, onMounted } from 'vue'
 import countryNames from '../../data/country.json';
-import appAvailable from '../../data/apps.json';
-import axios from 'axios'
-//   const { notify } = useNotification();
+import { fetchUserData } from '@/stores/dashboard'
+let refreshInterval = null;
+const router = useRouter()
 
-
+const recentCountryChoose = ref([])
+const pagelaod = ref(false)
 const selectedapp = ref('');
 const selected = ref('');
 const appfound = ref([]);
@@ -183,12 +215,52 @@ const isLoadingFinished = ref(true);
 const selectedcountry = ref('');
 const data = ref([{}, {}, {}]);
 const isotpLoadFinished = ref(true);
+const toast = useToast();
+const store = fetchUserData()
+const number_used = ref([])
+const autmaticOtp = async () => {
+  console.log('fff');
+
+  const itemsWithoutActivationCode = data.value.filter(element => {
+    return !element.Activation_Code || element.Activation_Code === '';
+  });
 
 
-const getImageUrl = (app) => {
-  const formattedApp = (app || "").replace(/\s+/g, "").toLowerCase();
-  return `/appsImage/${formattedApp}.png`;
-};
+
+  await Promise.all(itemsWithoutActivationCode.map(async (element) => {
+    isotpLoadFinished.value = false
+    const response = await axios({
+      url: "http://localhost:3500/getRates/otp",
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+      data: { country: element.Country, app: element.App, phoneNumber: element.Phone_Number, transactiondate: element.transactiondate }
+    });
+
+    isotpLoadFinished.value = true
+    setTimeout(getnumber, 10000)
+    getnumber()
+
+  }));
+
+
+}
+
+// const startopt = () => {
+//     if (typeof window === "undefined") return; // Make sure e no run for server-side
+
+//     refreshInterval = setInterval(autmaticOtp, 6000);
+//   };
+
+const nofit = (title, description, color = "red") => {
+  toast.add({
+    title: title,
+    description: description,
+    color: color,
+  });
+}
+
+
 
 const getnumber = async () => {
 
@@ -196,7 +268,7 @@ const getnumber = async () => {
 
   try {
     const response = await axios({
-      url: "https://api.abaniseedu.com/getRates",
+      url: "http://localhost:3500/getRates",
       method: "GET",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
@@ -204,14 +276,22 @@ const getnumber = async () => {
 
     const apps = response.data;
     data.value = apps.reverse()
+    console.log('reach you');
+
+    console.log(store.message, 'ffffffff');
+    number_used.value = data.value.filter(element => {
+      return element.Activation_Code
+    });
+   store.totalNumberUsed = number_used.value.length
+   console.log(store.totalNumberUsed);
+   
 
 
   } catch (error) {
     if (error.response) {
-      //   ({
-      //     title: 'error',
-      //     text: error.response.data.message,
-      //   });
+      nofit('error', error.response.data.message, "red")
+      console.error(error)
+
     }
   }
 
@@ -229,32 +309,33 @@ getnumber()
 
 
 const shows = async (item) => {
+
   isLoadingFinished.value = false;
   selected.value = item.countryName;
   selectedcountry.value = item.countryName;
-  
+
 
   try {
-    const response = await axios.get(`http://localhost:4500/apps/${item.countryName}`);
+    const response = await axios.get(`http://localhost:3500/getRates/apps/${item.countryName}`);
     const apps = response.data;
-    
+
     if (!apps) {
-      notify({
-        title: "Notices",
-        text: 'An error occurred',
-      });
+      nofit('Notices', 'An error occurred', "red")
+
       return;
     } else {
 
       appfound.value = apps;
-      console.log(appfound.value);
-      
+
+
     }
   } catch (error) {
     console.error(error);
+
   }
 
   isLoadingFinished.value = true;
+
 };
 
 
@@ -285,15 +366,36 @@ const filteredApps = computed(() => {
 });
 
 
+const recentCountryUserChoose = computed(() => {
+  if (!data.value || !Array.isArray(data.value)) return [];
+
+  // Count occurrences of each country
+  const countryCounts = data.value.reduce((acc, app) => {
+    if (app.Country) {
+      acc[app.Country] = (acc[app.Country] || 0) + 1;
+    }
+    return acc;
+  }, {});
+
+  // Sort countries by count in descending order
+  const sortedCountries = Object.entries(countryCounts)
+    .sort((a, b) => b[1] - a[1]) // Sort by frequency
+    .map(([country]) => ({ countryName: country }));
+
+  // Show only countries that have the highest occurrences
+  return sortedCountries.slice(0, 3); // Show top 3 most common
+});
+
 
 
 const getOtp = async (item) => {
-  console.log(item.phoneNumber, item.App);
+  console.log(item.Phone_Number, 'opt');
   isotpLoadFinished.value = false
+
   if (!item.Activation_Code || item.Activation_Code === '') {
     try {
       const response = await axios({
-        url: "https://api.abaniseedu.com/getRates/otp",
+        url: "http://localhost:3500/getRates/otp",
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
@@ -302,14 +404,15 @@ const getOtp = async (item) => {
 
       const apps = response.data;
       isotpLoadFinished.value = true
-      setTimeout(() => {
-        getnumber()
-      }, 10);
+
+      getnumber()
+
 
       isotpLoadFinished = true
     } catch (error) {
-
+      nofit('error', error.response.data.message, "red")
       isotpLoadFinished.value = true
+      getnumber()
     }
 
   }
@@ -321,32 +424,7 @@ const getOtp = async (item) => {
 
 
 
-const autmaticOtp = async () => {
 
-  const itemsWithoutActivationCode = data.value.filter(element => {
-    return !element.Activation_Code || element.Activation_Code === '';
-  });
-
-
-
-  await Promise.all(itemsWithoutActivationCode.map(async (element) => {
-    isotpLoadFinished.value = false
-    const response = await axios({
-      url: "https://api.abaniseedu.com/getRates/otp",
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-      data: { country: element.Country, app: element.App, phoneNumber: element.Phone_Number, transactiondate: element.transactiondate }
-    });
-
-    isotpLoadFinished.value = true
-
-    getnumber()
-
-  }));
-
-
-}
 
 
 
@@ -354,14 +432,16 @@ const autmaticOtp = async () => {
 
 
 const generateNnumber = async (item) => {
-  isLoadingFinished.value = false
-  selectedapp.value = item.appName;
+  isLoadingFinished.value = false;
+  selectedapp.value = item.app;
+  clearInterval(autmaticOtp)
+  const selectedApp = item.app
+  console.log(selectedApp);
 
-  const selectedApp = item.appName
 
   try {
     const response = await axios({
-      url: "https://api.abaniseedu.com/getRates/generateNumber",
+      url: "http://localhost:3500/getRates/generateNumber",
       method: "POST",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
@@ -371,10 +451,11 @@ const generateNnumber = async (item) => {
     });
 
     const apps = response.data;
+    nofit('Notices', apps, "green")
 
-    setTimeout(() => {
-      getnumber()
-    }, 10);
+
+    getnumber()
+
     //   ({
 
     //     title: "Notices",
@@ -383,6 +464,9 @@ const generateNnumber = async (item) => {
     isLoadingFinished.value = true
   } catch (error) {
     if (error.response) {
+      nofit('error', error.response.data, "red")
+      console.error(error);
+
       // ({
       //   title: 'error',
       //   text: error.response.data.message,
@@ -391,6 +475,8 @@ const generateNnumber = async (item) => {
       // that falls out of the range of 2xx
 
     } else if (error.request) {
+      nofit('error', error.request, "red")
+      console.error(error);
       // ({
       //   title: 'error',
       //   text: error.request,
@@ -400,8 +486,11 @@ const generateNnumber = async (item) => {
 
     } else {
       isLoadingFinished.value = true
+      console.log('not good');
+
 
     }
+    console.log('not pade');
 
     isLoadingFinished.value = true
   }
@@ -410,9 +499,25 @@ const generateNnumber = async (item) => {
 }
 
 
-// setInterval(() => {
-//   autmaticOtp();
-// }, 10000);
+
+
+
+
+
+
+watch(() => store.userData, (newData) => {
+
+
+  pagelaod.value = true
+});
+
+
+
+
+
+
+
+
 
 
 </script>
@@ -427,5 +532,11 @@ const generateNnumber = async (item) => {
   -webkit-box-shadow: 1px 3px 7px 3px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 1px 3px 7px 3px rgba(0, 0, 0, 0.4);
   box-shadow: 1px 3px 7px 3px rgba(0, 0, 0, 0.4);
+}
+
+td {
+  border-left: 1px;
+  border: solid 0px rgb(128, 128, 128);
+  padding: 0px 0px;
 }
 </style>

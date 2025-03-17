@@ -3,7 +3,7 @@
         <div  class="fixed transform bg-black bg-opacity-55 pt-10 px-4  w-[100%] left-0 top-2 flex justify-center  h-screen"
         :class="cancel_forgetPage ? ' transition transform h-svh translate-y-0  ' :' h-36 -translate-y-[100rem]'" 
         >
-            <div class=" w-[350px]     h-fit  p-5  bg-white"
+            <div class=" w-[350px]  rounded-lg     h-fit  p-5  bg-white"
                 :class="cancel_forgetPage ? ' transition transform  translate-y-0' : ' transition transform '">
                 <div class="  duration-500  border-b border-white  mx-auto  sm:flex block gap-5 container ">
                    <button type="button" ><TypographyH4 class=" text-center"> Forgot Password?</TypographyH4></button> 

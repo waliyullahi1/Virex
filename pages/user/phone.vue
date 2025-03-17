@@ -1,12 +1,12 @@
 <template>
 
     <div class="bg-slate-50">
-      <UserNavbar class=" text-[poppins] w-full hiddn "></UserNavbar>
+      <UserNavbar class=" text-[poppins] w-full hiddn " :pagelaod="pagelaod"></UserNavbar>
   
       <div class="  flex mt-5 gap-3 ">
-        <div class=" h-3  bg-slate-300 lg:block md:block min-w-[20%]  hidden   ml-[1rem] "></div>
-        <div class=" md:mx-4 px-4   w-full   ">
-          <div class=" pb-52  container px-2 sm:px-0   mx-auto flex gap-6 flex-col justify-center">
+        <div class=" h-3  bg lg:block md:block flex-none min-w-56 hidden  ml-[1rem] "></div>
+        <div class=" md:mx-4 px-4    w-full   ">
+          <div class=" container px-2 sm:px-0   mx-auto flex gap-6 flex-col justify-center">
   
             <!-- RECENT COUNTRY CHOICE -->
             <section class="  rounded-lg shadow-lg bg-white sm:p-5 p-2  mb-10 mt-">
@@ -170,9 +170,12 @@
   import countryNames from '../../data/country.json';
   import appAvailable from '../../data/apps.json';
   import axios from 'axios'
-  //   const { notify } = useNotification();
-  
-  
+
+
+//   definePageMeta({
+//   middleware: "auth",
+// });
+const pagelaod = ref(true)
   const selectedapp = ref('');
   const selected = ref('');
   const appfound = ref([]);
@@ -427,7 +430,7 @@
   //   autmaticOtp();
   // }, 10000);
   
-  
+ loading.value = false
   </script>
   
   

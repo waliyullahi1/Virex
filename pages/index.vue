@@ -10,9 +10,9 @@
         <Navbar ></Navbar>
 
         <section id="hero" class=" bg-secondary px-4 hero-section">
-            <div class="container mx-auto block md:flex gap-5 justify-between py-7 items-center">
+            <div class="container  mx-auto block md:flex gap-5 justify-between py-7 items-center">
                 <div class=" text-center md:text-left ">
-                    <span class=" text-primary">
+                    <span class=" text-preprimary">
                         Generate
                         <span
                             class=" text-base font-medium rounded-sm px-1 text-center text-white bg-[#FFC059]">Virtual</span>
@@ -64,19 +64,19 @@
         
 
                      <div >
-                        <TypographyH2 class="text-primary">01</TypographyH2>
+                        <TypographyH2 class="text-preprimary">01</TypographyH2>
                         <TypographyH3 class="">Register and make payment </TypographyH3>
                         <TypographyP>First, register using your first name and email, then fund your account by transferring to the account number </TypographyP>
                     </div>
 
                     <div>
-                        <TypographyH2 class="text-primary">02</TypographyH2>
+                        <TypographyH2 class="text-preprimary">02</TypographyH2>
                         <TypographyH3 class=" ">Order a phone number in your personal account</TypographyH3>
                         <TypographyP>For example, if you want to create a on fiverr account, then go to the cabinet, select the country, and then the fiverr app</TypographyP>
                     </div>
 
                     <div>
-                        <TypographyH2 class="text-primary">03</TypographyH2>
+                        <TypographyH2 class="text-preprimary">03</TypographyH2>
                         <TypographyH3  class="">Use it to receive SMS and get code</TypographyH3>
                         <TypographyP>Copy the issued number and paste it into the fiverr input number form to receive SMS with the registration code. and copy the code at the buttom of number history</TypographyP>
                     </div>
@@ -102,7 +102,7 @@
                         </div>
 
                         <div class="sm:w-1/2 w-full sm:mt-0 mt-10 relative z-30 shadow-for-our-service py-3 p-4  text-whie rounded-xl bg-ertiary">
-                            <div class=" bg-primary w-fit mt-5  py-3 px-3 rounded-full ">
+                            <div class=" bg-preprimary w-fit mt-5  py-3 px-3 rounded-full ">
                                 <img src="@/assets/images/easytouse.png" alt="easy to use" class=" w-7 " srcset="">
                             </div>
 
@@ -117,7 +117,7 @@
 
         <section id="contact-us" class=" px-4">
             <div class="container rounded-md flex flex-col bg-secondary  items-center mx-auto py-10">
-                <TypographyH2> From the <span class=" bg-primary text-white px-2 rounded-md">cloud</span> to Customers,
+                <TypographyH2> From the <span class=" bg-preprimary text-white px-2 rounded-md">cloud</span> to Customers,
                     We Bring all the Answers</TypographyH2>
                 <ButtonsPrimary @click="$router.push('/register')" class="my-5">Get start</ButtonsPrimary>
                 <TypographyP class=" tracking-wide"> Contact Us: +23408166988715</TypographyP>

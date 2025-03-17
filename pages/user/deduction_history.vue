@@ -6,8 +6,8 @@
 
     <div class="  flex mt-5  gap-3 ">
       <div class=" h-3  bg lg:block md:block flex-none bg-orage-400 lg:min-w-56 md:min-w-7 hidden  ml-[1rem] "></div>
-      <div class="    w-full  flex justify-center shrink  flex-initial ">
-        <div class=" container  mx-auto flex gap-6 flex-col justify-center ">
+      <div class=" sm:mx-4 mx-0 sm:px-2 px-0   w-full  flex justify-center shrink  flex-initial ">
+        <div class=" container   mx-auto flex gap-6 flex-col justify-center ">
 
 
 
@@ -35,21 +35,30 @@
                 <table class=" font-semibold ov w-full mt-5  bg-white  text-sm">
                   <thead>
                     <tr class=" border-b-2 b  border-b-tertiary  h-10">
-                      <th class="text-center  py-0.5 ">Number</th>
-                      <th class="text-center  py-0.5">App</th>
-                      <th class="text-center py-0.5">Country</th>
-                      <th class="text-center py-0.5">Time</th>
-                      <th class="text-center py-0.5">Message</th>
+                      <th class="text-center pb-1  w-[9rem] ">
+                        #</th>
+                      <th class="text-center pb-1  w-[9rem] ">Number</th>
+                      <th class="text-center  w-[9rem]">App</th>
+                      <th class="text-center">Country</th>
+                      
+                      <th class="text-center">Balance</th>
+                      <th class="text-center">Deduction</th>
+                      <th class="text-center">Time</th>
+                      <th class="text-center">Message the</th>
                       
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(user, index) in number_history.slice(0, 30)" :key="index"  :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'" class=" border-b-[1px] border-black">
-                      <td class="text-center py-3"> {{ user.Phone_Number }}</td>
-                      <td class="text-center py-3">{{ user.App }}</td>
-                      <td class="text-center py-3">{{ user.Country }}</td>
-                      <td class="text-center py-3">{{ user.transactiondate }}</td>
-                      <td class="text-center whitespace-nowrap py-3">{{ user.Activation_Code }}</td>
+                    <tr v-for="(user, index) in number_used.slice(0, 30)" :key="index" :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'"  class=" border-b-[1px]  border-black">
+                      <td class="text-center min-w-12 whitespace-nowrap"> {{ index+1 }}</td>
+                      <td class="text-center nobreak"> {{ user.Phone_Number }}</td>
+                      <td class="text-center  ">{{ user.App }}</td>
+                      <td class="text-center  nobreak">{{ user.Country }}</td>
+                      
+                      <td class="text-center px-5 nobreak">{{ user.new_bal }}</td>
+                      <td class="text-center px-5  nobreak">₦{{ user.Amount }}</td>
+                      <td class="text-center px-5   nobreak">{{ user.transactiondate }}</td>
+                      <td class="text-center min-w-52 ">{{ user.Activation_Code }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -84,7 +93,7 @@ definePageMeta({
 });
 
 const pagelaod = ref(false)
-
+const number_used =  ref([]);
 const number_history = ref([]);
 console.log(pagelaod.value);
 
@@ -103,7 +112,9 @@ const getnumber = async () => {
 
     const apps = response.data;
     number_history.value = apps.reverse()
-    console.log('ffff', number_history.value);
+    number_used.value = number_history.value.filter(element => {
+  return element.Activation_Code 
+});
    
       console.log('done');
       
@@ -111,7 +122,7 @@ const getnumber = async () => {
       pagelaod.value = true
 
   } catch (error) {
-    console.log(error);
+    
     
     if (error.response) {
       //   ({
@@ -157,5 +168,15 @@ getnumber()
   height: 20px;
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M12 2C8.69 2 6 4.69 6 8V10H4V22H20V10H18V8C18 4.69 15.31 2 12 2ZM8 8C8 5.79 9.79 4 12 4C14.21 4 16 5.79 16 8V10H8V8ZM6 12H18V20H6V12Z'/></svg>");
   background-size: cover;
+}
+
+td {
+  border-left: 1px;
+  
+  padding: 12px 4px;
+  
+}
+.nobreak{
+white-space: nowrap
 }
 </style>

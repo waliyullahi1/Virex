@@ -10,7 +10,7 @@
           ref="inputRef"
           required
           :disabled="disabled"
-          class="w-full px-2 h-[2.6rem] focus:shadow-primary shadow-sm focus:border-2 rounded-lg bg-white   focus:border-primary  mt-1  text-[15px] outline-none fy border-primary border-2 py-[.3rem]"
+          class="w-full px-2 h-[2.6rem] focus:shadow-preprimary shadow-sm focus:border-2 rounded-lg bg-white   focus:border-preprimary  mt-1  text-[15px] outline-none fy border-preprimary border-2 py-[.3rem]"
         >
           <option class="px-3 text-[15px] font-semibold" v-for="(option, index) in field" :key="index" :value="option.value">
             {{ option.text }}

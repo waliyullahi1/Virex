@@ -18,17 +18,17 @@
             <!-- First Form -->
             <transition name="slide-stagger" mode="out-in">
               <div v class="text-left inset-0 staggered-form">
-                <form @submit.prevent="">
-                  <FormInput v-for="(input, index) in register" :key="index" :oninput="input.oninput" 
+                <form @submit.prevent="handleLogin">
+                  <FormInput v-for="(input, index) in login_detail" :key="index" :oninput="input.oninput" 
                     :type="input.type" v-model:inputValue="userData[input.modelKey]" :minlength="input.minlength"
                     :label="input.label" :class="`staggered-input delay-${index}`" ></FormInput>
                   <div class=" flex w-full gap-5">
-                    <ButtonsTertiary  type="submit"  :arrow=true class="mt-16 width-full" width="full">Login</ButtonsTertiary>
+                    <ButtonsTertiary  type="submit"  :loading=LoadingState  :arrow=true class="mt-16 width-full" width="full">Login</ButtonsTertiary>
                     <ButtonsPrimary type="button" @clicked="$router.push({path: '/register'})" :arrow=true class="mt-16 width-full" width="full">Register</ButtonsPrimary>
                     
                   </div>
                   
-                  <TypographyP @click="cancel_Forgetpage" class=" text-primary cursor-pointer mt-4 font-semibold text-center">Forget Password</TypographyP>
+                  <TypographyP @click="cancel_Forgetpage" class=" text-preprimary cursor-pointer mt-4 font-semibold text-center">Forget Password</TypographyP>
                 </form>
               </div>
             </transition>
@@ -47,9 +47,18 @@
 </template>
 
 <script setup>
+const toast = useToast();
+const { login, logout, accessToken, startTokenRefresh } = useAuth();
 
 
 
+const nofit = (title, description, color="red" )=>{
+  toast.add({
+    title: title,
+    description: description,
+    color: color,
+  });
+}
 
 
 const userData = reactive({
@@ -60,20 +69,14 @@ const userData = reactive({
 
 })
 
-
-
-
-
-
-
 const cancel_forgetPages = ref(false)
+const LoadingState = ref(false)
 
 
 
-
-const register = [
+const login_detail = [
   { type: 'text', label: 'Email/Phone', modelKey: 'email/phone', minlength: 1,  },
-  { type: 'password', label: 'Password', modelKey: 'password', minlength: 11,  },
+  { type: 'password', label: 'Password', modelKey: 'password', minlength: 5,  },
 ];
 
 
@@ -84,6 +87,7 @@ const register = [
 
 const cancel_Forgetpage = ()=>{
   console.log('dsfgdfsd');
+  console.log( );
   
   cancel_forgetPages.value = !cancel_forgetPages.value
   
@@ -91,6 +95,37 @@ const cancel_Forgetpage = ()=>{
 
 
 
+const handleLogin = async () => {
+  LoadingState.value = true 
+  console.log(userData['email/phone'], userData.password);
+  
+ const response = await login(userData['email/phone'], userData.password);
+ console.log(response);
+ 
+ if (response){
+
+  LoadingState.value = true
+  nofit('sucess', 'Login Sucessfully', "green" )
+  navigateTo("/user");
+  console.log('user');
+  
+  LoadingState.value = false
+ } else{
+ nofit('Error', 'Email/phone  or password is not correct', "red" )
+ 
+  LoadingState.value = false
+
+  
+ }
+};
+
+// const handleLogin = async () => {
+//     toast.add({
+//     title: "Success!",
+//     description: "Your action was successful.",
+//     color: "green",
+//   });
+// };
 
 
 

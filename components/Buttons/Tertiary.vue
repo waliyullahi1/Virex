@@ -1,8 +1,8 @@
 <template>
     <button :type="type" :class="[
-        'py-1 px-2  justify-center flex group text-white  duration-500 ease-in-out rounded-md  active:bg-primary outline-none hover:bg-opacity-50 bg-tertiary',
+        'py-1 px-2  justify-center flex group text-white  duration-500 ease-in-out rounded-md  active:bg-preprimary outline-none hover:bg-opacity-50 bg-tertiary',
         { 'zoom-animation': isClicked },
-        loading ? 'bg-primary text-white' : '',
+        loading ? 'bg-preprimary text-white' : '',
         width === 'full' ? 'w-full' : 'fit'
 
     ]" :disabled="loading || disabled" @click="handleClick">
@@ -28,17 +28,20 @@
             </div>
         </div>
 
-        <div v-if="arrow" class=" w-8 h-full flex justify-center items-center rotate-180  text-white">
-            <svg fill="currentColor" class="w-3 group-hover:-translate-x-1 duration-700  " version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 29.771 29.771"
-                xml:space="preserve">
-                <g>
-                    <path d="M29.771,14.886c0,1.657-1.344,3-3,3H11.486l4.506,4.505c1.172,1.172,1.172,3.071,0,4.243
+        <div  v-if="!loading">
+            <div v-if="arrow" class=" w-8 h-full flex justify-center items-center rotate-180  text-white">
+                <svg fill="currentColor" class="w-3 group-hover:-translate-x-1 duration-700  " version="1.1" id="Capa_1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 29.771 29.771" xml:space="preserve">
+                    <g>
+                        <path d="M29.771,14.886c0,1.657-1.344,3-3,3H11.486l4.506,4.505c1.172,1.172,1.172,3.071,0,4.243
 		c-0.586,0.586-1.354,0.879-2.122,0.879s-1.534-0.293-2.12-0.878L0,14.885L11.745,3.138c1.173-1.172,3.071-1.171,4.243,0
 		c1.172,1.172,1.172,3.071,0,4.243l-4.505,4.506h15.289C28.427,11.886,29.771,13.229,29.771,14.886z" />
-                </g>
-            </svg>
+                    </g>
+                </svg>
+            </div>
         </div>
+
     </button>
 </template>
 
@@ -61,15 +64,15 @@ export default {
             default: 'fit' // Default width class
         },
 
-        arrow:{
+        arrow: {
             type: Boolean,
-            default: false 
+            default: false
         }
     },
     data() {
         return {
             isClicked: false,
-            
+
         };
     },
     methods: {

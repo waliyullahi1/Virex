@@ -1,18 +1,19 @@
 <template>
     <div class="  ">
         <div class="  bg-secondary w-full md:h-20 h-14"> </div>
+        
         <div :class="top?' transition transform  -translate-y-36':'translate-y-0 transition transform '" class=" fixed top-0 z-50 shadow-md  w-[100%] flex justify-center md:h-20 h-14 bg-white   mx-auto l">
             <div class="  container mxo  pt-  w-full z-30    bg top-0 ">
 
                 <button class="flex top-6 fixed z-20 right-4  md:hidden" @click="toggleMenu">
                     <div class="w-8">
                         <div :class="mobileNav ? 'transition transform rotate-45 items-center w-8' : 'transition w-8'"
-                            class="block cursor-pointer bg-primary" style="height: 3px;"></div>
+                            class="block cursor-pointer bg-preprimary" style="height: 3px;"></div>
 
                        
 
                         <div :class="mobileNav ? 'transition transform   -rotate-45 item-center w-8 -mt-0.5' : 'transition  w-8 mt-1.5'"
-                            class="block cursor-pointer bg-primary" style="height: 3px;"></div>
+                            class="block cursor-pointer bg-preprimary" style="height: 3px;"></div>
                     </div>
                 </button>
                 <nav class=" py- bg-white items-center md:h-20 h-14  md:flex block justify-between md:justify-between">
@@ -56,6 +57,7 @@
 
             </div>
         </div>
+
     </div>
 
 </template>
