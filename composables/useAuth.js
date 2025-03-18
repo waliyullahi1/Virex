@@ -15,7 +15,7 @@ export const useAuth = () => {
   // 🔹 Login function
   const login = async (emaillOrPhone, password) => {
     try {
-      const { data, error } = await useFetch(" https://8997-102-89-82-236.ngrok-free.app/login", {
+      const { data, error } = await useFetch(" https://10e6-102-89-82-236.ngrok-free.app/login", {
         method: "POST",
         body: { emaillOrPhone: emaillOrPhone, pwd: password },
         credentials: "include",
@@ -36,7 +36,7 @@ export const useAuth = () => {
   // 🔹 Refresh Token function
   const refresh = async () => {
     try {
-      const { data, error, status } = await useFetch(" https://8997-102-89-82-236.ngrok-free.app/refresh", {
+      const { data, error, status } = await useFetch(" https://10e6-102-89-82-236.ngrok-free.app/refresh", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
