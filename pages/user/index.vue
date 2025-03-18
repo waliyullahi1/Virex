@@ -268,7 +268,7 @@ const getnumber = async () => {
 
   try {
     const response = await axios({
-      url: "http://localhost:3500/getRates",
+      url: "https://wizzywise.serveo.net/getRates",
       method: "GET",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
@@ -316,7 +316,7 @@ const shows = async (item) => {
 
 
   try {
-    const response = await axios.get(`http://localhost:3500/getRates/apps/${item.countryName}`);
+    const response = await axios.get(`https://wizzywise.serveo.net/getRates/apps/${item.countryName}`);
     const apps = response.data;
 
     if (!apps) {
@@ -395,7 +395,7 @@ const getOtp = async (item) => {
   if (!item.Activation_Code || item.Activation_Code === '') {
     try {
       const response = await axios({
-        url: "http://localhost:3500/getRates/otp",
+        url: "https://wizzywise.serveo.net/getRates/otp",
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
@@ -441,7 +441,7 @@ const generateNnumber = async (item) => {
 
   try {
     const response = await axios({
-      url: "http://localhost:3500/getRates/generateNumber",
+      url: "hhttps://wizzywise.serveo.net/getRates/generateNumber",
       method: "POST",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,

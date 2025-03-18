@@ -12,7 +12,7 @@ export const fetchUserData = defineStore('user_detail', {
     async fetchUserDetail() {
       
       try {
-        const response = await axios.get("https://82ea-102-89-82-236.ngrok-free.app/dashbord", {
+        const response = await axios.get("https://wizzywise.serveo.net/dashbord", {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         });
