@@ -5,8 +5,8 @@
   
       <div class="  flex mt-5  gap-3 ">
         <div class=" h-3  bg lg:block md:block flex-none bg-orage-400 lg:min-w-56 md:min-w-7 hidden  ml-[1rem] "></div>
-        <div class=" md:mx-4 px-4   w-full  flex justify-center shrink  flex-initial ">
-          <div class=" container pb-52  mx-auto flex gap-1 flex-col justify-center ">
+        <div class=" md:mx-4 px-0   w-full  flex justify-center shrink  flex-initial ">
+          <form  @submit.prevent="edit_detail" class=" container pb-52  mx-auto flex gap-1 flex-col justify-center ">
   
             <!-- FOR NAME CHANGE -->
             <section class="  rounded-lg  bg-white sm:p-5 p-2  ">
@@ -16,7 +16,7 @@
               </div>
               <div class=" relative">
   
-                <div  action="" class=" md:flex block w-full gap-4">
+                <div   class=" md:flex block w-full gap-4">
                     <FormInput  type="text" v-model:inputValue="user.full_name" :minlength="1" class=" w-full" label="Full name"></FormInput>
                     <FormInput  type="text" :disabled="true" v-model:inputValue="user.email" :minlength="1" class=" w-full" label="Email"></FormInput>
                     <FormInput  type="text" :disabled="true" v-model:inputValue="user.phoneNumber" :minlength="1" class=" w-full" label="Phone Number"></FormInput>
@@ -37,9 +37,9 @@
               <div class=" relative">
   
                 <div  action="" class=" md:flex block w-full gap-4">
-                    <FormInput  type="password" v-model:inputValue="user.currentpassword" :minlength="1" class=" w-full" label="Current Password"></FormInput>
-                    <FormInput  type="password"  v-model:inputValue="user.newpassword" :minlength="1" class=" w-full"label="New Password"></FormInput>
-                    <FormInput  type="password"  v-model:inputValue="user.confirm" :minlength="1" class=" w-full"label="Confirm Password"></FormInput>
+                    <FormInput  type="password"  v-model:inputValue="user.currentpassword" :minlength="1"  :required="require_password" class=" w-full" label="Current Password"></FormInput>
+                    <FormInput  type="password"  v-model:inputValue="user.newpassword" :minlength="1" :required="require_password" class=" w-full"label="New Password"></FormInput>
+                    <FormInput  type="password"  v-model:inputValue="user.confirm_password" :minlength="1" :required="require_password" class=" w-full"label="Confirm Password"></FormInput>
                 </div>
   
   
@@ -71,7 +71,7 @@
                 
                 <div class=" w-1/2">
                     <div class=" flex w-full mt-10 justify-center items-center  gap-5">
-                    <ButtonsTertiary  type="submit"  class=" width-full text-" >Update</ButtonsTertiary>
+                    <ButtonsTertiary :loading =loadingbtn  type="submit"  class=" width-full text-" >Update</ButtonsTertiary>
                     <ButtonsPrimary type="button" @clicked="$router.push({path: '/register'})" class="s font-medium text-xl ">Cancel</ButtonsPrimary>
                     
                   </div>
@@ -86,7 +86,7 @@
             
   
             
-          </div> 
+          </form> 
   
   
         </div>
@@ -100,22 +100,32 @@
   <script setup>
   import { ref, onMounted } from 'vue'
   import { fetchUserData } from '@/stores/dashboard'
-
+  import axios from "axios";
+  const toast = useToast();
   definePageMeta({
   middleware: "auth",
 });
-
+const require_password = ref(false)
 const pagelaod = ref(false)
+const loadingbtn =ref(false)
   const user = ref({
     full_name: ' waliu idowu',
     email: 'dhfshueh@gmail.com',
     phoneNumber:'',
     currentpassword:'',
     newpassword:'',
+    confirm_password:''
   });
 
   
 
+  const nofit = (title, description, color="red" )=>{
+  toast.add({
+    title: title,
+    description: description,
+    color: color,
+  });
+}
 
   const store = fetchUserData()
 
@@ -126,14 +136,61 @@ const pagelaod = ref(false)
    pagelaod.value = true
 });
 
-// watch(() => store.userData, (newData) => {   
-//    user.email = newData.email
-//    user.phoneNumber = newData.phone
-//   user.full_name = newData.full_name; 
-//   console.log(  user.email, 'ddd vbxfxvsa');
+const edit_detail = async()=>{
+  loadingbtn.value = true
   
-//     pagelaod.value = true
-// });
+  
+  const fullNameValid = user.value.full_name.trim().split(/\s+/).length >= 2;
+  if(!fullNameValid){
+     console.log('Write your name properly like this: "Sumae Jame"');
+      nofit('Error', 'Full name must contain at least two words. firstname and lastname (daniel tenny)', "red");
+      loadingbtn.value = false;
+      return; 
+  }
+console.log(user.value.full_name);
+if (user.value.newpassword || user.value.currentpassword ) {
+  console.log(user.value.newpassword !== user.value.confirm_password, user.value.newpassword, user.value.confirm_password );
+  
+ if (user.value.newpassword !== user.value.confirm_password){
+      nofit('Error', 'New password and confirm password must be the same', "red");
+      loadingbtn.value = false;
+      return
+} 
+}
+
+  try {
+  const response = await axios({
+    url: "http://localhost:3500/resetpassword",
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    withCredentials: true,
+    data: { full_name: user.value.full_name, currentpassword:user.value.currentpassword, newPassword:user.value.newpassword }
+  });
+console.log(response.data);
+console.log(response);
+
+ console.log('finished');
+     nofit('Succeful', response.data.success, "green")
+ 
+
+
+} catch (error) {
+      loadingbtn.value = false
+    
+  if (error.response) {
+    nofit('Error', error.response.data.message, "red")
+    console.error(error)
+
+  }
+}
+  loadingbtn.value = false
+
+}
+
+watch([() => user.value.currentpassword, () => user.value.confirm_password, () => user.value.newpassword], ([currentpassword, confirm_password, newpassword]) => {
+  require_password.value = !!(currentpassword || confirm_password || newpassword); // Convert to boolean
+});
+
 
   </script>
   

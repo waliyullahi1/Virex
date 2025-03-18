@@ -105,7 +105,7 @@ const handleLogin = async () => {
  if (response){
 
   LoadingState.value = true
-  nofit('sucess', 'Login Sucessfully', "green" )
+  nofit('sucess', 'Login Sucessfully', "success" )
   navigateTo("/user");
   console.log('user');
   

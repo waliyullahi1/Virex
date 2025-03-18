@@ -25,7 +25,7 @@
 
                 <div class="pt-5">
                   <TypographyH4>Amount</TypographyH4>
-                  <TypographyP class=" text-gray-500"> Minimum of 1000 Nairas</TypographyP>
+                  <TypographyP class=" text-gray-500"> Minimum of 1000 Naira</TypographyP>
                   <div class="  bg-white  pb-8 px-4 bg-whte shadow-sm rounded-lg  text-black w-full">
                     <FormInput :addStyleBorder="true" :nolabel="true" type="text"
                       v-model:inputValue="payment_details.amount" :minlength="1" class="pt-4" label="s"></FormInput>
@@ -59,7 +59,7 @@
                 </div>
               </div>
 
-              <ButtonsPrimary type="submit" class="mt-9 width-full" width="full">Fund Account</ButtonsPrimary>
+              <ButtonsPrimary type="button" @click="fund()" class="mt-9 width-full" width="full">Fund Account</ButtonsPrimary>
 
             </div>
 
@@ -79,6 +79,7 @@
 
 
 <script setup>
+ import axios from 'axios'
   definePageMeta({
   middleware: "auth",
 });
@@ -115,7 +116,31 @@ watch(() => store.userData, (newData) => {
 
 });
 
+const fund = async()=>{
+  try {
+    const response = await axios({
+      url: "http://localhost:3500/fund",
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    });
 
+   
+      
+   
+     
+
+  } catch (error) {
+    console.log(error);
+    
+    if (error.response) {
+      //   ({
+      //     title: 'error',
+      //     text: error.response.data.message,
+      //   });
+    }
+  }
+}
 
 
 

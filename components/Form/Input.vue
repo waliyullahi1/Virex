@@ -8,7 +8,7 @@
         :title="passwordError ? 'Password must be at least 6 characters' : ''" :class="[
           addStyleBorder ? 'border-2 focus:border-2 border-preprimary' : 'border focus:border',
           passwordError ? 'border-red-500' : '',
-          disabled ? 'bg-gray-700 text-gray-600 cursor-not-allowed' : ' bg-red-700',
+          disabled ? 'bg-gray-700 text-gray-600 cursor-not-allowed' : ' ',
         ]" class="w-full input-field focus:shadow-preprimary shadow-sm focus:border focus:border-preprimary  h-[2.6rem] px-2 border rounded-[5px]" />
       <label :for="labelId" class="input-label text-slate-600" :class="nolabel ? 'hidden' : 'block'">
         <span class="py-0 px-1 bg-white">{{ label }}</span>

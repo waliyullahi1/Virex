@@ -25,7 +25,7 @@
                     :class="`staggered-input delay-${index}`"></FormInput>
 
                   <div class=" flex w-full gap-5">
-                    <ButtonsPrimary type="submit" :loading = loadingBtn :arrow=true class="mt-16 width-full" width="full">Register
+                    <ButtonsPrimary type="submit" :loading="loadingBtn" :arrow=true class="mt-16 width-full" width="full">Register
                     </ButtonsPrimary>
                     <ButtonsTertiary type="button" @clicked="$router.push({ path: '/login' })" :arrow=true
                       class="mt-16 width-full" width="full">Login</ButtonsTertiary>
@@ -105,7 +105,7 @@ const handleregister = async () => {
     
     if (!fullNameValid) {
       console.log('Write your name properly like this: "Sumae Jame"');
-      nofit('Error', 'Full name must contain at least two words. firstname and lastname', "red");
+      nofit('Error', 'Full name must contain at least two words. firstname and lastname(daniel tenny)', "red");
       loadingBtn.value = false;
       return;
     }

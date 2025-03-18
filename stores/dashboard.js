@@ -12,7 +12,7 @@ export const fetchUserData = defineStore('user_detail', {
     async fetchUserDetail() {
       
       try {
-        const response = await axios.get("http://localhost:3500/dashbord", {
+        const response = await axios.get("https://82ea-102-89-82-236.ngrok-free.app/dashbord", {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         });

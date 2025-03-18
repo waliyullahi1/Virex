@@ -31,8 +31,8 @@
               <div class="flex gap-3 items-center justify-center w-fit ">
                 <img src="@/assets/images/svg/person.svg" alt="person" class="md:w-10 w-7 " srcset="">
                 <div class="  flex justify-center items-center flex-col ">
-                  <TypographyH4 class=" leading-[7px] text-lg">{{ firstName }} </TypographyH4>
-                  <small>{{user_wallet}}</small>
+                  <TypographyH4 class=" leading-[12px] ">{{ firstName }} </TypographyH4>
+                  <small>₦{{user_wallet}}</small>
                 </div>
 
 
@@ -200,6 +200,7 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+ 
   page_tittle: String,
   dashboardbtn: {
     type: Boolean,

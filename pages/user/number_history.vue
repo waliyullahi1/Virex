@@ -1,7 +1,7 @@
 <template>
 
   <div class="bg-slate-50">
-    <UserNavbar page_tittle="PHONE NUMBER HISTORY" class=" text-[poppins] w-full hiddn " :pagelaod="pagelaod">
+    <UserNavbar page_tittle="Phone Number History" class=" text-[poppins] w-full hiddn " :pagelaod="pagelaod">
     </UserNavbar>
 
     <div class="  flex mt-5  gap-3 ">
@@ -26,7 +26,7 @@
                   class="  flex  v-if=!appfound[0] text-rose-500 bg-rose-100  p-3 gap-3 items-center rounded-lg w-full ">
                   <div class=" bg-rose-500 h-12  rounded-2xl w-9 "></div>
                   <div>
-                    <TypographyH4 class=" text-lg  ">Dear waliu425!!</TypographyH4>
+                    <TypographyH4 class=" text-lg  ">Dear {{firstName}}!!</TypographyH4>
                     <TypographyP>You Need to purchase a service before You can proceed</TypographyP>
 
                   </div>
@@ -82,12 +82,19 @@ import { fetchUserData } from '@/stores/dashboard'
 definePageMeta({
   middleware: "auth",
 });
-
+const firstName = ref('')
 const pagelaod = ref(false)
 
 const number_history = ref([]);
 console.log(pagelaod.value);
-
+const store = fetchUserData()
+watch(() => store.userData, (newData) => {
+  try {
+    const full_name = newData.full_name;
+    firstName.value = full_name.split(' ')[0];
+  } catch (error) {
+    console.error(error)
+  }});
 const getnumber = async () => {
 
 
