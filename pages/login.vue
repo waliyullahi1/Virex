@@ -50,7 +50,8 @@
 const toast = useToast();
 const { login, logout, accessToken, startTokenRefresh } = useAuth();
 
-
+const config = useRuntimeConfig();
+const BASE_URL = config.public.BASE_URL;
 
 const nofit = (title, description, color="red" )=>{
   toast.add({

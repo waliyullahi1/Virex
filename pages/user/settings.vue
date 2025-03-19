@@ -99,6 +99,8 @@
   
   <script setup>
   import { ref, onMounted } from 'vue'
+  const config = useRuntimeConfig();
+const BASE_URL = config.public.BASE_URL;
   import { fetchUserData } from '@/stores/dashboard'
   import axios from "axios";
   const toast = useToast();
@@ -160,8 +162,7 @@ if (user.value.newpassword || user.value.currentpassword ) {
 
   try {
   const response = await axios({
-    url: "http://localhost:3500/resetpassword",
-    method: "POST",
+    url: `${BASE_URL}/resetpassword`,   method: "POST",
     headers: { "Content-Type": "application/json" },
     withCredentials: true,
     data: { full_name: user.value.full_name, currentpassword:user.value.currentpassword, newPassword:user.value.newpassword }

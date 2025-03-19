@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-
+const config = useRuntimeConfig();
+const BASE_URL = config.public.BASE_URL;
 export const fetchUserData = defineStore('user_detail', {
   state: () => ({
     iDataEmpty: true,
@@ -10,9 +11,9 @@ export const fetchUserData = defineStore('user_detail', {
   }),
   actions: {
     async fetchUserDetail() {
-      
+      console.log(BASE_URL)
       try {
-        const response = await axios.get("https://wizzywise.serveo.net/dashbord", {
+        const response = await axios.get(`${BASE_URL}/dashbord`, {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         });

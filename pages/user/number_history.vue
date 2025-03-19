@@ -78,6 +78,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { fetchUserData } from '@/stores/dashboard'
+const config = useRuntimeConfig();
+const BASE_URL = config.public.BASE_URL;
  import axios from 'axios'
 definePageMeta({
   middleware: "auth",
@@ -102,7 +104,7 @@ const getnumber = async () => {
 
   try {
     const response = await axios({
-      url: "http://localhost:3500/getRates",
+      url: `${BASE_URL}/getRates`,
       method: "GET",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,

@@ -200,9 +200,13 @@ definePageMeta({
 import { ref, onMounted } from 'vue'
 import countryNames from '../../data/country.json';
 import { fetchUserData } from '@/stores/dashboard'
-let refreshInterval = null;
-const router = useRouter()
 
+const router = useRouter()
+const config = useRuntimeConfig();
+
+
+let refreshInterval = null;
+const BASE_URL = config.public.BASE_URL;
 const recentCountryChoose = ref([])
 const pagelaod = ref(false)
 const selectedapp = ref('');
@@ -230,7 +234,7 @@ const autmaticOtp = async () => {
   await Promise.all(itemsWithoutActivationCode.map(async (element) => {
     isotpLoadFinished.value = false
     const response = await axios({
-      url: "http://localhost:3500/getRates/otp",
+      url: `${BASE_URL}/getRates/otp`,
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
@@ -268,7 +272,7 @@ const getnumber = async () => {
 
   try {
     const response = await axios({
-      url: "https://wizzywise.serveo.net/getRates",
+      url: `${BASE_URL}/getRates`,
       method: "GET",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
@@ -316,7 +320,7 @@ const shows = async (item) => {
 
 
   try {
-    const response = await axios.get(`https://wizzywise.serveo.net/getRates/apps/${item.countryName}`);
+    const response = await axios.get(`${BASE_URL}/getRates/apps/${item.countryName}`);
     const apps = response.data;
 
     if (!apps) {
@@ -395,7 +399,7 @@ const getOtp = async (item) => {
   if (!item.Activation_Code || item.Activation_Code === '') {
     try {
       const response = await axios({
-        url: "https://wizzywise.serveo.net/getRates/otp",
+        url: `${BASE_URL}/getRates/otp`,
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
@@ -441,7 +445,7 @@ const generateNnumber = async (item) => {
 
   try {
     const response = await axios({
-      url: "hhttps://wizzywise.serveo.net/getRates/generateNumber",
+      url: `${BASE_URL}/getRates/generateNumber`,
       method: "POST",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,

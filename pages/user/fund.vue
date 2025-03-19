@@ -79,11 +79,13 @@
 
 
 <script setup>
+
  import axios from 'axios'
   definePageMeta({
   middleware: "auth",
 });
-
+const config = useRuntimeConfig();
+const BASE_URL = config.public.BASE_URL;
 const pagelaod = ref(false)
 import { fetchUserData } from '@/stores/dashboard'
 console.log('waliu');
@@ -119,7 +121,7 @@ watch(() => store.userData, (newData) => {
 const fund = async()=>{
   try {
     const response = await axios({
-      url: "http://localhost:3500/fund",
+      url: `${BASE_URL}/fund`,
       method: "POST",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,

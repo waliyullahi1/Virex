@@ -111,7 +111,7 @@ const handleregister = async () => {
     }
 
     // Send registration request
-    const response = await fetch('http://localhost:3500/register', {
+    const response = await fetch(`${BASE_URL}/register`, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
