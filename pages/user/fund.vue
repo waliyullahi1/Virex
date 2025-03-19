@@ -10,14 +10,14 @@
         <div class=" pb-52 w-full  container   flex gap-6 flex-col justify-center ">
 
          
-          <section class="  md:flex  block justify-between w-full gap-5     mb-10 mt-">
+          <form @submit.prevent="fund" class="  md:flex  block justify-between w-full gap-5     mb-10 mt-">
             <div class=" w-full ">
-              <form action="">
+              <div action="">
                 <div>
                   <TypographyH4>Payment Type</TypographyH4>
                   <TypographyP class=" text-gray-500">Select your preferred service</TypographyP>
                   <div class=" pt-2 pb-8 px-4 bg-white shadow-sm rounded-lg text-black w-full">
-                    <FormSelect :field="payment_option" v-model:inputValue="payment_details.gateway_option">
+                    <FormSelect :field="payment_option" :required="true" v-model:inputValue="payment_details.payment_type">
                     </FormSelect>
                   </div>
                 </div>
@@ -27,15 +27,15 @@
                   <TypographyH4>Amount</TypographyH4>
                   <TypographyP class=" text-gray-500"> Minimum of 1000 Naira</TypographyP>
                   <div class="  bg-white  pb-8 px-4 bg-whte shadow-sm rounded-lg  text-black w-full">
-                    <FormInput :addStyleBorder="true" :nolabel="true" type="text"
-                      v-model:inputValue="payment_details.amount" :minlength="1" class="pt-4" label="s"></FormInput>
+                    <FormInput :addStyleBorder="true" :required="true" :nolabel="true" type="number"
+                      v-model:inputValue="payment_details.amount" :minlength="1000" :maxlength="1000" class="pt-4" label="s"></FormInput>
                   </div>
                 </div>
 
 
-                <ButtonsPrimary type="submit" class="mt-9 width-full" width="full">Fund Account</ButtonsPrimary>
+                <ButtonsPrimary type="submit"  class="mt-9 width-full" width="full">Fund Account</ButtonsPrimary>
 
-              </form>
+              </div>
             </div>
 
             <div class=" w-full  md:w-[50%] p-6 bg-white rounded-lg shadow-lg k">
@@ -59,14 +59,14 @@
                 </div>
               </div>
 
-              <ButtonsPrimary type="button" @click="fund()" class="mt-9 width-full" width="full">Fund Account</ButtonsPrimary>
+              <ButtonsPrimary type="submit"   class="mt-9 width-full" width="full">Fund Account</ButtonsPrimary>
 
             </div>
 
 
             
 
-          </section>
+          </form>
         </div>
 
 
@@ -84,6 +84,14 @@
   definePageMeta({
   middleware: "auth",
 });
+const toast = useToast();
+const nofit = (title, description, color = "red") => {
+  toast.add({
+    title: title,
+    description: description,
+    color: color,
+  });
+}
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
 const pagelaod = ref(false)
@@ -93,7 +101,7 @@ const firstName = ref('')
 const user_wallet = ref('')
 const payment_details = ref({
   amount: '',
-  gateway_option: ''
+  payment_type: ''
 })
 const store = fetchUserData()
 const payment_option = [
@@ -119,18 +127,23 @@ watch(() => store.userData, (newData) => {
 });
 
 const fund = async()=>{
+  console.log(payment_details.value);
+  if(payment_details.value.amount < 1000){
+    nofit('Error', "Amount most not less than ₦1000")
+    return
+  }
   try {
     const response = await axios({
       url: `${BASE_URL}/fund`,
       method: "POST",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
+      data: {
+        amount: payment_details.value.amount,  payment_type: payment_details.value.payment_type
+      }
     });
 
    
-      
-   
-     
 
   } catch (error) {
     console.log(error);

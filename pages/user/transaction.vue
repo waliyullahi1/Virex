@@ -95,13 +95,14 @@ const number_history = ref([]);
 console.log(pagelaod.value);
 
 const getnumber = async () => {
-
+  const config = useRuntimeConfig();
+  const BASE_URL = config.public.BASE_URL;
 
 
 
   try {
     const response = await axios({
-      url: "http://localhost:3500/getRates",
+      url: `${BASE_URL}/getRates`,
       method: "GET",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
