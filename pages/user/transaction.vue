@@ -41,25 +41,25 @@
                       <th class="text-center">Amount</th>
                       
                       <th class="text-center">Type</th>
-                      <th class="text-center">Method</th>
+                      <th class="text-center">status</th>
               
                       
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(user, index) in number_used" :key="index" :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'"  class=" border-b-[1px]  border-black">
+                    <tr v-for="(user, index) in transaction_history" :key="index" :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'"  class=" border-b-[1px]  border-black">
                     
-                      <td class="text-center nobreak"> {{ user.Phone_Number }}</td>
-                      <td class="text-center  ">{{ user.App }}</td>
-                      <td class="text-center  nobreak">{{ user.Country }}</td>
+                      <td class="text-center  py-2 min-w-52"> {{ user.tx_ref }}</td>
+                      <td class="text-center py-2 min-w-48 px-3 ">{{ user.time_created }}</td>
+                      <td class="text-center py-2  px-3">₦{{ user.amount }}</td>
                       
-                      <td class="text-center px-5 nobreak">{{ user.new_bal }}</td>
-                      <td class="text-center px-5  nobreak">₦{{ user.Amount }}</td>
+                      <td class="text-center py-2  px-3">{{ user.payment_type }}</td>
+                      <td class="text-center py-2  px-3 ">{{ user.status }}</td>
 
                     </tr>
                   </tbody>
                 </table>
-                <div v-if="!number_history[0]" class=" h-36  flex justify-center items-center  w-full      ">
+                <div v-if="!transaction_history[0]" class=" h-36  flex justify-center items-center  w-full      ">
                   
                   <p class="text-[16px] font-medium">No Number History </p>
                 </div>
@@ -83,15 +83,15 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { fetchUserData } from '@/stores/dashboard'
+
  import axios from 'axios'
 definePageMeta({
   middleware: "auth",
 });
 
 const pagelaod = ref(false)
-const number_used =  ref([]);
-const number_history = ref([]);
+const transaction_history =  ref([]);
+
 console.log(pagelaod.value);
 
 const getnumber = async () => {
@@ -102,17 +102,17 @@ const getnumber = async () => {
 
   try {
     const response = await axios({
-      url: `${BASE_URL}/getRates`,
+      url: `${BASE_URL}/fund/history`,
       method: "GET",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });
 
     const apps = response.data;
-    number_history.value = apps.reverse()
-    number_used.value = number_history.value.filter(element => {
-  return element.Activation_Code 
-});
+    transaction_history.value = apps.reverse()
+    console.log(transaction_history.value);
+    
+
    
       console.log('done');
       
@@ -123,10 +123,7 @@ const getnumber = async () => {
     
     
     if (error.response) {
-      //   ({
-      //     title: 'error',
-      //     text: error.response.data.message,
-      //   });
+  
     }
   }
 
@@ -168,13 +165,5 @@ getnumber()
   background-size: cover;
 }
 
-td {
-  border-left: 1px;
-  
-  padding: 12px 4px;
-  
-}
-.nobreak{
-white-space: nowrap
-}
+
 </style>

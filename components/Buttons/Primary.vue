@@ -1,5 +1,5 @@
 <template>
-  <button :type="type" :class="[
+  <button  :type="type" :class="[
     'py-1 px-2   group justify-center flex b text-white  duration-500 ease-in-out rounded-md  active:bg-preprimary outline-none hover:bg-opacity-70 bg-preprimary',
     { 'zoom-animation': isClicked },
     loading ? 'bg-preprimary text-white' : '', width === 'full' ? 'w-full' : 'fit',

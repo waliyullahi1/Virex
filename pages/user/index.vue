@@ -192,9 +192,7 @@
 
 <script setup>
 import axios from "axios";
-definePageMeta({
-  middleware: "auth",
-});
+
 
 
 import { ref, onMounted } from 'vue'
@@ -203,10 +201,10 @@ import { fetchUserData } from '@/stores/dashboard'
 
 const router = useRouter()
 const config = useRuntimeConfig();
-
+const BASE_URL = config.public.BASE_URL;
 
 let refreshInterval = null;
-const BASE_URL = config.public.BASE_URL;
+
 const recentCountryChoose = ref([])
 const pagelaod = ref(false)
 const selectedapp = ref('');
@@ -231,30 +229,30 @@ const autmaticOtp = async () => {
 
 
 
-  await Promise.all(itemsWithoutActivationCode.map(async (element) => {
-    isotpLoadFinished.value = false
-    const response = await axios({
-      url: `${BASE_URL}/getRates/otp`,
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-      data: { country: element.Country, app: element.App, phoneNumber: element.Phone_Number, transactiondate: element.transactiondate }
-    });
+  // await Promise.all(itemsWithoutActivationCode.map(async (element) => {
+  //   isotpLoadFinished.value = false
+  //   const response = await axios({
+  //     url: `${BASE_URL}/getRates/otp`,
+  //     method: "PUT",
+  //     headers: { "Content-Type": "application/json" },
+  //     withCredentials: true,
+  //     data: { country: element.Country, app: element.App, phoneNumber: element.Phone_Number, transactiondate: element.transactiondate }
+  //   });
 
-    isotpLoadFinished.value = true
-    setTimeout(getnumber, 10000)
-    getnumber()
+  //   isotpLoadFinished.value = true
+  //   setTimeout(getnumber, 10000)
+  //   getnumber()
 
-  }));
+  // }));
 
 
 }
 
-// const startopt = () => {
-//     if (typeof window === "undefined") return; // Make sure e no run for server-side
 
-//     refreshInterval = setInterval(autmaticOtp, 6000);
-//   };
+definePageMeta({
+  middleware: "auth",
+});
+
 
 const nofit = (title, description, color = "red") => {
   toast.add({
@@ -392,38 +390,38 @@ const recentCountryUserChoose = computed(() => {
 
 
 
-const getOtp = async (item) => {
-  console.log(item.Phone_Number, 'opt');
-  isotpLoadFinished.value = false
+// const getOtp = async (item) => {
+//   console.log(item.Phone_Number, 'opt');
+//   isotpLoadFinished.value = false
 
-  if (!item.Activation_Code || item.Activation_Code === '') {
-    try {
-      const response = await axios({
-        url: `${BASE_URL}/getRates/otp`,
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-        data: { country: item.Country, app: item.App, phoneNumber: item.Phone_Number, transactiondate: item.transactiondate }
-      });
+//   if (!item.Activation_Code || item.Activation_Code === '') {
+//     try {
+//       const response = await axios({
+//         url: `${BASE_URL}/getRates/otp`,
+//         method: "PUT",
+//         headers: { "Content-Type": "application/json" },
+//         withCredentials: true,
+//         data: { country: item.Country, app: item.App, phoneNumber: item.Phone_Number, transactiondate: item.transactiondate }
+//       });
 
-      const apps = response.data;
-      isotpLoadFinished.value = true
+//       const apps = response.data;
+//       isotpLoadFinished.value = true
 
-      getnumber()
+//       getnumber()
 
 
-      isotpLoadFinished = true
-    } catch (error) {
-      nofit('error', error.response.data.message, "red")
-      isotpLoadFinished.value = true
-      getnumber()
-    }
+//       isotpLoadFinished = true
+//     } catch (error) {
+//       // nofit('error', error.response.data.message, "red")
+//       isotpLoadFinished.value = true
+//       getnumber()
+//     }
 
-  }
+//   }
 
-  isotpLoadFinished.value = true
+//   isotpLoadFinished.value = true
 
-}
+// }
 
 
 
@@ -479,7 +477,7 @@ const generateNnumber = async (item) => {
       // that falls out of the range of 2xx
 
     } else if (error.request) {
-      nofit('error', error.request, "red")
+      // nofit('error', error.request, "red")
       console.error(error);
       // ({
       //   title: 'error',

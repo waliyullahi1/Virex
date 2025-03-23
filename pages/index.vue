@@ -66,19 +66,19 @@
                      <div >
                         <TypographyH2 class="text-preprimary">01</TypographyH2>
                         <TypographyH3 class="">Register and make payment </TypographyH3>
-                        <TypographyP>First, register using your first name and email, then fund your account by transferring to the account number </TypographyP>
+                        <TypographyP>First, register using your full name, phone number, and email. Then, log in and click 'Fund' in the side menu to add money to your account either by bank transfer or using a card.</TypographyP>
                     </div>
 
                     <div>
                         <TypographyH2 class="text-preprimary">02</TypographyH2>
                         <TypographyH3 class=" ">Order a phone number in your personal account</TypographyH3>
-                        <TypographyP>For example, if you want to create a on fiverr account, then go to the cabinet, select the country, and then the fiverr app</TypographyP>
+                        <TypographyP>For example, if you want to create a Fiverr account, navigate to the dashboard, scroll down to select your country, and scroll down again to find the Fiverr app. At the bottom, your  phone number will be displayed</TypographyP>
                     </div>
 
                     <div>
                         <TypographyH2 class="text-preprimary">03</TypographyH2>
                         <TypographyH3  class="">Use it to receive SMS and get code</TypographyH3>
-                        <TypographyP>Copy the issued number and paste it into the fiverr input number form to receive SMS with the registration code. and copy the code at the buttom of number history</TypographyP>
+                        <TypographyP>Copy the issued number and paste it into the fiverr input number form to receive SMS and  with the registration code. and copy the code at the buttom of number history</TypographyP>
                     </div>
 
                 </div>

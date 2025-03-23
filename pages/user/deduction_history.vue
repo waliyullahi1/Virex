@@ -51,14 +51,14 @@
                   <tbody>
                     <tr v-for="(user, index) in number_used.slice(0, 30)" :key="index" :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'"  class=" border-b-[1px]  border-black">
                       <td class="text-center min-w-12 whitespace-nowrap w-5 "> {{ index+1 }}</td>
-                      <td class="text-center nobreak"> {{ user.Phone_Number }}</td>
-                      <td class="text-center  ">{{ user.App }}</td>
-                      <td class="text-center  nobreak">{{ user.Country }}</td>
+                      <td class="text-center px-5 "> {{ user.Phone_Number }}</td>
+                      <td class="text-center px-5 ">{{ user.App }}</td>
+                      <td class="text-center px-5 ">{{ user.Country }}</td>
                       
-                      <td class="text-center px-5 nobreak">{{ user.new_bal }}</td>
+                      <td class="text-center px-5 nobreak">₦{{ user.new_bal }}</td>
                       <td class="text-center px-5  nobreak">₦{{ user.Amount }}</td>
                       <td class="text-center px-5   nobreak">{{ user.transactiondate }}</td>
-                      <td class="text-center min-w-52 ">{{ user.Activation_Code }}</td>
+                      <td class="text-center min-w-60 w-60 ">{{ user.Activation_Code }}</td>
                     </tr>
                   </tbody>
                 </table>

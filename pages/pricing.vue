@@ -52,7 +52,7 @@
             <div class=" relative">
               <div :class="isLoadingFinished ? 'hidden' : 'flex'"
                 class=" flex justify-center items-center absolute bg-opacity-20 h-full  w-full bg-primary">
-
+                <img class="w-16  " src="@/assets/images/svg/preload.svg" alt="" srcset="">
               </div>
 
               <div>
@@ -61,6 +61,7 @@
                 </div>
                 <div id="apps"
                   class=" cursor-pointer py-5  px-3  grid-cols-1 md:grid-cols-2 gap-4 w grid max-h-[250px] overflow-y-scroll">
+                  
                   <div v-for="item in filteredApps" @click="generateNnumber(item)"
                     :class="{ 'bg-black hover:bg-black  text-white': item.appName === selectedapp }"
                     class="flex cursor-pointers gap-3 text-center items-center w-full border border-black py-1 px-2 rounded shadowss"
@@ -74,7 +75,7 @@
                     <div
                       class="   flex gap-1  font-bold px-1 py-[2px] border-green-700 rounded-md w-fit hfit border  text-end">
                       <div class=" flex gap-2">
-                        <TypographyH4 class=" text-base">{{ item.rate }}₦</TypographyH4>
+                        <TypographyH4 class=" text-base">{{ item.rate *400 }}₦</TypographyH4>
                       </div>
                     </div>
                   </div>
@@ -106,9 +107,9 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import countryNames from '../../data/country.json';
-import appAvailable from '../../data/apps.json';
 import axios from 'axios';
-
+const config = useRuntimeConfig();
+const BASE_URL = config.public.BASE_URL;
 
 
 
@@ -120,8 +121,8 @@ const searchCoutry = ref('');
 const appfilter = ref('');
 const isLoadingFinished = ref(true);
 const selectedcountry = ref('');
-const data = ref([{}, {}, {}]);
-const isotpLoadFinished = ref(true);
+
+
 
 
 
@@ -133,7 +134,7 @@ const shows = async (item) => {
   
 
   try {
-    const response = await axios.get(`http://localhost:4500/apps/${item.countryName}`);
+    const response = await axios.get(`${BASE_URL}/getRates/apps/${item.countryName}`);
     const apps = response.data;
     
     if (!apps) {
@@ -145,7 +146,6 @@ const shows = async (item) => {
     } else {
 
       appfound.value = apps;
-      console.log(appfound.value);
       
     }
   } catch (error) {
@@ -183,127 +183,16 @@ const filteredApps = computed(() => {
 
 
 
-const getOtp = async (item) => {
-  console.log(item.phoneNumber, item.App);
-  isotpLoadFinished.value = false
-  if (!item.Activation_Code || item.Activation_Code === '') {
-    try {
-      const response = await axios({
-        url: "https://api.abaniseedu.com/getRates/otp",
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-        data: { country: item.Country, app: item.App, phoneNumber: item.Phone_Number, transactiondate: item.transactiondate }
-      });
-
-      const apps = response.data;
-      isotpLoadFinished.value = true
-      setTimeout(() => {
-        getnumber()
-      }, 10);
-
-      isotpLoadFinished = true
-    } catch (error) {
-
-      isotpLoadFinished.value = true
-    }
-
-  }
-
-  isotpLoadFinished.value = true
-
-}
-
-
-
-
-const autmaticOtp = async () => {
-
-  const itemsWithoutActivationCode = data.value.filter(element => {
-    return !element.Activation_Code || element.Activation_Code === '';
-  });
-
-
-
-  await Promise.all(itemsWithoutActivationCode.map(async (element) => {
-    isotpLoadFinished.value = false
-    const response = await axios({
-      url: "https://api.abaniseedu.com/getRates/otp",
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-      data: { country: element.Country, app: element.App, phoneNumber: element.Phone_Number, transactiondate: element.transactiondate }
-    });
-
-    isotpLoadFinished.value = true
-
-    getnumber()
-
-  }));
-
-
-}
 
 
 
 
 
 
-const generateNnumber = async (item) => {
-  isLoadingFinished.value = false
-  selectedapp.value = item.appName;
-
-  const selectedApp = item.appName
-
-  try {
-    const response = await axios({
-      url: "https://api.abaniseedu.com/getRates/generateNumber",
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-      data: {
-        country: selectedcountry.value, app: selectedApp
-      }
-    });
-
-    const apps = response.data;
-
-    setTimeout(() => {
-      getnumber()
-    }, 10);
-    notify({
-
-      title: "Notices",
-      text: apps,
-    });
-    isLoadingFinished.value = true
-  } catch (error) {
-    if (error.response) {
-      notify({
-        title: 'error',
-        text: error.response.data.message,
-      });
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-
-    } else if (error.request) {
-      notify({
-        title: 'error',
-        text: error.request,
-      });
-      isLoadingFinished.value = false
-      // The request was made but no response was received
-
-    } else {
-      isLoadingFinished.value = true
-
-    }
-
-    isLoadingFinished.value = true
-  }
 
 
-}
+
+
 
 
 // setInterval(() => {

@@ -12,7 +12,7 @@ export const fetchUserData = defineStore('user_detail', () => {
   const userData = ref([]); // Store the fetched data
 
   const fetchUserDetail = async () => {
-    console.log(BASE_URL);
+    
     try {
       const response = await axios.get(`${BASE_URL}/dashbord`, {
         headers: { "Content-Type": "application/json" },

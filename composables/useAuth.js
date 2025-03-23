@@ -1,7 +1,9 @@
 import { useRouter } from "vue-router";
 
 export const useAuth = () => {
+  const config = useRuntimeConfig();
   const router = useRouter();
+  const BASE_URL = config.public.BASE_URL;
 
   // Check if localStorage is available
   const getAccessToken = () => (typeof window !== "undefined" ? localStorage.getItem("accessToken") : null);
@@ -15,16 +17,13 @@ export const useAuth = () => {
   // 🔹 Login function
   const login = async (emaillOrPhone, password) => {
     try {
-      const { data, error } = await useFetch(" https://wizzywise.serveo.net/login", {
+      const data = await $fetch(`${BASE_URL}/login`, {
         method: "POST",
         body: { emaillOrPhone: emaillOrPhone, pwd: password },
         credentials: "include",
       });
 
-      if (error.value) throw new Error(error.value);
-
-      setAccessToken(data.value?.accessToken); // Store new access token
-      
+      setAccessToken(data?.accessToken); // Store new access token
 
       startTokenRefresh(); // Start auto-refresh after login
       return getAccessToken();
@@ -36,18 +35,14 @@ export const useAuth = () => {
   // 🔹 Refresh Token function
   const refresh = async () => {
     try {
-      const { data, error, status } = await useFetch("https://wizzywise.serveo.net/refresh", {
+      const data = await $fetch(`${BASE_URL}/refresh`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
 
-      if (status.value === 401 || error.value) {
-        throw new Error("Unauthorized");
-      }
-
       console.log("Access token refreshed");
-      setAccessToken(data.value?.accessToken); // Update access token
+      setAccessToken(data?.accessToken); // Update access token
       return getAccessToken();
     } catch (err) {
       console.error("Token refresh failed:", err);
@@ -56,21 +51,32 @@ export const useAuth = () => {
   };
 
   // 🔹 Auto-refresh token every 60 seconds
-  let refreshInterval = null;
+  let refreshInterval; // Declare refreshInterval globally
 
   const startTokenRefresh = () => {
-    if (typeof window === "undefined") return; // Make sure e no run for server-side
+    if (typeof window === "undefined") return; // Ensure client-side execution only
   
-    if (refreshInterval) clearInterval(refreshInterval);
-   
-    refreshInterval = setInterval(refresh, 60000);
+    if (refreshInterval) {
+      clearInterval(refreshInterval); // Clear any existing interval
+    }
+  
+    // Set a new interval for refreshing the token
+    refreshInterval = setInterval(refresh, 60000); // 60 seconds (1 minute)
   };
 
   // 🔹 Logout function
-  const logout = () => {
-    clearAccessToken();
-    clearInterval(refreshInterval); // Stop auto-refresh
-    router.push("/login"); // Redirect to login
+  const logout = async () => {
+    console.log("Logging out...");
+
+    if (typeof window !== "undefined") {
+      clearAccessToken(); // Clear access token from localStorage
+      clearInterval(refreshInterval); // Stop the token refresh loop
+
+      await router.push("/login"); // Ensure token removal happens before redirection
+      console.log("Redirected to login, access token cleared.");
+    } else {
+      console.warn("Logout called on server-side, skipping localStorage access.");
+    }
   };
 
   return { login, refresh, logout, getAccessToken, startTokenRefresh };
