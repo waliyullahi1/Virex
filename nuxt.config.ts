@@ -8,7 +8,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      BASE_URL: " https://worldwide-armstrong-hampton-il.trycloudflare.com", // 🔹 Base URL for public use
+      BASE_URL: "http://localhost:3500", // 🔹 Base URL for public use
     },
   },
 

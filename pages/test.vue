@@ -8,7 +8,7 @@
 function makePayment() {
   FlutterwaveCheckout({
   public_key: "FLWPUBK_TEST-636287b07025e2779058ab73c983bbe8-X",
-  tx_ref: "hooli-tx-1920bbtytty",
+  tx_ref: "hooli-tx-19205226567y",
   amount: 100,
   currency: "NGN",
   customer: {

@@ -51,7 +51,7 @@
                     
                       <td class="text-center  py-2 min-w-52"> {{ user.tx_ref }}</td>
                       <td class="text-center py-2 min-w-48 px-3 ">{{ user.time_created }}</td>
-                      <td class="text-center py-2  px-3">₦{{ user.amount }}</td>
+                      <td class="text-center py-2 ₦ px-3">${{ user.amount }}</td>
                       
                       <td class="text-center py-2  px-3">{{ user.payment_type }}</td>
                       <td class="text-center py-2  px-3 ">{{ user.status }}</td>
@@ -82,68 +82,115 @@
 
 
 <script setup>
-import { ref, onMounted } from 'vue'
-
- import axios from 'axios'
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+const config = useRuntimeConfig();
+const BASE_URL = config.public.BASE_URL;
 definePageMeta({
-  middleware: "auth",
+  middleware: 'auth',
 });
 
-const pagelaod = ref(false)
-const transaction_history =  ref([]);
+// Reactive references
+const pagelaod = ref(false);
+const transaction_history = ref([]);
 
-console.log(pagelaod.value);
 
+let transaction_valid;  // Declare transaction_valid globally
+
+
+const validTransaction = async (tx_ref) => {
+  try {
+    const statusResponse = await axios({
+      url: `${BASE_URL}/fund/valid`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+      data: { tx_ref },
+    });
+
+    console.log('API response:', statusResponse.data);
+
+    const message = statusResponse.data.message;
+
+    if (["successful", "failed", "pending"].includes(message)) {
+      console.log('Transaction status:', message);
+
+      // nofit(
+      //   message === "successful" ? 'Successful' : 'Error',
+      //   `Transaction ${message}`,
+      //   message === "successful" ? 'green' : 'red'
+      // );
+      // setTimeout(() => {
+      //   clearInterval(transaction_valid);
+      //   cancel_transaction.value = false; 
+      // router.push("/user");
+      // }, 80000);
+    
+
+      
+    } else if (message === 'Transaction still under process') {
+      console.log('Transaction still processing, waiting to retry...');
+      return; // Keep polling if it's still in process
+    } else {
+      console.log('Unexpected status, stopping transaction check:', message);
+      // clearInterval(transaction_valid);
+      // cancel_transaction.value = false;
+      // router.push("/user");
+    }
+  } catch (statusError) {
+    console.error('Error checking transaction status:', statusError);
+    // clearInterval(transaction_valid); // Stop polling if there's a server error
+  }
+};
 const getnumber = async () => {
-  const config = useRuntimeConfig();
+  const config = useRuntimeConfig(); // Access runtime configuration
   const BASE_URL = config.public.BASE_URL;
-
-
 
   try {
     const response = await axios({
       url: `${BASE_URL}/fund/history`,
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     });
 
-    const apps = response.data;
-    transaction_history.value = apps.reverse()
+    // Reverse and store the transaction history
+    transaction_history.value = response.data.reverse();
     console.log(transaction_history.value);
-    
 
-   
-      console.log('done');
-      
-   
-      pagelaod.value = true
-
+    console.log('done');
+    pagelaod.value = true; // Update page load status
   } catch (error) {
-    
-    
     if (error.response) {
-  
+      console.error('API error:', error.response.data); // Handle API error
+    } else {
+      console.error('Unexpected error:', error.message);
     }
   }
+};
+
+// Fetch data when the component is mounted
+onMounted(async () => {
+  await getnumber();
+  
+   const transaction_with_verify = transaction_history.value.filter(element => {
+    return  element.status === 'processing';
+  });
+
+  await Promise.all(transaction_with_verify.slice(0, 10).map(async (element) => {
+   console.log(element.tx_ref);
+   await validTransaction(element.tx_ref)
+  
+  }));
+ 
 
 
+  
+});
 
-
-
-
-}
-getnumber()
-
-
-
-
-
-
-
-
+// Check initial reactive value
+console.log(pagelaod.value);
 </script>
-
 
 
 

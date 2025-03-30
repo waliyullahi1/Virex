@@ -130,7 +130,7 @@
               services we request you to change number and wait only 1min to receive code if no code comes change
               number.
               We never charge money for numbers it only charge for sms/codes.</p>
-            <!-- <button @click="autmaticOtp()">jjjj</button> -->
+         
             <div class="w  m  overflow-x-auto  text-[15px] ul   h-fit w-full        mb-20   mt-  ">
               <div class="  mt-4 relative   h-full ">
                 <div :class="isotpLoadFinished ? 'hidden' : 'flex'" class=" h-full w-full absolute">
@@ -203,9 +203,9 @@ const router = useRouter()
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
 
-let refreshInterval = null;
 
-const recentCountryChoose = ref([])
+
+
 const pagelaod = ref(false)
 const selectedapp = ref('');
 const selected = ref('');
@@ -220,33 +220,9 @@ const isotpLoadFinished = ref(true);
 const toast = useToast();
 const store = fetchUserData()
 const number_used = ref([])
-const autmaticOtp = async () => {
-  console.log('fff');
-
-  const itemsWithoutActivationCode = data.value.filter(element => {
-    return !element.Activation_Code || element.Activation_Code === '';
-  });
 
 
 
-  // await Promise.all(itemsWithoutActivationCode.map(async (element) => {
-  //   isotpLoadFinished.value = false
-  //   const response = await axios({
-  //     url: `${BASE_URL}/getRates/otp`,
-  //     method: "PUT",
-  //     headers: { "Content-Type": "application/json" },
-  //     withCredentials: true,
-  //     data: { country: element.Country, app: element.App, phoneNumber: element.Phone_Number, transactiondate: element.transactiondate }
-  //   });
-
-  //   isotpLoadFinished.value = true
-  //   setTimeout(getnumber, 10000)
-  //   getnumber()
-
-  // }));
-
-
-}
 
 
 definePageMeta({
@@ -280,7 +256,7 @@ const getnumber = async () => {
     data.value = apps.reverse()
     console.log('reach you');
 
-    console.log(store.message, 'ffffffff');
+    
     number_used.value = data.value.filter(element => {
       return element.Activation_Code
     });
@@ -303,7 +279,7 @@ const getnumber = async () => {
 
 
 }
-getnumber()
+
 
 
 
@@ -390,38 +366,115 @@ const recentCountryUserChoose = computed(() => {
 
 
 
-// const getOtp = async (item) => {
-//   console.log(item.Phone_Number, 'opt');
-//   isotpLoadFinished.value = false
+const getOtp = async (item) => {
 
-//   if (!item.Activation_Code || item.Activation_Code === '') {
-//     try {
-//       const response = await axios({
-//         url: `${BASE_URL}/getRates/otp`,
-//         method: "PUT",
-//         headers: { "Content-Type": "application/json" },
-//         withCredentials: true,
-//         data: { country: item.Country, app: item.App, phoneNumber: item.Phone_Number, transactiondate: item.transactiondate }
-//       });
+  isotpLoadFinished.value = false
 
-//       const apps = response.data;
-//       isotpLoadFinished.value = true
+  if (!item.Activation_Code || item.Activation_Code === '') {
+    try {
+      const response = await axios({
+        url: `${BASE_URL}/getRates/otp`,
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+        data: { country: item.Country, app: item.App, phoneNumber: item.Phone_Number, transactiondate: item.transactiondate }
+      });
 
-//       getnumber()
+      const apps = response.data;
+      isotpLoadFinished.value = true
+      console.log(response.data);
+      
+      getnumber()
 
 
-//       isotpLoadFinished = true
-//     } catch (error) {
-//       // nofit('error', error.response.data.message, "red")
-//       isotpLoadFinished.value = true
-//       getnumber()
-//     }
+      isotpLoadFinished = true
+    } catch (error) {
+      // nofit('error', error.response.data.message, "red")
+      isotpLoadFinished.value = true
+      getnumber()
+    }
 
-//   }
+  }
 
-//   isotpLoadFinished.value = true
+  isotpLoadFinished.value = true
 
-// }
+}
+
+const autmaticOtp = async () => {
+  
+console.log(data);
+
+  const itemsWithoutActivationCode = data.value.filter(element => {
+   
+    console.log( element.status, 'dhsds');
+    
+    return  element.status === 'No Used' || element.status === 'active';
+  });
+
+
+console.log(itemsWithoutActivationCode.length, 'ggggggg');
+
+
+ try {
+  await Promise.all(itemsWithoutActivationCode.map(async (element) => {
+   
+    getOtp(element)
+    console.log('the nmber');
+    
+   
+    
+
+  }));
+ } catch (error) {
+  console.log(error);
+  
+ }
+
+
+}
+
+const startTransactionValidation = (tx_ref) => {
+  // Wait for 10 seconds before the first call
+  setTimeout(async () => {
+    await autmaticOtp(); // First call after 10 seconds
+
+    // Start polling every 10 seconds after the first call
+    const transaction_valid = setInterval(async () => {
+      await autmaticOtp();
+    }, 10000); // Poll every 10 seconds after the first call
+  }, 10000); // Initial delay of 10 seconds for the first call
+};
+
+
+onMounted(async () => {
+  await getnumber();  // Step 1: Fetch numbers first and wait for it to finish
+  await nextTick();   // Step 2: Ensure DOM updates are processed after getnumber()
+
+  // Step 3: Make sure automatic OTP runs last after all other tasks are complete
+  setTimeout(async () => {
+    await startTransactionValidation();  // Running autmaticOtp() last after a brief delay to ensure completion order
+  }, 100);  // Small delay ensures it doesn't block other initialization tasks
+});
+const startotpValidation = (tx_ref) => {
+  const itemsWithoutActivationCode = data.value.filter(element => {
+    return !element.Activation_Code || element.Activation_Code === '';
+  });
+
+// Wait for 3 seconds for the first call
+setTimeout(() => {
+
+  validTransaction(tx_ref);  // First call after 3 seconds
+
+  // Start polling every 5 seconds after the first call
+ 
+  const transaction_valid = setInterval(() => {
+     // Debugging log
+    validTransaction(tx_ref);
+  }, 5000);  // Poll every 5 seconds after the first call
+
+}, 5000);  // Initial delay of 3 seconds for the first call
+};
+
 
 
 
@@ -436,7 +489,7 @@ const recentCountryUserChoose = computed(() => {
 const generateNnumber = async (item) => {
   isLoadingFinished.value = false;
   selectedapp.value = item.app;
-  clearInterval(autmaticOtp)
+ 
   const selectedApp = item.app
   console.log(selectedApp);
 

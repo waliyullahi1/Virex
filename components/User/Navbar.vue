@@ -31,8 +31,8 @@
               <div class="flex gap-3 items-center justify-center w-fit ">
                 <img src="@/assets/images/svg/person.svg" alt="person" class="md:w-10 w-7 " srcset="">
                 <div class="  flex justify-center items-center flex-col ">
-                  <TypographyH4 class=" leading-[12px] ">{{ firstName }} </TypographyH4>
-                  <small>₦{{user_wallet}}</small>
+                  <TypographyH4 class=" ₦ leading-[12px] ">{{ firstName }} </TypographyH4>
+                  <small>${{user_wallet}}</small>
                 </div>
 
 
@@ -152,19 +152,95 @@
 import { ref, reactive, toRaw } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 const { login, logout, accessToken, startTokenRefresh } = useAuth();
-
-
-
+ import axios from 'axios'
+const transaction_history = ref([]);
+const config = useRuntimeConfig();
+const BASE_URL = config.public.BASE_URL;
 import { fetchUserData } from '@/stores/dashboard'
 import { onMounted, watch } from 'vue'
 
+
+
+const validTransaction = async (tx_ref) => {
+  try {
+    const statusResponse = await axios({
+      url: `${BASE_URL}/fund/valid`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+      data: { tx_ref },
+    });
+
+  
+    const message = statusResponse.data.message;
+
+    if (["successful", "failed", "pending"].includes(message)) {
+     
+
+  
+
+      
+    } else if (message === 'Transaction still under process') {
+      console.log('Transaction still processing, waiting to retry...');
+      return; // Keep polling if it's still in process
+    } else {
+      console.log('Unexpected status, stopping transaction check:', message);
+      
+    }
+  } catch (statusError) {
+    console.error('Error checking transaction status:', statusError);
+
+  }
+};
+const transaction_history_function = async () => {
+  const config = useRuntimeConfig(); // Access runtime configuration
+  const BASE_URL = config.public.BASE_URL;
+
+  try {
+    const response = await axios({
+      url: `${BASE_URL}/fund/history`,
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      withCredentials: true,
+    });
+
+    // Reverse and store the transaction history
+    transaction_history.value = response.data.reverse();
+   
+
+    console.log('done');
+   // Update page load status
+  } catch (error) {
+    if (error.response) {
+      console.error('API error:', error.response.data); // Handle API error
+    } else {
+      console.error('Unexpected error:', error.message);
+    }
+  }
+};
 
 const store = fetchUserData()
 const firstName = ref('')
 const user_wallet =ref('')
 
-onMounted(() => {
-  store.fetchUserDetail() // Fetch user data when component mounts
+onMounted( async() => {
+  store.fetchUserDetail()
+  
+  
+  await nextTick();
+  await transaction_history_function();
+  
+   const transaction_with_verify = transaction_history.value.filter(element => {
+    return  element.status === 'processing'  || element.status === 'Expired';
+  });
+
+  await Promise.all(transaction_with_verify.map(async (element) => {
+   console.log(element.tx_ref);
+   await validTransaction(element.tx_ref)
+  
+  }));
+  
+  // Fetch user data when component mounts
 })
 
 // Watch for changes in userData

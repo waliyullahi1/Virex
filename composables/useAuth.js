@@ -25,7 +25,7 @@ export const useAuth = () => {
 
       setAccessToken(data?.accessToken); // Store new access token
 
-      startTokenRefresh(); // Start auto-refresh after login
+       // Start auto-refresh after login
       return getAccessToken();
     } catch (err) {
       console.error("Login failed:", err);

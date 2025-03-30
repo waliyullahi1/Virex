@@ -1,22 +1,18 @@
 <template>
 
   <div class="bg-slate-50">
-    <UserNavbar page_tittle="Fund Account"   :pagelaod="pagelaod" class=" text-[poppins] w-full hiddn "></UserNavbar>
-    <UserTransferTemplate
-    :cancel_template="cancel_transaction" @cancel_trac="cancel_traction"
-    :acc_number="transfer_detail.acc_number"
-    :acc_name="transfer_detail.acc_name"
-    :bank_name="transfer_detail.bank_name"
-    :total_amount="transfer_detail.amount"
-     :time_expire="time_expire"
-    ></UserTransferTemplate>
+    <UserNavbar page_tittle="Fund Account" :pagelaod="pagelaod" class=" text-[poppins] w-full hiddn "></UserNavbar>
+    <UserTransferTemplate :cancel_template="cancel_transaction" @cancel_trac="cancel_traction"
+      :acc_number="transfer_detail.acc_number" :acc_name="transfer_detail.acc_name"
+      :bank_name="transfer_detail.bank_name" :total_amount="transfer_detail.amount" :time_expire="time_expire">
+    </UserTransferTemplate>
     <div class="  flex mt-5 gap-3 ">
       <div class=" h-3  bg lg:block md:block flex-none bg-orage-400 lg:min-w-56 md:min-w-7 hidden  ml-[1rem] "></div>
       <div class="   sm:mx-4 mx-0 sm:px-2 px-2 flex justify-center     w-full shrink  flex-initial   ">
 
         <div class=" pb-52 w-full  container   flex gap-6 flex-col justify-center ">
 
-         
+
           <form @submit.prevent="fund" class="  md:flex  block justify-between w-full gap-5     mb-10 mt-">
             <div class=" w-full ">
               <div action="">
@@ -24,7 +20,8 @@
                   <TypographyH4>Payment Type</TypographyH4>
                   <TypographyP class=" text-gray-500">Select your preferred service</TypographyP>
                   <div class=" pt-2 pb-8 px-4 bg-white shadow-sm rounded-lg text-black w-full">
-                    <FormSelect :field="payment_option" :required="true" v-model:inputValue="payment_details.payment_type">
+                    <FormSelect :field="payment_option" :required="true"
+                      v-model:inputValue="payment_details.payment_type">
                     </FormSelect>
                   </div>
                 </div>
@@ -35,12 +32,14 @@
                   <TypographyP class=" text-gray-500"> Minimum of 1000 Naira</TypographyP>
                   <div class="  bg-white  pb-8 px-4 bg-whte shadow-sm rounded-lg  text-black w-full">
                     <FormInput :addStyleBorder="true" :required="true" :nolabel="true" type="number"
-                      v-model:inputValue="payment_details.amount" :minlength="1000" :maxlength="1000" class="pt-4" label="s"></FormInput>
+                      v-model:inputValue="payment_details.amount" :minlength="1000" :maxlength="1000" class="pt-4"
+                      label="s"></FormInput>
                   </div>
                 </div>
 
 
-                <ButtonsPrimary type="submit":loading="loadingbtn"  class="mt-9 width-full" width="full">Fund Account</ButtonsPrimary>
+                <ButtonsPrimary type="submit" :loading="loadingbtn" class="mt-9 width-full" width="full">Fund Account
+                </ButtonsPrimary>
 
               </div>
             </div>
@@ -48,12 +47,12 @@
             <div class=" w-full  md:w-[50%] p-6 bg-white rounded-lg shadow-lg k">
               <div class=" w-full flex flex-col items-center justify-center">
                 <img class=" w-20 rounded-full" src="@/assets/images/person.jpg" alt="" srcset="">
-                <TypographyH3>{{firstName}}</TypographyH3>
+                <TypographyH3>{{ firstName }}</TypographyH3>
               </div>
               <div class=" flex items-center gap-4 mt-5">
                 <img src="@/assets/images/svg/personal.svg" alt="" class="w-12 leading-4">
                 <div class="  text-center">
-                  <TypographyH4 class="lead">{{store.totalNumberUsed}}</TypographyH4>
+                  <TypographyH4 class="lead">{{ store.totalNumberUsed }}</TypographyH4>
                   <TypographyP class=" font-bold"> Number</TypographyP>
                 </div>
               </div>
@@ -61,17 +60,18 @@
               <div class=" flex items-center gap-4 mt-7">
                 <img src="@/assets/images/svg/balance.svg" alt="" class=" w- w-12 leading-4">
                 <div class="  text-center">
-                  <TypographyH4 class="le]">₦{{ user_wallet }}</TypographyH4>
+                  <TypographyH4 class="le] ₦">${{ user_wallet }}</TypographyH4>
                   <TypographyP> Balance</TypographyP>
                 </div>
               </div>
 
-              <ButtonsPrimary type="submit" :loading="loadingbtn"  class="mt-9 width-full" width="full">Fund Account</ButtonsPrimary>
+              <ButtonsPrimary type="submit" :loading="loadingbtn" class="mt-9 width-full" width="full">Fund Account
+              </ButtonsPrimary>
 
             </div>
-           
 
-            
+
+
 
           </form>
         </div>
@@ -87,7 +87,7 @@
 
 <script setup>
 const router = useRouter();
- import axios from 'axios'
+import axios from 'axios'
 
 const toast = useToast();
 const nofit = (title, description, color = "red") => {
@@ -97,25 +97,24 @@ const nofit = (title, description, color = "red") => {
     color: color,
   });
 }
-const cancel_transaction =ref(true)
+const cancel_transaction = ref(false)
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
 const pagelaod = ref(false)
 import { fetchUserData } from '@/stores/dashboard'
-
+const time_expire = ref('')
 const firstName = ref('')
 const user_wallet = ref('')
 const loadingbtn = ref(false)
-const time_start = ref('11:00:00')
-const time_expire = ref('12:00:00')
+
 const transfer_detail = ref({
-  amount:'',
-  tx_ref:'',
-  acc_name:'',
-  acc_number:'',
-  bank_name:' ',
-  expire_time:'',
-  time_created:"",
+  amount: '',
+  tx_ref: '',
+  acc_name: '',
+  acc_number: '',
+  bank_name: ' ',
+  expire_time: '',
+  time_created: "",
 
 })
 const payment_details = ref({
@@ -128,53 +127,151 @@ const payment_option = [
   { text: 'Card', },
   { text: 'Transfer', }
 ];
-const cancel_traction = ()=>{
-  cancel_transaction.value= false
-  console.log('done');
-  
-}
+
 
 definePageMeta({
   middleware: "auth",
 });
 watch(() => store.userData, (newData) => {
   try {
-    
+
     const full_name = newData.full_name;
     console.log(full_name);
     firstName.value = full_name.split(' ')[0];
     console.log("First name:", newData.walletBalance);
     user_wallet.value = newData.walletBalance.toLocaleString('en-US')
     console.log(user_wallet.value);
-    
+
   } catch (error) {
     console.error(error)
   }
 
 });
 
-const fund_with_card =()=> {
+
+const validTransaction = async (tx_ref) => {
+  try {
+    const statusResponse = await axios({
+      url: `${BASE_URL}/fund/valid`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+      data: { tx_ref },
+    });
+
+    console.log('API response:', statusResponse.data);
+
+    const message = statusResponse.data.message;
+
+    if (["successful", "failed", "pending"].includes(message)) {
+      console.log('Transaction status:', message);
+
+      nofit(
+        message === "successful" ? 'Successful' : 'Error',
+        `Transaction ${message}`,
+        message === "successful" ? 'green' : 'red'
+      );
+
+      if (message === "successful") {
+        console.log("Stopping polling after successful transaction.");
+        clearInterval(transaction_valid);  // Stop polling after success
+      }
+
+      setTimeout(() => {
+        cancel_transaction.value = false;
+        router.push("/user");
+      }, 2000);
+    } else if (message === 'Transaction still under process') {
+      console.log('Transaction still processing, waiting to retry...');
+      return; // Keep polling if it's still in process
+    } else {
+      console.log('Unexpected status, stopping transaction check:', message);
+      clearInterval(transaction_valid);
+      cancel_transaction.value = false;
+      router.push("/user");
+    }
+  } catch (statusError) {
+    console.error('Error checking transaction status:', statusError);
+    clearInterval(transaction_valid); // Stop polling if there's a server error
+  }
+};
+let transaction_valid;  // Declare transaction_valid globally
+
+const startTransactionValidation = (tx_ref) => {
+
+
+  // Wait for 3 seconds for the first call
+  setTimeout(() => {
+  
+    validTransaction(tx_ref);  // First call after 3 seconds
+
+    // Start polling every 5 seconds after the first call
+   
+    const transaction_valid = setInterval(() => {
+       // Debugging log
+      validTransaction(tx_ref);
+    }, 5000);  // Poll every 5 seconds after the first call
+
+  }, 5000);  // Initial delay of 3 seconds for the first call
+};
+
+
+
+
+const cancel_traction = () => {
+  clearInterval(transaction_valid);
+  cancel_transaction.value = false
+  loadingbtn.value = false;
+  console.log('done');
+
+}
+const fund_with_card = () => {
+  const tx_ref = `TX-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
+  console.log(store.userData);
+
   FlutterwaveCheckout({
-  public_key: "FLWPUBK_TEST-636287b07025e2779058ab73c983bbe8-X",
-  tx_ref: "hooli-tx-1920bbtytty",
-  amount: 100,
-  currency: "NGN",
-  customer: {
-    email: "customer@example.com",
-    phonenumber: "07064586146",
-    name: "John Doe",
-  },
-  callback: function (response) {
-    console.log(response, 'ddddd');
-    alert("Payment successful!");
-  },
-  onclose: function () {
-    console.log("Payment closed");
-  },
-});
+    public_key: "FLWPUBK_TEST-636287b07025e2779058ab73c983bbe8-X",
+    tx_ref: tx_ref,
+    amount: payment_details.value.amount,
+    currency: "NGN",
+    customer: {
+      email: store.userData.email,
+      phonenumber: store.userData.phoneNumber,
+      name: store.userData.full_name,
+    },
+    callback: async function (response) {
+      console.log(response, 'ddddd');
+      try {
+        const response1 = await axios({
+          url: `${BASE_URL}/fund/card`,
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+          data: {
+            id: response.transaction_id
+          },
+
+
+        });
+        loadingbtn.value = true;
+        console.log(response1.message);
+        alert("Payment successful!");
+        navigateTo('/user')
+      } catch (error) {
+        console.error(error);
+        loadingbtn.value = false;
+      }
+
+
+    },
+    onclose: function () {
+      loadingbtn.value = false;
+      console.log("Payment closed");
+    },
+  });
 }
 
-let transaction_valid
+
 
 const fund = async () => {
   console.log(payment_details.value);
@@ -186,9 +283,9 @@ const fund = async () => {
     loadingbtn.value = false;
     return;
   }
-  console.log(payment_details.value.payment_type,'llllll');
-  
-  if (payment_details.value.payment_type==='Card') {
+  console.log(payment_details.value.payment_type, 'llllll');
+
+  if (payment_details.value.payment_type === 'Card') {
     fund_with_card()
     console.log('it want to pay with card');
     loadingbtn.value = true;
@@ -209,51 +306,25 @@ const fund = async () => {
 
     console.log(response.data);
 
-    const detail = response.data.transac_dts;
-    const timecreate = response.data.savefound.time_created;
-    const tx_ref = response.data.savefound.tx_ref;
-    const timeExpire = detail.account_expiration.split(" ")[1];
+    const detail = response.data.transaction_details;
 
-    console.log(timeExpire, detail.account_expiration);
+    const tx_ref = detail.tx_ref;
+    console.log(detail.account_expiration);
+
+    time_expire.value = detail.account_expiration_show.split(" ")[1];
+    transfer_detail.value.amount = detail.amount;
+
 
     // Update transfer details and form data
     transfer_detail.tx_ref = tx_ref;
-    time_start.value = timecreate;
-    time_expire.value = timeExpire;
-    transfer_detail.value.amount = detail.transfer_amount;
-    transfer_detail.value.acc_name = 'flutterwave..';
+    transfer_detail.value.acc_name = 'virex-pin FLW';
     transfer_detail.value.acc_number = detail.transfer_account;
-    transfer_detail.value.bank_name = detail.transfer_bank;
+    transfer_detail.value.bank_name = detail.bank_name;
 
     cancel_transaction.value = true;
 
-    // Wait for 4 seconds before starting the interval
-    setTimeout(() => {
-      transaction_valid = setInterval(async () => {
-        try {
-          const statusResponse = await axios({
-            url: `${BASE_URL}/fund/valid`,
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            withCredentials: true,
-            data: { tx_ref },
-          });
 
-
-          // Check the response message to stop polling if "success" or "failed"
-          if (statusResponse.data.message === "successful" || statusResponse.data.message === "failed") {
-            clearInterval(transaction_valid);
-            cancel_transaction.value = false
-            router.push("/user")
-            
-          }
-        } catch (statusError) {
-          console.error(statusError);
-          clearInterval(transaction_valid); // Stop polling if there's a server error
-        }
-      }, 7000); // Poll every 3 seconds after the initial delay
-    }, 8000); // Initial delay of 4 seconds
-
+    startTransactionValidation(tx_ref)
     loadingbtn.value = false;
   } catch (error) {
     console.log(error);

@@ -51,7 +51,8 @@
 <script setup>
 
 const toast = useToast();
-
+const config = useRuntimeConfig();
+const BASE_URL = config.public.BASE_URL;
 
 
 const loadingBtn = ref(false)

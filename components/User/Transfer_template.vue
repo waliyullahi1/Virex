@@ -17,13 +17,12 @@
 
                 <div class="mt-4 text-center">
                     <p class="text-[13px]">
-                        This account expires in <strong>{{time_expire}}</strong> and can only <br> be used for this transaction.
+                        This account expires in <strong> {{time_expire}}</strong> and can only <br> be used for this transaction.
                     </p>
                 </div>
 
                 <div class="bg-[#f3f3f3] mt-2 h-fit sm:flex block sm:justify-between text-center w-full p-3 rounded-lg">
                     <p class="text-[15px]">Account Name:</p>
-                    <p>Time Left: <strong>{{ formattedTime }}</strong></p>
                     <p class="text-[15px] italic"><strong>{{ acc_name }}</strong></p>
                 </div>
 
@@ -103,31 +102,9 @@ const cancel_transaction = () => {
 
 
 // Set the expiration time (Replace with actual value)
-const expirationTime = new Date("2025-03-20T04:30:24.000Z").getTime();
-const formattedTime = ref("00:00");
-let interval = null;
 
-const updateCountdown = () => {
-  const now = new Date().getTime();
-  const timeLeft = Math.max(0, expirationTime - now);
 
-  const minutes = Math.floor(timeLeft / 60000);
-  const seconds = Math.floor((timeLeft % 60000) / 1000);
-  formattedTime.value = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 
-  if (timeLeft <= 0 && interval) {
-    clearInterval(interval);
-  }
-};
-
-onMounted(() => {
-  updateCountdown();
-  interval = setInterval(updateCountdown, 1000);
-});
-
-onUnmounted(() => {
-  clearInterval(interval);
-});
 </script>
 
 <style>
