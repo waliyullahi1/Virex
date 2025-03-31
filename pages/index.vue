@@ -9,10 +9,10 @@
     <div class=" ">
         <Navbar ></Navbar>
 
-        <section id="hero" class=" bg-secondary px-4 hero-section">
+        <section id="hero" class=" dark:text-black bg-secondary px-4 hero-section">
             <div class="container  mx-auto block md:flex gap-5 justify-between py-7 items-center">
                 <div class=" text-center md:text-left ">
-                    <span class=" text-preprimary">
+                    <span class="  text-preprimary">
                         Generate
                         <span
                             class=" text-base font-medium rounded-sm px-1 text-center text-white bg-[#FFC059]">Virtual</span>
@@ -30,7 +30,7 @@
             </div>
         </section>
 
-        <section id="our-service" class=" px-4  my-20">
+        <section id="our-service" class=" dark:bg-white dark:text-black px-4  my-20">
             <div class=" container  text-center s rounded-2xl   mx-auto">
                 <TypographyH2>Our Services</TypographyH2>
                 <div class=" mx-auto md:w-[60%] w-[100%]"> 
@@ -51,7 +51,7 @@
             </div>
         </section>
 
-        <section id="how-it-work" class=" px-4 how-it-work-section">
+        <section id="how-it-work" class=" px-4 dark:text-black how-it-work-section">
             <div class="container mx-auto gap-5  py-10 items-center how-it-work-wrapper ">
                 <div class="">
                     <TypographyH2 class=" text-lg">How it works</TypographyH2>
@@ -85,7 +85,7 @@
             </div>
         </section>
 
-        <section id="features" class="feature-section px-4  m bg-gray-50">
+        <section id="features" class="feature-section px-4 dark:text-black  m bg-gray-50">
             <div class="container flex flex-col   items-center mx-auto py-10 ">
                 <TypographyH2 class="text-center mb-10">Features</TypographyH2>
                 <div class="md:w-[80%] w-[100%]  pt-7  justify-center">
