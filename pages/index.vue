@@ -30,7 +30,7 @@
             </div>
         </section>
 
-        <section id="our-service" class=" dark:bg-white dark:text-black px-4  my-20">
+        <section id="our-service" class="  dark:text-black dark:bg-white px-4  my-20">
             <div class=" container  text-center s rounded-2xl   mx-auto">
                 <TypographyH2>Our Services</TypographyH2>
                 <div class=" mx-auto md:w-[60%] w-[100%]"> 
