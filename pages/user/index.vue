@@ -1,6 +1,6 @@
 <template>
 
-  <div class="bg-slate-50">
+  <div class="dark:bg-slate-50  dark:text-black">
     <UserNavbar page_tittle="  Buy Number" :pagelaod="pagelaod" class=" text-[poppins] w-full hiddn "></UserNavbar>
 
 
@@ -11,14 +11,14 @@
 
           <!-- RECENT COUNTRY CHOICE -->
           <section class="  rounded-lg shadow-lg bg-white sm:p-5 p-2  mb-10 mt-">
-            <div class=" w-full py-3 flex justify-between items-center  bg-tertiary rounded-lg text-white px-3 mb-5">
+            <div class=" w-full py-3 flex justify-between items-center   bg-tertiary rounded-lg text-white px-3 mb-5">
               <p class="text-[16px] font-medium">Recent Working Countries </p>
             </div>
             <div class=" relative">
 
               <div class=" min-h-[120px]">
 
-                <div id="apps" class=" py-5  px-3 md:grid-cols-4 sm:grid-cols-2 grid-cols-1   gap-4 w grid overflow-y-scroll">
+                <div id="apps" class=" py-5  dark:text-black  px-3 md:grid-cols-4 sm:grid-cols-2 grid-cols-1   gap-4 w grid overflow-y-scroll">
 
                   <div v-for="item in recentCountryUserChoose" @click="shows(item)"
                     :class="{ 'bg-black hover:bg-black   text-white': item.countryName === selected }"
@@ -49,7 +49,7 @@
               class=" w-full py-3 sm:flex block justify-between items-center bg-tertiary rounded-lg text-white px-3 mb-5">
               <p class="text-[16px] pb-3 font-medium">Choose a Country </p>
               <input type="search5" name="" v-model="searchCoutry" placeholder="search Country..."
-                class=" px-2 outline-none h-8  rounded-lg text-black" id="">
+                class=" px-2   dark:bg-white dark:text-black outline-none h-8  rounded-lg text-black" id="">
             </div>
             <div class="relative">
 
@@ -57,8 +57,8 @@
                 class="  z-20 px-3 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 gap-4 overflow-hidden w grid max-h-[250px] overflow-y-scroll">
 
                 <div v-for="item in filteredcountry" @click="shows(item)"
-                  :class="{ 'bg-black hover:bg-black   text-white': item.countryName === selected }"
-                  class="flex   gap-3 hover:border-primary transform duration-300    cursor-pointer text-center items-center w-full border border-black py-1 px-2 rounded shadowss"
+                  :class="{ 'bg-black hover:bg-black  dark:bg-white dark:text-black   text-white': item.countryName === selected }"
+                  class="flex  dark:text-black   gap-3 hover:border-primary transform duration-300    cursor-pointer text-center items-center w-full border border-black py-1 px-2 rounded shadowss"
                   :key="item.countryName">
 
                   <img :src="`/countryimage/${item.image.toLowerCase()}.png`" class=" w-7" :alt="item.countryName" />
@@ -72,12 +72,12 @@
           </section>
 
           <!-- CHOICE APP  -->
-          <section class="  rounded-lg shadow-lg bg-white mb-10 p-2  md:p-5 ">
+          <section class="  dark:text-black rounded-lg shadow-lg bg-white mb-10 p-2  md:p-5 ">
             <div
               class=" w-full py-3  md:flex justify-between items-center  bg-tertiary rounded-lg text-white px-3 mb-5">
               <p class="text-[16px] pb-2 font-medium">Choose an App </p>
               <input type="search" v-model="searchTerm" name="" placeholder="search Country..."
-                class=" px-2 outline-none h-8 rounded-sm text-black" id="">
+                class=" dark:bg-white dark:text-black px-2 outline-none h-8 rounded-sm text-black" id="">
             </div>
             <div class=" relative">
               <div :class="isLoadingFinished ? 'hidden' : 'flex'"
@@ -119,7 +119,7 @@
           </section>
 
           <!-- COPY SMS MESSAGE  -->
-          <section class="  rounded-lg shadow-lg bg-white mb-20 p-2  md:p-5">
+          <section class="  dark:text-black rounded-lg shadow-lg bg-white mb-20 p-2  md:p-5">
             <div
               class=" w-full py-3 flex ddd justify-between items-center  bg-tertiary rounded-lg text-white px-3 mb-5">
               <p class="text-[14px] font-medium">Your Numbers ( Last 25 )</p>
