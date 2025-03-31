@@ -1,5 +1,5 @@
 <template>
-    <div class=" ">
+    <div class=" dark:bg-white dark:text-black  ">
         <Navbar></Navbar>
         <div class="container mx-auto px-4 py-7 items-center">
             <TypographyH1 class="py-4">FAQs</TypographyH1>

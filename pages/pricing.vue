@@ -1,6 +1,6 @@
 <template>
 
-  <div>
+  <div class="dark:bg-white dark:text-black bg-white ">
     <Navbar></Navbar>
 
     <div class="flex container  mx-auto - gap-10 ">
