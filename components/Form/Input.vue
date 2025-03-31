@@ -1,5 +1,5 @@
 <template>
-  <div class="input-container mt-6  rounded-[5px]"  :class="disabled ? 'bg-gray-200  cursor-not-allowed' : ' bg-white'" >
+  <div class="input-container mt-6 dark:text-black  rounded-[5px]"  :class="disabled ? 'bg-gray-200  cursor-not-allowed' : ' dark:bg-white dark:text-black bg-white'" >
     <div class="flex a">
       <input :type="type" :oninput="oninput" :accept="file" :disabled="disabled"
         :minlength="type === 'password' ? 6 : minlength"

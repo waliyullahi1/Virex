@@ -1,6 +1,6 @@
 <template>
 
-  <div class="bg-slate-50">
+  <div class="bg-slate-50  dark:text-black">
     <UserNavbar page_tittle="Dedicated  History" class=" text-[poppins] w-full hiddn " :pagelaod="pagelaod">
     </UserNavbar>
 

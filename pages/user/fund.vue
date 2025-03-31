@@ -1,6 +1,6 @@
 <template>
 
-  <div class="bg-slate-50">
+  <div class="bg-slate-50  dark:text-black">
     <UserNavbar page_tittle="Fund Account" :pagelaod="pagelaod" class=" text-[poppins] w-full hiddn "></UserNavbar>
     <UserTransferTemplate :cancel_template="cancel_transaction" @cancel_trac="cancel_traction"
       :acc_number="transfer_detail.acc_number" :acc_name="transfer_detail.acc_name"
