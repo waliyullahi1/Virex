@@ -6,14 +6,14 @@
 </script>
 
 <template>
-    <div class=" ">
+    <div class=" dark:bg-white bg-white ">
         <Navbar ></Navbar>
 
         <section id="hero" class=" dark:text-black bg-secondary px-4 hero-section">
             <div class="container  mx-auto block md:flex gap-5 justify-between py-7 items-center">
                 <div class=" text-center md:text-left ">
                     <span class="  text-preprimary">
-                        Generate
+                        Generate fffff
                         <span
                             class=" text-base font-medium rounded-sm px-1 text-center text-white bg-[#FFC059]">Virtual</span>
                         Numbers
