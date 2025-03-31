@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full content justify-center   h-screen">
+  <div class="flex dark:bg-white w-full content justify-center   h-screen">
     <div class="flex m-auto container w-full justify-center b items-center h-full  sm:mx-0 ">
       <div class="s sm:w-[400px]  w-full  px-4  h-fit">
 
@@ -11,7 +11,7 @@
           <div class="   l justify-between w-full">
             <div class=" bg-tertiary py-2 rounded-xl my-5 px-3  h-fit ">
             
-              <h3 class="  font-medium text-lg text-white">User login</h3>
+              <h3 class="  font-medium text-lg text-white">Userddddd login</h3>
              
             </div>
 
