@@ -16,7 +16,7 @@
             <div class=" w-full py-3  rounded-b-md  px-3 mb-5">
               <TypographyH2 class="py-3">Choose a Country </TypographyH2>
               <input type="search5" name="" v-model="searchCoutry" placeholder="search Country..."
-                class=" px-2  w-full outline-none h-12 focus:shadow-primary shadow focus:border-primary  border-2 rounded-sm text-black"
+                class=" px-2 dark:bg-white dark:text-black  w-full outline-none h-12 focus:shadow-primary shadow focus:border-primary  border-2 rounded-sm text-black"
                 id="">
             </div>
             <div class="relative">
@@ -25,7 +25,7 @@
                 class="  z-20 px-3  sm:grid-cols-2 gap-4 overflow-hidden py-5 w grid max-h-[250px] overflow-y-scroll">
 
                 <div v-for="item in filteredcountry" @click="shows(item)"
-                  :class="{ 'bg-black hover:bg-black b  text-white': item.countryName === selected }"
+                  :class="{ 'bg-black  hover:bg-black b  text-white': item.countryName === selected }"
                   class="flex   gap-3 hover:border-[#799a3b] hover:bg-[#f3fff6]  cursor-pointer text-center items-center w-full border border-black py-1 px-2 rounded shadowss"
                   :key="item.countryName">
 
@@ -46,7 +46,7 @@
             <div class=" w-full py-3     rounded-b-md px-3 mb-5">
               <TypographyH2 class=" py-3  ">Choose an App </TypographyH2>
               <input type="search" v-model="searchTerm" name="" placeholder="search Country..."
-                class=" px-2  w-full outline-none h-12 focus:shadow-primary shadow focus:border-primary  border-2 rounded-sm text-black"
+                class=" px-2 dark:bg-white dark:text-black  w-full outline-none h-12 focus:shadow-primary shadow focus:border-primary  border-2 rounded-sm text-black"
                 id="">
             </div>
             <div class=" relative">
