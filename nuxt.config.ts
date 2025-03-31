@@ -27,7 +27,14 @@ export default defineNuxtConfig({
     },
   },
 
-
+  // Vite configuration to handle any externalized modules issues (if necessary)
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ['fs', 'path', 'source-map-js'], // Suppress warnings if modules cause issues
+      },
+    },
+  },
 
   // Set compatibility date (optional)
   compatibilityDate: '2025-01-22',

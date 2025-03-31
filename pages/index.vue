@@ -85,7 +85,7 @@
             </div>
         </section>
 
-        <section id="features" class="feature-section px-4 dark:text-black  m bg-gray-50">
+        <section id="features" class="feature-section px-4 text-black  m bg-gray-50">
             <div class="container flex flex-col   items-center mx-auto py-10 ">
                 <TypographyH2 class="text-center mb-10">Features</TypographyH2>
                 <div class="md:w-[80%] w-[100%]  pt-7  justify-center">
