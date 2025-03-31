@@ -115,7 +115,7 @@
             </div>
         </section>
 
-        <section id="contact-us" class=" dark:text-black  px-4">
+        <section id="contact-us" class=" dark:text-black dark:bg-white   px-4">
             <div class="container rounded-md flex flex-col bg-secondary  items-center mx-auto py-10">
                 <TypographyH2> From the <span class=" bg-preprimary text-white px-2 rounded-md">cloud fdgf</span> to Customers,
                     We Bring all the Answers</TypographyH2>
