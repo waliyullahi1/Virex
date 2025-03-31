@@ -51,7 +51,7 @@
             </div>
         </section>
 
-        <section id="how-it-work" class=" px-4 dark:text-black how-it-work-section">
+        <section id="how-it-work" class=" px-4 dark:text-black dark:bg-white how-it-work-section">
             <div class="container mx-auto gap-5  py-10 items-center how-it-work-wrapper ">
                 <div class="">
                     <TypographyH2 class=" text-lg">How it works</TypographyH2>
@@ -115,7 +115,7 @@
             </div>
         </section>
 
-        <section id="contact-us" class=" px-4">
+        <section id="contact-us" class=" dark:text-black  px-4">
             <div class="container rounded-md flex flex-col bg-secondary  items-center mx-auto py-10">
                 <TypographyH2> From the <span class=" bg-preprimary text-white px-2 rounded-md">cloud</span> to Customers,
                     We Bring all the Answers</TypographyH2>
