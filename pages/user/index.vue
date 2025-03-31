@@ -156,7 +156,7 @@
                       <td class="text-center font-boldc px-3 py-0.5"> {{ item.Phone_Number }}</td>
                       <td class="text-center min-w-52  px-3 py-0.5">{{ item.Activation_Code }}</td>
                       <td class="text-center py-0.5 px-3">{{ item.transactiondate }}</td>
-                      <td class="text-center py-0.5 px-3">{{ item.Country }}</td>
+                      <td class="text-center py-0.5 px-3">{{ item.status }}</td>
                       <td class="text-center py-0.5 px-3">{{ item.App }}</td>
                       <td class="text-center py-0.5 px-3">
                         <button @click="getOtp(item)" class=" text-white px-2 py-0.5 rounded">
@@ -267,7 +267,7 @@ const getnumber = async () => {
 
   } catch (error) {
     if (error.response) {
-      nofit('error', error.response.data.message, "red")
+      nofit('error', response.data.message, "red")
       console.error(error)
 
     }
@@ -364,9 +364,11 @@ const recentCountryUserChoose = computed(() => {
   return sortedCountries.slice(0, 3); // Show top 3 most common
 });
 
-
+let transaction_valid;
 
 const getOtp = async (item) => {
+  console.log('ddddsdgi');
+  
 
   isotpLoadFinished.value = false
 
@@ -404,12 +406,24 @@ const autmaticOtp = async () => {
   
 console.log(data);
 
-  const itemsWithoutActivationCode = data.value.filter(element => {
-   
-    console.log( element.status, 'dhsds');
-    
-    return  element.status === 'No Used' || element.status === 'active';
+  // const itemsWithoutActivationCode = data.value.filter(element => {
+  //   return  element.status === 'No Used' || element.status === 'active';
+  // });
+  // const itemsWithoutActivationCode = data.value.filter(element => {
+  //   return  element.status === 'No Used' || element.status === 'active';
+  // });
+
+  if (!data?.value){
+    clearInterval(transaction_valid);
+   return;  
+  } 
+
+    const itemsWithoutActivationCode = data.value.filter(element => {
+    return element.status === 'active' || element.status === 'No Used'
   });
+  console.log( );
+  
+  if(!itemsWithoutActivationCode) return
 
 
 console.log(itemsWithoutActivationCode.length, 'ggggggg');
@@ -439,13 +453,20 @@ const startTransactionValidation = (tx_ref) => {
     await autmaticOtp(); // First call after 10 seconds
 
     // Start polling every 10 seconds after the first call
-    const transaction_valid = setInterval(async () => {
+    transaction_valid = setInterval(async () => {
       await autmaticOtp();
     }, 10000); // Poll every 10 seconds after the first call
   }, 10000); // Initial delay of 10 seconds for the first call
 };
-
-
+const stopTransactionValidation = () => {
+  if (transaction_valid) {
+    clearInterval(transaction_valid);
+    console.log("Transaction validation stopped.");
+  }
+};
+onUnmounted(() => {
+  stopTransactionValidation();
+});
 onMounted(async () => {
   await getnumber();  // Step 1: Fetch numbers first and wait for it to finish
   await nextTick();   // Step 2: Ensure DOM updates are processed after getnumber()
@@ -455,25 +476,7 @@ onMounted(async () => {
     await startTransactionValidation();  // Running autmaticOtp() last after a brief delay to ensure completion order
   }, 100);  // Small delay ensures it doesn't block other initialization tasks
 });
-const startotpValidation = (tx_ref) => {
-  const itemsWithoutActivationCode = data.value.filter(element => {
-    return !element.Activation_Code || element.Activation_Code === '';
-  });
 
-// Wait for 3 seconds for the first call
-setTimeout(() => {
-
-  validTransaction(tx_ref);  // First call after 3 seconds
-
-  // Start polling every 5 seconds after the first call
- 
-  const transaction_valid = setInterval(() => {
-     // Debugging log
-    validTransaction(tx_ref);
-  }, 5000);  // Poll every 5 seconds after the first call
-
-}, 5000);  // Initial delay of 3 seconds for the first call
-};
 
 
 
@@ -519,7 +522,7 @@ const generateNnumber = async (item) => {
     isLoadingFinished.value = true
   } catch (error) {
     if (error.response) {
-      nofit('error', error.response.data, "red")
+      nofit('rror', error.response.data.message, "red")
       console.error(error);
 
       // ({

@@ -16,9 +16,9 @@
                             class="block cursor-pointer bg-preprimary" style="height: 3px;"></div>
                     </div>
                 </button>
-                <nav class=" py- bg-white items-center md:h-20 h-14  md:flex block justify-between md:justify-between">
-                    <div class=" md:pt-0 md:pl-0  pl-4 pt-4 h-fit f">
-                        Logo
+                <nav class=" py-  bg-white items-center md:h-20 h-14  md:flex block justify-between md:justify-between">
+                    <div class=" bg-k justify-center  flex items-center w-fit h-full f">
+                        <img src="@/assets/images/svg/logo.svg" class=" sm:w-32 w-20 " alt="logo">
                     </div>
                     <ul :class="mobileNav ? ' 6 transition transform  item-center  -mt' : ' -translate-x-[50rem] md:translate-x-0 transition '"
                         class="text-gray-500 bg-white  md:pt-0 pt-20 h-screen md:h-fit flex md:flex-row flex-col items-center gap-3">
