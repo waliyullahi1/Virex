@@ -18,7 +18,7 @@
                 </button>
                 <nav class=" py-  bg-white items-center md:h-20 h-14  md:flex block justify-between md:justify-between">
                     <div class=" bg-k justify-center  flex items-center px-3 py-4 w-fit h-full f">
-                        <img src="@/assets/images/logo.png" class=" w-32   " alt="logo">
+                        <nuxt-link to="/" ><img src="@/assets/images/logo.png" class=" w-32   " alt="logo"></nuxt-link> 
                     </div>
                     <ul :class="mobileNav ? ' 6 transition transform  item-center  -mt' : ' -translate-x-[50rem] md:translate-x-0 transition '"
                         class="text-gray-500 bg-white  md:pt-0 pt-20 h-screen md:h-fit flex md:flex-row flex-col items-center gap-3">
