@@ -7,7 +7,7 @@
 
         <div class="   h-full px-2 m font-sans  relative ">
           <div class=" w-full flex justify-center ">
-            <img src="@/assets/images/svg/logo.svg" class="  " alt="logo">
+            <img src="@/assets/images/logo.png" class="  w-44  " alt="logo">
           </div>
           <div class="   l justify-between w-full">
             <div class=" bg-tertiary py-2 rounded-xl my-5 px-3  h-fit ">

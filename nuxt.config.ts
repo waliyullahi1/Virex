@@ -8,7 +8,11 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      BASE_URL: "https://answer-herb-arizona-quizzes.trycloudflare.com", // 🔹 Base URL for public use
+      BASE_URL: " https://drink-come-jamie-vid.trycloudflare.com",
+      FLUTTERWAVE_PRIVATECODE: process.env.FLUTTERWAVE_PRIVATECODE, // 🔹 Base URL for public use
+    },
+    private: {
+       // 🔒 Secret Key (Not exposed to frontend)
     },
   },
 

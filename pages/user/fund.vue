@@ -60,7 +60,7 @@
               <div class=" flex items-center gap-4 mt-7">
                 <img src="@/assets/images/svg/balance.svg" alt="" class=" w- w-12 leading-4">
                 <div class="  text-center">
-                  <TypographyH4 class="le] ₦">${{ user_wallet }}</TypographyH4>
+                  <TypographyH4 class="le] ₦">₦{{ user_wallet }}</TypographyH4>
                   <TypographyP> Balance</TypographyP>
                 </div>
               </div>
@@ -100,6 +100,7 @@ const nofit = (title, description, color = "red") => {
 const cancel_transaction = ref(false)
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
+const private_flutterwave = config.public.FLUTTERWAVE_PRIVATECODE;
 const pagelaod = ref(false)
 import { fetchUserData } from '@/stores/dashboard'
 const time_expire = ref('')
@@ -230,7 +231,7 @@ const fund_with_card = () => {
   console.log(store.userData);
 
   FlutterwaveCheckout({
-    public_key: "FLWPUBK_TEST-636287b07025e2779058ab73c983bbe8-X",
+    public_key: private_flutterwave,
     tx_ref: tx_ref,
     amount: payment_details.value.amount,
     currency: "NGN",

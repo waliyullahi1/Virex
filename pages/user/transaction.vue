@@ -51,7 +51,7 @@
                     
                       <td class="text-center  py-2 min-w-52"> {{ user.tx_ref }}</td>
                       <td class="text-center py-2 min-w-48 px-3 ">{{ user.time_created }}</td>
-                      <td class="text-center py-2 ₦ px-3">${{ user.amount }}</td>
+                      <td class="text-center py-2 ₦ px-3">₦{{ user.amount }}</td>
                       
                       <td class="text-center py-2  px-3">{{ user.payment_type }}</td>
                       <td class="text-center py-2  px-3 ">{{ user.status }}</td>

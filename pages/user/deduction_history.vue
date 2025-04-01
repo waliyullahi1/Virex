@@ -44,7 +44,7 @@
                       <th class="text-center">Balance</th>
                       <th class="text-center">Deduction</th>
                       <th class="text-center">Time</th>
-                      <th class="text-center">Message the</th>
+                      <th class="text-center">Message</th>
                       
                     </tr>
                   </thead>

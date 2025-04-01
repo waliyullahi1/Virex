@@ -156,7 +156,7 @@
                       <td class="text-center font-boldc px-3 py-0.5"> {{ item.Phone_Number }}</td>
                       <td class="text-center min-w-52  px-3 py-0.5">{{ item.Activation_Code }}</td>
                       <td class="text-center py-0.5 px-3">{{ item.transactiondate }}</td>
-                      <td class="text-center py-0.5 px-3">{{ item.status }}</td>
+                      <td class="text-center py-0.5 px-3">{{ item.Country }}</td>
                       <td class="text-center py-0.5 px-3">{{ item.App }}</td>
                       <td class="text-center py-0.5 px-3">
                         <button @click="getOtp(item)" class=" text-white px-2 py-0.5 rounded">

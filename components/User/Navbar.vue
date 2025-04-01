@@ -32,7 +32,7 @@
                 <img src="@/assets/images/svg/person.svg" alt="person" class="md:w-10 w-7 " srcset="">
                 <div class="e dark:text-black  flex justify-center items-center flex-col ">
                   <TypographyH4 class=" ₦ leading-[12px]  dark:text-black ">{{ firstName }} </TypographyH4>
-                  <small>${{user_wallet}}</small>
+                  <small>₦{{user_wallet}}</small>
                 </div>
 
 

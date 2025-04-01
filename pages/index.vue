@@ -1,7 +1,6 @@
-<script setup lang="ts">
-
-
-
+<script setup>
+ 
+ 
 
 </script>
 
@@ -13,7 +12,8 @@
             <div class="container  mx-auto block md:flex gap-5 justify-between py-7 items-center">
                 <div class=" text-center md:text-left ">
                     <span class="  text-preprimary">
-                        Generate fffff
+                        <p>API Base URL: </p>
+                        Generate 
                         <span
                             class=" text-base font-medium rounded-sm px-1 text-center text-white bg-[#FFC059]">Virtual</span>
                         Numbers
@@ -78,7 +78,7 @@
                     <div>
                         <TypographyH2 class="text-preprimary">03</TypographyH2>
                         <TypographyH3  class="">Use it to receive SMS and get code</TypographyH3>
-                        <TypographyP>Copy the issued number and paste it into the fiverr input number form to receive SMS and  with the registration code. and copy the code at the buttom of number history</TypographyP>
+                        <TypographyP>Copy the issued number and paste it into the Fiverr input number form to receive an SMS. Then, press the reload icon to display the SMS code. Finally, copy the code from the bottom of the number history.</TypographyP>
                     </div>
 
                 </div>
@@ -107,8 +107,8 @@
                             </div>
 
                             <TypographyH3 class=" mt-5">Multi-Platform Support</TypographyH3>
-                            <TypographyP>Access services for various platforms, including social media (Facebook,
-                                Instagram, Twitter, etc.) and music streaming services like Spotify.</TypographyP>
+                            <TypographyP>Access services for various platforms, including social media (Fiverr, Upwork, Facebook,
+                                Instagram, Twitter,  etc.) and music streaming services like Spotify.</TypographyP>
                         </div>
                     </div>
                 </div>
