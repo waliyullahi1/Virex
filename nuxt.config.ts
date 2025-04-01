@@ -8,7 +8,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      BASE_URL: "http://localhost:3500",
+      BASE_URL: "https://virex-server.vercel.app",
       FLUTTERWAVE_PRIVATECODE: process.env.FLUTTERWAVE_PRIVATECODE, // 🔹 Base URL for public use
     },
     private: {
