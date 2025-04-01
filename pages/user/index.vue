@@ -105,7 +105,7 @@
                     <div
                       class="  text-[10px] flex gap-1 font-medium  px-3 py-[2px] border-green-700 rounded-xl w-fit hfit border  text-end">
                       <div class=" flex gap-2">
-                        <p>{{ item.rate }}</p> Credits
+                        <p>{{ item.rate*400 }}</p> Nairas
                       </div>
                     </div>
                   </div>
@@ -492,7 +492,7 @@ onMounted(async () => {
 const generateNnumber = async (item) => {
   isLoadingFinished.value = false;
   selectedapp.value = item.app;
- 
+  clearInterval(transaction_valid)
   const selectedApp = item.app
   console.log(selectedApp);
 
@@ -514,42 +514,31 @@ const generateNnumber = async (item) => {
 
     getnumber()
 
-    //   ({
-
-    //     title: "Notices",
-    //     text: apps,
-    //   });
+   
     isLoadingFinished.value = true
+    await startTransactionValidation();
   } catch (error) {
     if (error.response) {
       nofit('Error', error.response.data.message, "red")
       console.error(error);
 
-      // ({
-      //   title: 'error',
-      //   text: error.response.data.message,
-      // });
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
+      await startTransactionValidation();
 
     } else if (error.request) {
       // nofit('error', error.request, "red")
       console.error(error);
-      // ({
-      //   title: 'error',
-      //   text: error.request,
-      // });
+      await startTransactionValidation();
       isLoadingFinished.value = false
       // The request was made but no response was received
 
     } else {
       isLoadingFinished.value = true
       console.log('not good');
-
+      await startTransactionValidation();
 
     }
     console.log('not pade');
-
+    await startTransactionValidation();
     isLoadingFinished.value = true
   }
 
