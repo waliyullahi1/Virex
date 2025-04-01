@@ -27,7 +27,7 @@
     </div>
 
     <div v-if="!loading">
-      <div v-if="arrow" class=" w-8 h-full flex justify-center items-center rotate-180  text-white">s
+      <div v-if="arrow" class=" w-8 h-full flex justify-center items-center rotate-180  text-white">
         <svg fill="currentColor" class="w-3 group-hover:-translate-x-1 duration-700  " version="1.1" id="Capa_1"
           xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 29.771 29.771"
           xml:space="preserve">
