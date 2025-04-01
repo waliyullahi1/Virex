@@ -17,7 +17,7 @@
                     </div>
                 </button>
                 <nav class=" py-  bg-white items-center md:h-20 h-14  md:flex block justify-between md:justify-between">
-                    <div class=" bg-k justify-center  flex items-center py-5 w-fit h-full f">
+                    <div class=" bg-k justify-center  flex items-center px-3 py-4 w-fit h-full f">
                         <img src="@/assets/images/logo.png" class=" w-32   " alt="logo">
                     </div>
                     <ul :class="mobileNav ? ' 6 transition transform  item-center  -mt' : ' -translate-x-[50rem] md:translate-x-0 transition '"
