@@ -280,7 +280,7 @@ const fund = async () => {
 
   // Check if the amount is less than 1000
   if (payment_details.value.amount < 1000) {
-    nofit('Error', "Amount must not be less than ₦1000");
+    nofit('Error', "The amount must not be less than ₦1000");
     loadingbtn.value = false;
     return;
   }
@@ -288,7 +288,7 @@ const fund = async () => {
 
   if (payment_details.value.payment_type === 'Card') {
     fund_with_card()
-    console.log('it want to pay with card');
+  
     loadingbtn.value = true;
     return
   }

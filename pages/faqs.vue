@@ -25,11 +25,11 @@ const question_and_answer =[
     {
         id:1,
         question:"1. How to get started with us?",
-        answer : "Ans: virex.Com created keeping in mind for users simple interface. With using virex.com you can verify any networks like Gmail, Facebook, Instagram etc in just few minutes.Just register and choose the packages you want and add credits."
+        answer : "Ans: virex-pin.com created keeping in mind for users simple interface. With using virex.com you can verify any networks like, Fiverr, Gmail, Facebook, Instagram etc in just few minutes.Just register and choose the packages you want and add fund."
     },
     {
         id:2,
-        question:"2. Okay I understand to add credits then what?",
+        question:"2. Okay I understand to add fund then what?",
         answer : "Ans: After payment is done with bank transfer. The system will add the credits automatically to your account. Next what to do is click get new number and then choose an app which you want to use the number. After that click on “Receive Code”. Don’t forget to click on “Receive Code” option otherwise code will not come."
     },
 
@@ -41,8 +41,8 @@ const question_and_answer =[
 
     {
         id:4,
-        question:"4.Why there are packages system on virex ?",
-        answer : "Ans: We want to offer more credits to users who buys more numbers daily. Keeping that in mind we added packages system on virex.com"
+        question:"4.Why there are packages system on virex-pin ?",
+        answer : "Ans: We want to offer more credits to users who buys more numbers daily. Keeping that in mind we added packages system on virex-pin.com"
     },
 
     {

@@ -12,7 +12,7 @@
             <div class="container  mx-auto block md:flex gap-5 justify-between py-7 items-center">
                 <div class=" text-center md:text-left ">
                     <span class="  text-preprimary">
-                        <p>API Base URL: </p>
+                        
                         Generate 
                         <span
                             class=" text-base font-medium rounded-sm px-1 text-center text-white bg-[#FFC059]">Virtual</span>

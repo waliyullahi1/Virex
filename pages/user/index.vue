@@ -522,7 +522,7 @@ const generateNnumber = async (item) => {
     isLoadingFinished.value = true
   } catch (error) {
     if (error.response) {
-      nofit('rror', error.response.data.message, "red")
+      nofit('Error', error.response.data.message, "red")
       console.error(error);
 
       // ({

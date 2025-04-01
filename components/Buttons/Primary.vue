@@ -1,6 +1,6 @@
 <template>
   <button  :type="type" :class="[
-    'py-1 px-2   group justify-center flex b text-white  duration-500 ease-in-out rounded-md  active:bg-preprimary outline-none hover:bg-opacity-70 bg-preprimary',
+    'py-1 px-2   group justify-center flex items-center b text-white  duration-500 ease-in-out rounded-md  active:bg-preprimary outline-none hover:bg-opacity-70 bg-preprimary',
     { 'zoom-animation': isClicked },
     loading ? 'bg-preprimary text-white' : '', width === 'full' ? 'w-full' : 'fit',
   ]" :disabled="loading || disabled" @click="handleClick">
@@ -27,7 +27,7 @@
     </div>
 
     <div v-if="!loading">
-      <div v-if="arrow" class=" w-8 h-full flex justify-center items-center rotate-180  text-white">
+      <div v-if="arrow" class=" w-8 h-full flex justify-center items-center rotate-180  text-white">s
         <svg fill="currentColor" class="w-3 group-hover:-translate-x-1 duration-700  " version="1.1" id="Capa_1"
           xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 29.771 29.771"
           xml:space="preserve">
