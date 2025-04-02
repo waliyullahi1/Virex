@@ -61,7 +61,7 @@
                 </table>
                 <div v-if="!transaction_history[0]" class=" h-36  flex justify-center items-center  w-full      ">
                   
-                  <p class="text-[16px] font-medium">No Number History </p>
+                  <p class="text-[16px] font-medium">No Transaction History </p>
                 </div>
 
 

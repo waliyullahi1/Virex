@@ -118,6 +118,8 @@ const handleLogin = async () => {
 
   
  }
+
+ 
 };
 
 // const handleLogin = async () => {
@@ -134,7 +136,7 @@ const handleLogin = async () => {
 
 
 
-
+await login('userData', 'userData.password');
 </script>
 
 <style scoped>
