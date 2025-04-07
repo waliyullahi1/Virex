@@ -137,14 +137,14 @@ watch(() => store.userData, (newData) => {
   try {
 
     const full_name = newData.full_name;
-    console.log(full_name);
+   // console.log(full_name);
     firstName.value = full_name.split(' ')[0];
-    console.log("First name:", newData.walletBalance);
+    //console.log("First name:", newData.walletBalance);
     user_wallet.value = newData.walletBalance.toLocaleString('en-US')
-    console.log(user_wallet.value);
+    //console.log(user_wallet.value);
 
   } catch (error) {
-    console.error(error)
+  //  console.error(error)
   }
 
 });
@@ -160,12 +160,12 @@ const validTransaction = async (tx_ref) => {
       data: { tx_ref },
     });
 
-    console.log('API response:', statusResponse.data);
+   // console.log('API response:', statusResponse.data);
 
     const message = statusResponse.data.message;
 
     if (["successful", "failed", "pending"].includes(message)) {
-      console.log('Transaction status:', message);
+     // console.log('Transaction status:', message);
 
       nofit(
         message === "successful" ? 'Successful' : 'Error',
@@ -174,7 +174,7 @@ const validTransaction = async (tx_ref) => {
       );
 
       if (message === "successful") {
-        console.log("Stopping polling after successful transaction.");
+        //console.log("Stopping polling after successful transaction.");
         clearInterval(transaction_valid);  // Stop polling after success
       }
 
@@ -183,7 +183,7 @@ const validTransaction = async (tx_ref) => {
         router.push("/user");
       }, 2000);
     } else if (message === 'Transaction still under process') {
-      console.log('Transaction still processing, waiting to retry...');
+      //console.log('Transaction still processing, waiting to retry...');
       return; // Keep polling if it's still in process
     } else {
       console.log('Unexpected status, stopping transaction check:', message);
@@ -192,7 +192,7 @@ const validTransaction = async (tx_ref) => {
       router.push("/user");
     }
   } catch (statusError) {
-    console.error('Error checking transaction status:', statusError);
+    //console.error('Error checking transaction status:', statusError);
     clearInterval(transaction_valid); // Stop polling if there's a server error
   }
 };
@@ -267,7 +267,7 @@ const fund_with_card = () => {
     },
     onclose: function () {
       loadingbtn.value = false;
-      console.log("Payment closed");
+      //console.log("Payment closed");
     },
   });
 }
@@ -275,7 +275,7 @@ const fund_with_card = () => {
 
 
 const fund = async () => {
-  console.log(payment_details.value);
+ // console.log(payment_details.value);
   loadingbtn.value = true;
 
   // Check if the amount is less than 1000
@@ -284,7 +284,7 @@ const fund = async () => {
     loadingbtn.value = false;
     return;
   }
-  console.log(payment_details.value.payment_type, 'llllll');
+  //console.log(payment_details.value.payment_type, 'llllll');
 
   if (payment_details.value.payment_type === 'Card') {
     fund_with_card()
@@ -305,12 +305,12 @@ const fund = async () => {
       },
     });
 
-    console.log(response.data);
+    //console.log(response.data);
 
     const detail = response.data.transaction_details;
 
     const tx_ref = detail.tx_ref;
-    console.log(detail.account_expiration);
+    //console.log(detail.account_expiration);
 
     time_expire.value = detail.account_expiration_show.split(" ")[1];
     transfer_detail.value.amount = detail.amount;
@@ -328,7 +328,7 @@ const fund = async () => {
     startTransactionValidation(tx_ref)
     loadingbtn.value = false;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     loadingbtn.value = false;
 
     if (error.response) {

@@ -254,21 +254,21 @@ const getnumber = async () => {
 
     const apps = response.data;
     data.value = apps.reverse()
-    console.log('reach you');
+    //console.log('reach you');
 
     
     number_used.value = data.value.filter(element => {
       return element.Activation_Code
     });
    store.totalNumberUsed = number_used.value.length
-   console.log(store.totalNumberUsed);
+  // console.log(store.totalNumberUsed);
    
 
 
   } catch (error) {
     if (error.response) {
       nofit('error', response.data.message, "red")
-      console.error(error)
+     // console.error(error)
 
     }
   }
@@ -308,7 +308,7 @@ const shows = async (item) => {
 
     }
   } catch (error) {
-    console.error(error);
+    //console.error(error);
 
   }
 
@@ -367,7 +367,7 @@ const recentCountryUserChoose = computed(() => {
 let transaction_valid;
 
 const getOtp = async (item) => {
-  console.log('ddddsdgi');
+  //console.log('ddddsdgi');
   
 
   isotpLoadFinished.value = false
@@ -384,7 +384,7 @@ const getOtp = async (item) => {
 
       const apps = response.data;
       isotpLoadFinished.value = true
-      console.log(response.data);
+      //console.log(response.data);
       
       getnumber()
 
@@ -404,7 +404,7 @@ const getOtp = async (item) => {
 
 const autmaticOtp = async () => {
   
-console.log(data);
+//console.log(data);
 
   // const itemsWithoutActivationCode = data.value.filter(element => {
   //   return  element.status === 'No Used' || element.status === 'active';
@@ -421,26 +421,26 @@ console.log(data);
     const itemsWithoutActivationCode = data.value.filter(element => {
     return element.status === 'active' || element.status === 'No Used'
   });
-  console.log( );
+  //console.log( );
   
   if(!itemsWithoutActivationCode) return
 
 
-console.log(itemsWithoutActivationCode.length, 'ggggggg');
+//console.log(itemsWithoutActivationCode.length, 'ggggggg');
 
 
  try {
   await Promise.all(itemsWithoutActivationCode.map(async (element) => {
    
     getOtp(element)
-    console.log('the nmber');
+    //console.log('the nmber');
     
    
     
 
   }));
  } catch (error) {
-  console.log(error);
+  //console.log(error);
   
  }
 
@@ -461,7 +461,7 @@ const startTransactionValidation = (tx_ref) => {
 const stopTransactionValidation = () => {
   if (transaction_valid) {
     clearInterval(transaction_valid);
-    console.log("Transaction validation stopped.");
+    //console.log("Transaction validation stopped.");
   }
 };
 onUnmounted(() => {
@@ -494,7 +494,7 @@ const generateNnumber = async (item) => {
   selectedapp.value = item.app;
   clearInterval(transaction_valid)
   const selectedApp = item.app
-  console.log(selectedApp);
+  //console.log(selectedApp);
 
 
   try {
@@ -520,24 +520,24 @@ const generateNnumber = async (item) => {
   } catch (error) {
     if (error.response) {
       nofit('Error', error.response.data.message, "red")
-      console.error(error);
+      
 
       await startTransactionValidation();
 
     } else if (error.request) {
       // nofit('error', error.request, "red")
-      console.error(error);
+    
       await startTransactionValidation();
       isLoadingFinished.value = false
       // The request was made but no response was received
 
     } else {
       isLoadingFinished.value = true
-      console.log('not good');
+      //console.log('not good');
       await startTransactionValidation();
 
     }
-    console.log('not pade');
+    //console.log('not pade');
     await startTransactionValidation();
     isLoadingFinished.value = true
   }

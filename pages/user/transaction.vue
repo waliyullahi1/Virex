@@ -108,12 +108,12 @@ const validTransaction = async (tx_ref) => {
       data: { tx_ref },
     });
 
-    console.log('API response:', statusResponse.data);
+    //console.log('API response:', statusResponse.data);
 
     const message = statusResponse.data.message;
 
     if (["successful", "failed", "pending"].includes(message)) {
-      console.log('Transaction status:', message);
+      //console.log('Transaction status:', message);
 
       // nofit(
       //   message === "successful" ? 'Successful' : 'Error',
@@ -129,16 +129,16 @@ const validTransaction = async (tx_ref) => {
 
       
     } else if (message === 'Transaction still under process') {
-      console.log('Transaction still processing, waiting to retry...');
+      //console.log('Transaction still processing, waiting to retry...');
       return; // Keep polling if it's still in process
     } else {
-      console.log('Unexpected status, stopping transaction check:', message);
+      //console.log('Unexpected status, stopping transaction check:', message);
       // clearInterval(transaction_valid);
       // cancel_transaction.value = false;
       // router.push("/user");
     }
   } catch (statusError) {
-    console.error('Error checking transaction status:', statusError);
+    //console.error('Error checking transaction status:', statusError);
     // clearInterval(transaction_valid); // Stop polling if there's a server error
   }
 };
@@ -156,15 +156,15 @@ const getnumber = async () => {
 
     // Reverse and store the transaction history
     transaction_history.value = response.data.reverse();
-    console.log(transaction_history.value);
+   // console.log(transaction_history.value);
 
     console.log('done');
     pagelaod.value = true; // Update page load status
   } catch (error) {
     if (error.response) {
-      console.error('API error:', error.response.data); // Handle API error
+     // console.error('API error:', error.response.data); // Handle API error
     } else {
-      console.error('Unexpected error:', error.message);
+    //  console.error('Unexpected error:', error.message);
     }
   }
 };
@@ -178,7 +178,7 @@ onMounted(async () => {
   });
 
   await Promise.all(transaction_with_verify.slice(0, 10).map(async (element) => {
-   console.log(element.tx_ref);
+  // console.log(element.tx_ref);
    await validTransaction(element.tx_ref)
   
   }));
@@ -189,7 +189,7 @@ onMounted(async () => {
 });
 
 // Check initial reactive value
-console.log(pagelaod.value);
+//console.log(pagelaod.value);
 </script>
 
 

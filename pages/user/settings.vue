@@ -144,14 +144,14 @@ const edit_detail = async()=>{
   
   const fullNameValid = user.value.full_name.trim().split(/\s+/).length >= 2;
   if(!fullNameValid){
-     console.log('Write your name properly like this: "Sumae Jame"');
+    // console.log('Write your name properly like this: "Sumae Jame"');
       nofit('Error', 'Full name must contain at least two words. firstname and lastname (daniel tenny)', "red");
       loadingbtn.value = false;
       return; 
   }
-console.log(user.value.full_name);
+
 if (user.value.newpassword || user.value.currentpassword ) {
-  console.log(user.value.newpassword !== user.value.confirm_password, user.value.newpassword, user.value.confirm_password );
+ 
   
  if (user.value.newpassword !== user.value.confirm_password){
       nofit('Error', 'New password and confirm password must be the same', "red");
@@ -167,10 +167,10 @@ if (user.value.newpassword || user.value.currentpassword ) {
     withCredentials: true,
     data: { full_name: user.value.full_name, currentpassword:user.value.currentpassword, newPassword:user.value.newpassword }
   });
-console.log(response.data);
-console.log(response);
+//console.log(response.data);
+//console.log(response);
 
- console.log('finished');
+ //console.log('finished');
      nofit('Succeful', response.data.success, "green")
  
 
@@ -180,7 +180,7 @@ console.log(response);
     
   if (error.response) {
     nofit('Error', error.response.data.message, "red")
-    console.error(error)
+    //console.error(error)
 
   }
 }

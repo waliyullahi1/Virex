@@ -105,7 +105,7 @@ watch(() => store.userData, (newData) => {
 const pagelaod = ref(false)
 const number_used =  ref([]);
 const number_history = ref([]);
-console.log(pagelaod.value);
+//console.log(pagelaod.value);
 
 const getnumber = async () => {
 
@@ -126,7 +126,7 @@ const getnumber = async () => {
   return element.Activation_Code 
 });
    
-      console.log('done');
+      //console.log('done');
       
    
       pagelaod.value = true

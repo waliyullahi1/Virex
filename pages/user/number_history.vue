@@ -110,15 +110,15 @@ const getnumber = async () => {
 
     const apps = response.data;
     number_history.value = apps.reverse()
-    console.log('ffff', number_history.value);
+    //console.log('ffff', number_history.value);
    
-      console.log('done');
+      //console.log('done');
       
    
       pagelaod.value = true
 
   } catch (error) {
-    console.log(error);
+   // console.log(error);
     
     if (error.response) {
       //   ({

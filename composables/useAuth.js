@@ -41,11 +41,11 @@ export const useAuth = () => {
         credentials: "include",
       });
 
-      console.log("Access token refreshed");
+      //console.log("Access token refreshed");
       setAccessToken(data?.accessToken); // Update access token
       return getAccessToken();
     } catch (err) {
-      console.error("Token refresh failed:", err);
+      //console.error("Token refresh failed:", err);
       logout(); // Logout if refresh fails
     }
   };
@@ -66,16 +66,16 @@ export const useAuth = () => {
 
   // 🔹 Logout function
   const logout = async () => {
-    console.log("Logging out...");
+   // console.log("Logging out...");
 
     if (typeof window !== "undefined") {
       clearAccessToken(); // Clear access token from localStorage
       clearInterval(refreshInterval); // Stop the token refresh loop
 
       await router.push("/login"); // Ensure token removal happens before redirection
-      console.log("Redirected to login, access token cleared.");
+     /// console.log("Redirected to login, access token cleared.");
     } else {
-      console.warn("Logout called on server-side, skipping localStorage access.");
+     // console.warn("Logout called on server-side, skipping localStorage access.");
     }
   };
 

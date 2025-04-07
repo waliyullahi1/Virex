@@ -181,14 +181,14 @@ const validTransaction = async (tx_ref) => {
 
       
     } else if (message === 'Transaction still under process') {
-      console.log('Transaction still processing, waiting to retry...');
+     // console.log('Transaction still processing, waiting to retry...');
       return; // Keep polling if it's still in process
     } else {
-      console.log('Unexpected status, stopping transaction check:', message);
+     // console.log('Unexpected status, stopping transaction check:', message);
       
     }
   } catch (statusError) {
-    console.error('Error checking transaction status:', statusError);
+   // console.error('Error checking transaction status:', statusError);
 
   }
 };
@@ -208,13 +208,13 @@ const transaction_history_function = async () => {
     transaction_history.value = response.data.reverse();
    
 
-    console.log('done');
+    //console.log('done');
    // Update page load status
   } catch (error) {
     if (error.response) {
-      console.error('API error:', error.response.data); // Handle API error
+      //console.error('API error:', error.response.data); // Handle API error
     } else {
-      console.error('Unexpected error:', error.message);
+     // console.error('Unexpected error:', error.message);
     }
   }
 };
@@ -235,7 +235,7 @@ onMounted( async() => {
   });
 
   await Promise.all(transaction_with_verify.map(async (element) => {
-   console.log(element.tx_ref);
+  // console.log(element.tx_ref);
    await validTransaction(element.tx_ref)
   
   }));
@@ -247,14 +247,14 @@ onMounted( async() => {
 watch(() => store.userData, (newData) => {
   try {
     const full_name = newData.full_name;
-    console.log(full_name);
+    //console.log(full_name);
     firstName.value = full_name.split(' ')[0];
-    console.log("First name:", newData.walletBalance);
+   // console.log("First name:", newData.walletBalance);
     user_wallet.value = newData.walletBalance.toLocaleString('en-US')
-    console.log(user_wallet.value);
+    //console.log(user_wallet.value);
     
   } catch (error) {
-    console.error(error)
+   // console.error(error)
   }
 
 });
@@ -382,7 +382,7 @@ const getScaleStyle = (index) => {
 };
 
 const toggleMenu = () => {
-  console.log('fdbdfbdfd');
+ 
 
   mobileNav.value = !mobileNav.value;
   menuRevealed.value = !menuRevealed.value;
