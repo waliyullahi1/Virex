@@ -49,7 +49,7 @@
                       <td class="text-center py-2 px-3">{{ user.App }}</td>
                       <td class="text-center py-2 px-3">{{ user.Country }}</td>
                       <td class="text-center py-2 px-3">{{ user.transactiondate }}</td>
-                      <td class="text-center py-2 px-3  min-w-52">{{ user.Activation_Code }}</td>
+                      <td class="text-center py-2 px-3  max-w-52">{{ user.Activation_Code }}</td>
                     </tr>
                   </tbody>
                 </table>
