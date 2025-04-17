@@ -110,7 +110,21 @@ import countryNames from '../../data/country.json';
 import axios from 'axios';
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
+import metaConfig from '~/utils/meta.config.json'
 
+
+const description = ref('')
+// Dynamically set the title and use the rest of the metaConfig
+useHead({
+  ...metaConfig, // Spread other meta information from metaConfig
+  title: 'Pricing - virexcode',
+  meta: [
+    {
+      name: 'description',
+      content:description.value
+    }
+  ] // Override the title
+})
 
 
 const selectedapp = ref('');
@@ -124,9 +138,31 @@ const selectedcountry = ref('');
 
 
 
+const description_function = () => {
+  countryNames.forEach(items => {
+    const country_name = items.countryName.toUpperCase()
+    const desc = `Buy ${country_name} Numbers, `
+    description.value += desc  // use += on description.value
+  })
+
+  console.log(description.value)  // access .value here too
+}
+
+description_function()
+
+onMounted( async() => {
+  
+  
+  
+  await nextTick();
+  description_function()
+  
 
 
+ 
+  
 
+})
 const shows = async (item) => {
   isLoadingFinished.value = false;
   selected.value = item.countryName;
@@ -146,6 +182,7 @@ const shows = async (item) => {
     } else {
 
       appfound.value = apps;
+      
       
     }
   } catch (error) {

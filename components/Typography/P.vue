@@ -1,5 +1,5 @@
 <template>
-    <p class="  text-sm 'text-sm md:text-base 2xl:text-lg font-normal">
+    <p class="  text-sm 'text-sm md:text-lg font-normal">
       <slot/>
     </p>
   </template>

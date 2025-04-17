@@ -1,8 +1,15 @@
-<script setup>
- 
- 
 
+<script setup>
+// import { useHead } from '@vueuse/head'
+import metaConfig from '~/utils/meta.config.json'
+
+// Dynamically set the title and use the rest of the metaConfig
+useHead({
+  ...metaConfig, // Spread other meta information from metaConfig
+  title: 'Virtual Numbers for SMS Verification | Fast & Affordable' // Override the title
+})
 </script>
+
 
 <template>
     <div class=" dark:bg-white bg-white ">

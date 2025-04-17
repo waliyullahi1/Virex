@@ -48,7 +48,7 @@
                             </ButtonsSecondary>
                         </li>
                         <li>
-                            <ButtonsPrimary @click="$router.push('/login')">Log in</ButtonsPrimary>
+                            <ButtonsPrimary @click="$router.push('/login')">Login</ButtonsPrimary>
                         </li>
                     </ul>
                 </nav>
