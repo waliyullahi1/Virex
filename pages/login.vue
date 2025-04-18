@@ -132,11 +132,24 @@ const handleLogin = async () => {
 
 
 
+onMounted( async() => {
+  
+  
+  
+  await nextTick();
+  await login('userData', 'userData.password');
+  
+
+
+ 
+  
+
+})
 
 
 
 
-await login('userData', 'userData.password');
+
 </script>
 
 <style scoped>

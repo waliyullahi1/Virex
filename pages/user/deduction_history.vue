@@ -20,7 +20,7 @@
 
 
 
-            <div class="w   overflow-x-auto  text-[15px] ul   h-fit w-full        mb  mt-  ">
+            <div class="w   overflow-x-auto  text-[15px] ul sm:max-h-screen  h-fit w-full        mb  mt-  ">
               <div class=" min min-w-full mt-4 relative w-full  h-full ">
                 <div
                   class="  flex  v-if=!appfound[0] text-rose-500 bg-rose-100  p-3 gap-3 items-center rounded-lg w-full ">

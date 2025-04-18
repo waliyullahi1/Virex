@@ -20,7 +20,7 @@
 
 
 
-            <div class="w   overflow-x-auto  text-[15px] ul   h-fit w-full        mb  mt-  ">
+            <div class="w   overflow-x-auto  text-[15px] ul  sm:max-h-screen   h-fit w-full        mb  mt-  ">
               <div class=" min min-w-full mt-4 relative w-full  h-full ">
                 <div
                   class="  flex  v-if=!appfound[0] text-rose-500 bg-rose-100  p-3 gap-3 items-center rounded-lg w-full ">
@@ -57,7 +57,29 @@
                   
                   <p class="text-[16px] font-medium">No Number History </p>
                 </div>
+                <table class=" font-semibold ov w-full mt-5  bg-white  text-sm">
+                  <thead>
+                    <tr class=" border-b-2 b  border-b-tertiary  h-10">
+                      <th class="text-center  py-0.5 ">Number</th>
+                      <th class="text-center  py-0.5">App</th>
+                      <th class="text-center py-0.5">Country</th>
+                      <th class="text-center py-0.5">Time</th>
+                      <th class="text-center py-0.5">Message</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(user, index) in number_history.slice(0, 30)" :key="index"  :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'" class=" border-b-[1px] border-black">
+                      <td class="text-center py-2 px-3"> {{ user.Phone_Number }}</td>
+                      <td class="text-center py-2 px-3">{{ user.App }}</td>
+                      <td class="text-center py-2 px-3">{{ user.Country }}</td>
+                      <td class="text-center py-2 px-3">{{ user.transactiondate }}</td>
+                      <td class="text-center py-2 px-3  max-w-52">{{ user.Activation_Code }}</td>
+                    </tr>
+                  </tbody>
+                </table>
 
+                
 
               </div>
 
