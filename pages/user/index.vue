@@ -105,7 +105,7 @@
                     <div
                       class="  text-[10px] flex gap-1 font-medium  px-3 py-[2px] border-green-700 rounded-xl w-fit hfit border  text-end">
                       <div class=" flex gap-2">
-                        <p>{{ item.rate*400 }}</p> Nairas
+                        <p>{{ item.rate*400 }}</p> ₦
                       </div>
                     </div>
                   </div>
