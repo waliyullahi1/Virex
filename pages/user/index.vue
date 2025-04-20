@@ -103,9 +103,9 @@
                     }}</h3>
 
                     <div
-                      class="  text-[10px] flex gap-1 font-medium  px-3 py-[2px] border-green-700 rounded-xl w-fit hfit border  text-end">
+                      class="  text-[14px] flex gap-1 font-medium  px-3 py-[2px] border-green-700 rounded-xl w-fit hfit border  text-end">
                       <div class=" flex gap-2">
-                        <p>{{ item.rate*400 }}</p> ₦
+                        <TypographyP>{{ item.rate*400 }}₦</TypographyP> 
                       </div>
                     </div>
                   </div>
@@ -198,6 +198,7 @@ import axios from "axios";
 import { ref, onMounted } from 'vue'
 import countryNames from '../../data/country.json';
 import { fetchUserData } from '@/stores/dashboard'
+import { TypographyP } from "#components";
 
 const router = useRouter()
 const config = useRuntimeConfig();
