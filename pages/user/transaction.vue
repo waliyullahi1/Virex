@@ -47,7 +47,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(user, index) in transaction_history" :key="index" :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'"  class=" border-b-[1px]  border-black">
+                    <tr v-for="(user, index) in transaction_history.filter(tx => tx.status.toLowerCase() !== 'processing')" :key="index" :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'"  class=" border-b-[1px]  border-black">
                     
                       <td class="text-center  py-2 min-w-52"> {{ user.tx_ref }}</td>
                       <td class="text-center py-2 min-w-48 px-3 ">{{ user.time_created }}</td>
@@ -142,7 +142,7 @@ const validTransaction = async (tx_ref) => {
     // clearInterval(transaction_valid); // Stop polling if there's a server error
   }
 };
-const getnumber = async () => {
+const transaction = async () => {
   const config = useRuntimeConfig(); // Access runtime configuration
   const BASE_URL = config.public.BASE_URL;
 
@@ -157,7 +157,7 @@ const getnumber = async () => {
     // Reverse and store the transaction history
     transaction_history.value = response.data.reverse();
    // console.log(transaction_history.value);
-
+    
     console.log('done');
     pagelaod.value = true; // Update page load status
   } catch (error) {
@@ -171,7 +171,7 @@ const getnumber = async () => {
 
 // Fetch data when the component is mounted
 onMounted(async () => {
-  await getnumber();
+  await transaction();
   
    const transaction_with_verify = transaction_history.value.filter(element => {
     return  element.status === 'processing';
