@@ -128,6 +128,11 @@ useHead({
                     We Bring all the Answers</TypographyH2>
                 <ButtonsPrimary @click="$router.push('/register')" class="my-5">Get start</ButtonsPrimary>
                 <TypographyP class=" tracking-wide"> Contact Us:  +23408166988715</TypographyP>
+               
+
+                
+
+                <
             </div>
 
         </section>

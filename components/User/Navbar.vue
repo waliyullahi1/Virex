@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <div class="  fixed   md:w-fit w-full flex duration-500 z-30  left-0 h-fit bg-opacity-30 bg-op"
+      <div class="  fixed   md:w-fit w-full flex duration-500 z-30  left-0 bg-black h-fit bg-opacity-30 bg-op"
         :class="mobileNav ? 'md:w-fit overflow-hidden w-full   -translate-x-0  md:-translate-x-0' : ' -translate-x-[200rem]  md:-translate-x-0 w-9   overflow-hidden '">
 
         <div
