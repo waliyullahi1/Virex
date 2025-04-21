@@ -6,7 +6,7 @@ import metaConfig from '~/utils/meta.config.json'
 // Dynamically set the title and use the rest of the metaConfig
 useHead({
   ...metaConfig, // Spread other meta information from metaConfig
-  title: 'Virtual Numbers for SMS Verification | Fast & Affordable' // Override the title
+  title: 'Virtual Numbers for SMS Verification | Fast & Affordable  | Virex codes' // Override the title
 })
 </script>
 
@@ -129,10 +129,6 @@ useHead({
                 <ButtonsPrimary @click="$router.push('/register')" class="my-5">Get start</ButtonsPrimary>
                 <TypographyP class=" tracking-wide"> Contact Us:  +23408166988715</TypographyP>
                
-
-                
-
-                <
             </div>
 
         </section>

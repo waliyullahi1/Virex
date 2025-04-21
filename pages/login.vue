@@ -49,7 +49,13 @@
 <script setup>
 const toast = useToast();
 const { login, logout, accessToken, startTokenRefresh } = useAuth();
+import metaConfig from '~/utils/meta.config.json'
 
+// Dynamically set the title and use the rest of the metaConfig
+useHead({
+  ...metaConfig, // Spread other meta information from metaConfig
+  title: 'Virex codes sms service |  sign-in as a phone verification way ' // Override the title
+})
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
 

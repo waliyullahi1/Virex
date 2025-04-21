@@ -21,6 +21,13 @@
 
 <script setup>
 
+import metaConfig from '~/utils/meta.config.json'
+
+// Dynamically set the title and use the rest of the metaConfig
+useHead({
+  ...metaConfig, // Spread other meta information from metaConfig
+  title: 'FAQS | virex code ' // Override the title
+})
 const question_and_answer =[
     {
         id:1,

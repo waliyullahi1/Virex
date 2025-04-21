@@ -54,6 +54,13 @@ const toast = useToast();
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
 
+import metaConfig from '~/utils/meta.config.json'
+
+// Dynamically set the title and use the rest of the metaConfig
+useHead({
+  ...metaConfig, // Spread other meta information from metaConfig
+  title: 'User Registration | virex code ' // Override the title
+})
 
 const loadingBtn = ref(false)
 const userData = reactive({
