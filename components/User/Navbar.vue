@@ -64,7 +64,7 @@
           <div class=" mb-2 ">
             <div class="  h-fit md:overflow-hidden  w-">
               <div class="  w-full justify-between ">
-                <div to="/user/home" exact-active-class="active-link" v-for="(link, index) in links">
+                <div exact-active-class="active-link" v-for="(link, index) in links">
                   <button @click="router.push(link.path)" class="group   w-fit   " :to="link.path" :class="[
                     link.magin ? ' mb-4' : 'mb-0',
 
@@ -73,7 +73,7 @@
                       isActive(link.path) ? 'shadow-xl translate-y-0 ease-in-out rounded-md duration-200  bg-gradient-to-r from-slate-600   border-l-4 ' :
                         ' group-hover:shadow-xl group-hover:translate-y-0 ease-in-out rounded-md duration-200  group-hover:bg-gradient-to-r group-hover:from-slate-600   group-hover:border-l-4'
                     ]"
-                      class="px-4 cursor-pointer  group bg-whe w-full   text-white py-2   group-hover:shadow-xl group-hover:translate-y-0 ease-in-out rounded-md duration-200  group-hover:bg-gradient-to-r group-hover:from-slate-600   group-hover:border-l-4  ">
+                      class="px-4 cursor-pointer  group bg-whe w-full   text-white py-1   group-hover:shadow-xl group-hover:translate-y-0 ease-in-out rounded-md duration-200  group-hover:bg-gradient-to-r group-hover:from-slate-600   group-hover:border-l-4  ">
                       <div :class="isActive(link.path) ? '  translate-x-1  gap-1 ' : ' b  gap-3 '"
                         class="flex   justify-center     items-center      group-hover:translate-x-1 ease-in-out  duration-500  group-hover:gap-1  md:gap-">
                         <div class=" group:r:absolute block">

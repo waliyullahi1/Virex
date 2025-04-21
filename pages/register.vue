@@ -53,7 +53,7 @@
 const toast = useToast();
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
-
+const { login, logout, accessToken, startTokenRefresh } = useAuth();
 import metaConfig from '~/utils/meta.config.json'
 
 // Dynamically set the title and use the rest of the metaConfig
@@ -78,6 +78,19 @@ const userData = reactive({
 
 
 
+onMounted( async() => {
+  
+  
+  
+  await nextTick();
+  await login('userData', 'userData.password');
+  
+
+
+ 
+  
+
+})
 
 
 

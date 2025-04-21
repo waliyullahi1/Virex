@@ -145,7 +145,7 @@ const description_function = () => {
     description.value += desc  // use += on description.value
   })
 
-  console.log(description.value)  // access .value here too
+  // access .value here too
 }
 
 description_function()
