@@ -72,7 +72,7 @@
           </section>
 
           <!-- CHOICE APP  -->
-          <section class="  dark:text-black rounded-lg shadow-lg bg-white mb-10 p-2  md:p-5 ">
+          <section id="Apps" class="  dark:text-black rounded-lg shadow-lg bg-white mb-10 p-2  md:p-5 ">
             <div
               class=" w-full py-3  md:flex justify-between items-center  bg-tertiary rounded-lg text-white px-3 mb-5">
               <p class="text-[16px] pb-2 font-medium">Choose an App </p>
@@ -119,13 +119,13 @@
           </section>
 
           <!-- COPY SMS MESSAGE  -->
-          <section class="  dark:text-black rounded-lg shadow-lg bg-white mb-20 p-2  md:p-5">
+          <section id="sms" class="  dark:text-black rounded-lg shadow-lg bg-white mb-20 p-2  md:p-5">
             <div
               class=" w-full py-3 flex ddd justify-between items-center  bg-tertiary rounded-lg text-white px-3 mb-5">
               <p class="text-[14px] font-medium">Your Numbers ( Last 25 )</p>
             </div>
 
-            <p class="text-[13px] bg-red-500 py-2 px-2 text-white" @click="getnumber()">All numbers are not eligible to
+            <p class="text-[13px] bg-red-500 py-2 px-2 text-white" >All numbers are not eligible to
               receive sms for all
               services we request you to change number and wait only 1min to receive code if no code comes change
               number.
@@ -305,7 +305,10 @@ const shows = async (item) => {
     } else {
 
       appfound.value = apps;
-
+      const section = document.getElementById('Apps')
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' })
+      }
 
     }
   } catch (error) {
@@ -369,37 +372,41 @@ let transaction_valid;
 
 const getOtp = async (item) => {
   //console.log('ddddsdgi');
-  
+  const section = document.getElementById('sms')
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' })
+      }
 
   isotpLoadFinished.value = false
 
-  if (!item.Activation_Code || item.Activation_Code === '') {
-    try {
-      const response = await axios({
-        url: `${BASE_URL}/getRates/otp`,
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-        data: { country: item.Country, app: item.App, phoneNumber: item.Phone_Number, transactiondate: item.transactiondate }
-      });
+  // if (!item.Activation_Code || item.Activation_Code === '') {
+  //   try {
+  //     const response = await axios({
+  //       url: `${BASE_URL}/getRates/otp`,
+  //       method: "PUT",
+  //       headers: { "Content-Type": "application/json" },
+  //       withCredentials: true,
+  //       data: { country: item.Country, app: item.App, phoneNumber: item.Phone_Number, transactiondate: item.transactiondate }
+  //     });
 
-      const apps = response.data;
-      isotpLoadFinished.value = true
-      //console.log(response.data);
+  //     const apps = response.data;
+  //     isotpLoadFinished.value = true
+  //     //console.log(response.data);
       
-      getnumber()
+  //     getnumber()
+      
+     
 
+  //     isotpLoadFinished = true
+  //   } catch (error) {
+  //     // nofit('error', error.response.data.message, "red")
+  //     isotpLoadFinished.value = true
+  //     getnumber()
+  //   }
 
-      isotpLoadFinished = true
-    } catch (error) {
-      // nofit('error', error.response.data.message, "red")
-      isotpLoadFinished.value = true
-      getnumber()
-    }
+  // }
 
-  }
-
-  isotpLoadFinished.value = true
+  // isotpLoadFinished.value = true
 
 }
 

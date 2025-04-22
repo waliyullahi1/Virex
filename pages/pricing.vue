@@ -42,7 +42,7 @@
           </section>
 
 
-          <section class=" ">
+          <section id="Apps" class=" ">
             <div class=" w-full py-3     rounded-b-md px-3 mb-5">
               <TypographyH2 class=" py-3  ">Choose an App </TypographyH2>
               <input type="search" v-model="searchTerm" name="" placeholder="search Country..."
@@ -61,21 +61,22 @@
                 </div>
                 <div id="apps"
                   class=" cursor-pointer py-5  px-3  grid-cols-1 md:grid-cols-2 gap-4 w grid max-h-[250px] overflow-y-scroll">
-                  
+
                   <div v-for="item in filteredApps" @click="generateNnumber(item)"
                     :class="{ 'bg-black hover:bg-black  text-white': item.appName === selectedapp }"
                     class="flex cursor-pointers gap-3 text-center items-center w-full border border-black py-1 px-2 rounded shadowss"
                     :key="item.countryName">
 
-                    <img :src="`/appsImage/${(item.app ?? '').replace(/\s+/g, '').toLowerCase()}.png`" class="w-7" :alt="item.app || 'App Image'" />
+                    <img :src="`/appsImage/${(item.app ?? '').replace(/\s+/g, '').toLowerCase()}.png`" class="w-7"
+                      :alt="item.app || 'App Image'" />
                     <TypographyH4 class=" w-full  font-medium  overflow-visible text-center">{{
                       item.app.toUpperCase()
-                      }}</TypographyH4>
+                    }}</TypographyH4>
 
                     <div
                       class="   flex gap-1  font-bold px-1 py-[2px] border-green-700 rounded-md w-fit hfit border  text-end">
                       <div class=" flex gap-2">
-                        <TypographyH4 class=" text-base">{{ item.rate *400 }}₦</TypographyH4>
+                        <TypographyH4 class=" text-base">{{ item.rate * 400 }}₦</TypographyH4>
                       </div>
                     </div>
                   </div>
@@ -108,6 +109,7 @@
 import { ref, onMounted } from 'vue'
 import countryNames from '../../data/country.json';
 import axios from 'axios';
+const { login } = useAuth();
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
 import metaConfig from '~/utils/meta.config.json'
@@ -121,7 +123,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content:description.value
+      content: description.value
     }
   ] // Override the title
 })
@@ -148,31 +150,33 @@ const description_function = () => {
   // access .value here too
 }
 
-description_function()
 
-onMounted( async() => {
-  
-  
-  
+
+onMounted(async () => {
+
+  await login('userData', 'userData.password');
+  console.log('FFFF');
+
   await nextTick();
+
   description_function()
-  
 
 
- 
-  
+
+
+
 
 })
 const shows = async (item) => {
   isLoadingFinished.value = false;
   selected.value = item.countryName;
   selectedcountry.value = item.countryName;
-  
+
 
   try {
     const response = await axios.get(`${BASE_URL}/getRates/apps/${item.countryName}`);
     const apps = response.data;
-    
+
     if (!apps) {
       notify({
         title: "Notices",
@@ -182,8 +186,11 @@ const shows = async (item) => {
     } else {
 
       appfound.value = apps;
-      
-      
+
+      const section = document.getElementById('Apps')
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' })
+      }
     }
   } catch (error) {
     console.error(error);
