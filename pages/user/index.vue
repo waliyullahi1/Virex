@@ -373,40 +373,40 @@ let transaction_valid;
 const getOtp = async (item) => {
   //console.log('ddddsdgi');
   const section = document.getElementById('sms')
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' })
-      }
+
 
   isotpLoadFinished.value = false
 
-  // if (!item.Activation_Code || item.Activation_Code === '') {
-  //   try {
-  //     const response = await axios({
-  //       url: `${BASE_URL}/getRates/otp`,
-  //       method: "PUT",
-  //       headers: { "Content-Type": "application/json" },
-  //       withCredentials: true,
-  //       data: { country: item.Country, app: item.App, phoneNumber: item.Phone_Number, transactiondate: item.transactiondate }
-  //     });
+   if (!item.Activation_Code || item.Activation_Code === '') {
+     try {
+      const response = await axios({
+         url: `${BASE_URL}/getRates/otp`,
+         method: "PUT",
+         headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+         data: { country: item.Country, app: item.App, phoneNumber: item.Phone_Number, transactiondate: item.transactiondate }
+       });
 
-  //     const apps = response.data;
-  //     isotpLoadFinished.value = true
-  //     //console.log(response.data);
+       const apps = response.data;
+       isotpLoadFinished.value = true
+       //console.log(response.data);
       
-  //     getnumber()
+       getnumber()
       
-     
+       if (section) {
+        section.scrollIntoView({ behavior: 'smooth' })
+      }
 
-  //     isotpLoadFinished = true
-  //   } catch (error) {
-  //     // nofit('error', error.response.data.message, "red")
-  //     isotpLoadFinished.value = true
-  //     getnumber()
-  //   }
+       isotpLoadFinished = true
+     } catch (error) {
+      // nofit('error', error.response.data.message, "red")
+      isotpLoadFinished.value = true
+       getnumber()
+     }
 
-  // }
+   }
 
-  // isotpLoadFinished.value = true
+   isotpLoadFinished.value = true
 
 }
 
