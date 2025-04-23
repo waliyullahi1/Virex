@@ -1,0 +1,16 @@
+{
+    "redirects": [
+      {
+        "source": "/(.*)",
+        "has": [
+          {
+            "type": "host",
+            "value": "virex.codes"
+          }
+        ],
+        "destination": "https://www.virex.codes/$1",
+        "statusCode": 308
+      }
+    ]
+  }
+  
