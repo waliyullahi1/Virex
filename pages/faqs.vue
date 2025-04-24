@@ -32,7 +32,7 @@ const question_and_answer =[
     {
         id:1,
         question:"1. How to get started with us?",
-        answer : "Ans: virex-pin.com created keeping in mind for users simple interface. With using virex.com you can verify any networks like, Fiverr, Gmail, Facebook, Instagram etc in just few minutes.Just register and choose the packages you want and add fund."
+        answer : "Ans: virex codes created keeping in mind for users simple interface. With using virex codes you can verify any networks like, Fiverr, Gmail, Facebook, Instagram etc in just few minutes. Just register and choose the packages you want and add fund."
     },
     {
         id:2,
@@ -48,8 +48,8 @@ const question_and_answer =[
 
     {
         id:4,
-        question:"4.Why there are packages system on virex-pin ?",
-        answer : "Ans: We want to offer more credits to users who buys more numbers daily. Keeping that in mind we added packages system on virex-pin.com"
+        question:"4.Why there are packages system on virex code ?",
+        answer : "Ans: We want to offer more credits to users who buys more numbers daily. Keeping that in mind we added packages system on virex codes"
     },
 
     {
