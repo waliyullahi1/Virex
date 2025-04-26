@@ -4,14 +4,14 @@
     <div :class="acc_onprocess? 'flex':' hidden'" class=" w-full   justify-center items-center  fixed bg-tertiary bg-opacity-45 h-[100vh] z-50  top-0 ">
         <div class=" flex-col text-white flex  items-center">
           <img src="/assets/images/svg/preload.svg" alt="" class="    w-16">
-          <TypographyP>Please wait, generating account number... </TypographyP>
+          <TypographyP>Please wait, generating account number... <br>  This process may take more than a minute. </TypographyP>
      
         </div>
           
       
     </div>
     <UserNavbar page_tittle="Fund Account" :pagelaod="pagelaod" class=" text-[poppins] w-full hiddn "></UserNavbar>
-    <UserTransferTemplate :cancel_template="cancel_transaction" @cancel_trac="cancel_traction"
+    <UserTransferTemplate :cancel_template="cancel_transaction" @cancel_trac="cancel_traction" @val_trans="validTransaction"
       :acc_number="transfer_detail.acc_number" :acc_name="transfer_detail.acc_name"
       :bank_name="transfer_detail.bank_name" :total_amount="transfer_detail.amount" :time_expire="time_expire">
     </UserTransferTemplate>
@@ -161,8 +161,7 @@ watch(() => store.userData, (newData) => {
 
 });
 
-
-
+let transaction_valid;  // Declare global (no ".value" here unless you are using Vue ref())
 
 const validTransaction = async (tx_ref) => {
   try {
@@ -174,13 +173,9 @@ const validTransaction = async (tx_ref) => {
       data: { tx_ref },
     });
 
-   // console.log('API response:', statusResponse.data);
-
     const message = statusResponse.data.message;
 
     if (["successful", "failed", "pending"].includes(message)) {
-     // console.log('Transaction status:', message);
-
       nofit(
         message === "successful" ? 'Successful' : 'Error',
         `Transaction ${message}`,
@@ -188,7 +183,6 @@ const validTransaction = async (tx_ref) => {
       );
 
       if (message === "successful") {
-        //console.log("Stopping polling after successful transaction.");
         clearInterval(transaction_valid);  // Stop polling after success
       }
 
@@ -196,39 +190,38 @@ const validTransaction = async (tx_ref) => {
         cancel_transaction.value = false;
         router.push("/user");
       }, 2000);
+
     } else if (message === 'Transaction still under process') {
-      //console.log('Transaction still processing, waiting to retry...');
-      return; // Keep polling if it's still in process
+      // Still processing, continue polling
+      return;
     } else {
       console.log('Unexpected status, stopping transaction check:', message);
       clearInterval(transaction_valid);
       cancel_transaction.value = false;
       router.push("/user");
     }
+
   } catch (statusError) {
-    //console.error('Error checking transaction status:', statusError);
+    console.error('Error checking transaction status:', statusError);
     clearInterval(transaction_valid); // Stop polling if there's a server error
+    cancel_transaction.value = false;
+    router.push("/user");
   }
 };
-let transaction_valid;  // Declare transaction_valid globally
 
 const startTransactionValidation = (tx_ref) => {
-
-
   // Wait for 3 seconds for the first call
   setTimeout(() => {
-  
     validTransaction(tx_ref);  // First call after 3 seconds
 
     // Start polling every 5 seconds after the first call
-   
-    const transaction_valid = setInterval(() => {
-       // Debugging log
+    transaction_valid = setInterval(() => {
       validTransaction(tx_ref);
-    }, 5000);  // Poll every 5 seconds after the first call
+    }, 5000);
 
-  }, 5000);  // Initial delay of 3 seconds for the first call
+  }, 3000);  // Correct: initial delay should be 3 seconds = 3000ms
 };
+
 
 
 

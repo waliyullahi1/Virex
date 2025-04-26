@@ -44,7 +44,7 @@
                 <div class="mt-2 h-fit text-center w-full p-3 rounded-lg">
                     <p class="text-[13px]">Please make a transfer to the account <br> details above.</p>
                     
-                    <ButtonsTertiary type="submit" :loading="loadingBtn" class="mt-3 w-full">
+                    <ButtonsTertiary @click="validate_transaction" :loading="loadingBtn" loadingText="processing"  class="mt-3 w-full">
                         I<span class="lowercase">'ve sent the money</span>
                     </ButtonsTertiary>
                 </div>
@@ -89,13 +89,22 @@ const props = defineProps({
 });
 
 // Emits
-const emit = defineEmits(['cancel_trac']);
+const emit = defineEmits(['cancel_trac','val_trans ']);
 
 // Function to cancel transaction
 const cancel_transaction = () => {
     emit('cancel_trac');
 };
 
+const validate_transaction =()=>{
+    loadingBtn.value = true
+    setTimeout(() => {
+        loadingBtn.value = false
+      }, 9000);
+
+   
+    
+}
 // Notification function
 
 
