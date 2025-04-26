@@ -56,7 +56,7 @@
           class="lg:w-[250px] w-[200px]  md:w-fit     text-white md:bloc  px-0   pt-10  z-40 bg-[#0C1E33]  translate-x-0 duration-700 text-[14px] h-screen">
 
           <div class=" px-10 pb-10">
-            <img src="@/assets/images/logo2.png" alt="" class="  w-28  ">
+            <img src="@/assets/images/logo2.png" alt="" class=" md:hidden lg:block block  w-28  ">
 
           </div>
 

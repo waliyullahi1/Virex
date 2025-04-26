@@ -1,11 +1,22 @@
 <template>
 
   <div class="bg-slate-50  dark:text-black">
+    <div :class="acc_onprocess? 'flex':' hidden'" class=" w-full   justify-center items-center  fixed bg-tertiary bg-opacity-45 h-[100vh] z-50  top-0 ">
+        <div class=" flex-col text-white flex  items-center">
+          <img src="/assets/images/svg/preload.svg" alt="" class="    w-16">
+          <TypographyP>Please wait, generating account number... </TypographyP>
+     
+        </div>
+          
+      
+    </div>
     <UserNavbar page_tittle="Fund Account" :pagelaod="pagelaod" class=" text-[poppins] w-full hiddn "></UserNavbar>
     <UserTransferTemplate :cancel_template="cancel_transaction" @cancel_trac="cancel_traction"
       :acc_number="transfer_detail.acc_number" :acc_name="transfer_detail.acc_name"
       :bank_name="transfer_detail.bank_name" :total_amount="transfer_detail.amount" :time_expire="time_expire">
     </UserTransferTemplate>
+
+   
     <div class="  flex mt-5 gap-3 ">
       <div class=" h-3  bg lg:block md:block flex-none bg-orage-400 lg:min-w-56 md:min-w-7 hidden  ml-[1rem] "></div>
       <div class="   sm:mx-4 mx-0 sm:px-2 px-2 flex justify-center     w-full shrink  flex-initial   ">
@@ -100,6 +111,7 @@ const nofit = (title, description, color = "red") => {
 const cancel_transaction = ref(false)
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
+
 const private_flutterwave = config.public.FLUTTERWAVE_PRIVATECODE;
 const pagelaod = ref(false)
 import { fetchUserData } from '@/stores/dashboard'
@@ -107,7 +119,7 @@ const time_expire = ref('')
 const firstName = ref('')
 const user_wallet = ref('')
 const loadingbtn = ref(false)
-
+const acc_onprocess = ref(false)
 const transfer_detail = ref({
   amount: '',
   tx_ref: '',
@@ -148,6 +160,8 @@ watch(() => store.userData, (newData) => {
   }
 
 });
+
+
 
 
 const validTransaction = async (tx_ref) => {
@@ -231,7 +245,7 @@ const fund_with_card = () => {
   console.log(store.userData);
 
   FlutterwaveCheckout({
-    public_key: private_flutterwave,
+    public_key:private_flutterwave,
     tx_ref: tx_ref,
     amount: payment_details.value.amount,
     currency: "NGN",
@@ -294,6 +308,7 @@ const fund = async () => {
   }
 
   try {
+    acc_onprocess.value = true
     const response = await axios({
       url: `${BASE_URL}/fund`,
       method: "POST",
@@ -321,7 +336,7 @@ const fund = async () => {
     transfer_detail.value.acc_name = 'virex-pin FLW';
     transfer_detail.value.acc_number = detail.transfer_account;
     transfer_detail.value.bank_name = detail.bank_name;
-
+    acc_onprocess.value = false
     cancel_transaction.value = true;
 
 

@@ -1,4 +1,6 @@
 // nuxt.config.js
+
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
@@ -6,11 +8,12 @@ export default defineNuxtConfig({
 
   modules: ['@nuxt/ui', '@pinia/nuxt'],
 
+  
   runtimeConfig: {
     public: {
       //https://api.vir
       BASE_URL: "https://api.virex.codes",
-      FLUTTERWAVE_PRIVATECODE: process.env.FLUTTERWAVE_PRIVATECODE, // 🔹 Base URL for public use
+      FLUTTERWAVE_PRIVATECODE:'FLWPUBK-3441a7d6bfb8753d177f53a0c7136302-X', // 🔹 Base URL for public use
     },
     private: {
        // 🔒 Secret Key (Not exposed to frontend)
