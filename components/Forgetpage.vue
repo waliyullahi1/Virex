@@ -38,6 +38,8 @@
 //data
 import axios from "axios";
 const toast = useToast();
+const config = useRuntimeConfig();
+const BASE_URL = config.public.BASE_URL;
 const loadingBtn = ref(false)
 const userData = reactive({
     email: '',
@@ -72,7 +74,7 @@ const forgetPassword = async () => {
 
 try {
   const response = await axios({
-    url: "http://localhost:3500/resetpassword/requestPasswordReset",
+    url: `${BASE_URL}/resetpassword/requestPasswordReset`,
     method: "POST",
     headers: { "Content-Type": "application/json" },
     withCredentials: true,
@@ -80,8 +82,8 @@ try {
   });
 console.log(response.sucess);
 console.log(response);
+nofit('Success',response.data.sucess, "green")
 
- console.log('finished');
  
  loadingBtn.value = false
 

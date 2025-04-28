@@ -119,6 +119,7 @@ const time_expire = ref('')
 const firstName = ref('')
 const user_wallet = ref('')
 const loadingbtn = ref(false)
+
 const acc_onprocess = ref(false)
 const transfer_detail = ref({
   amount: '',
