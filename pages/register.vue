@@ -98,7 +98,7 @@ onMounted( async() => {
 
 
 const register = [
-  { type: 'text', label: 'First Name', modelKey: 'full_name', minlength: 1, },
+  { type: 'text', label: 'Full Name', modelKey: 'full_name', minlength: 1, },
   { type: 'tel', label: 'Phone Number', modelKey: 'phone', minlength: 12, pattern:"^[0-9]{11}$", maxlength: 11, oninput: (event) => { event.target.value = event.target.value.replace(/[^0-9]/g, '') }, },
   { type: 'email', label: 'Email', modelKey: 'email', minlength: 1, },
   { type: 'password', label: 'Password', modelKey: 'password',  minlength: 6, maxlength: 7 },
