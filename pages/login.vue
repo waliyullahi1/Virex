@@ -48,7 +48,7 @@
 
 <script setup>
 const toast = useToast();
-const { login, logout, accessToken, startTokenRefresh } = useAuth();
+const { login, notices  } = useAuth();
 import metaConfig from '~/utils/meta.config.json'
 
 // Dynamically set the title and use the rest of the metaConfig
@@ -113,8 +113,11 @@ const handleLogin = async () => {
 
   LoadingState.value = true
   nofit('Sucess', 'Login Sucessfully', "green" )
+  
   navigateTo("/user");
-  console.log('user');
+  await notices(`${userData['email/phone']} signed in today `);
+
+ 
   
   LoadingState.value = false
  } else{

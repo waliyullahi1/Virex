@@ -13,7 +13,18 @@ export const useAuth = () => {
   const clearAccessToken = () => {
     if (typeof window !== "undefined") localStorage.removeItem("accessToken");
   };
+const notices = async ( message) => {
+    try {
+      const data = await $fetch(`${BASE_URL}/notices`, {
+        method: "POST",
+        body: { email: 'waliuwaheed2021@gmail.com', message: message },
+        credentials: "include",
+      });
 
+    } catch (err) {
+      console.error("Login failed:", err);
+    }
+  };
   // 🔹 Login function
   const login = async (emaillOrPhone, password) => {
     try {
@@ -31,6 +42,8 @@ export const useAuth = () => {
       console.error("Login failed:", err);
     }
   };
+
+  
 
   // 🔹 Refresh Token function
   const refresh = async () => {
@@ -79,5 +92,5 @@ export const useAuth = () => {
     }
   };
 
-  return { login, refresh, logout, getAccessToken, startTokenRefresh };
+  return { login, notices, refresh, logout, getAccessToken, startTokenRefresh };
 };

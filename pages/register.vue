@@ -53,7 +53,7 @@
 const toast = useToast();
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
-const { login, logout, accessToken, startTokenRefresh } = useAuth();
+const {  notices } = useAuth();
 import metaConfig from '~/utils/meta.config.json'
 
 // Dynamically set the title and use the rest of the metaConfig
@@ -83,8 +83,7 @@ onMounted( async() => {
   
   
   await nextTick();
-  await login('userData', 'userData.password');
-  
+
 
 
  
@@ -157,11 +156,15 @@ const handleregister = async () => {
     nofit('Success', data.success, "green");
 
     // Redirect to login page after a short delay
-    setTimeout(() => {
+    setTimeout(async() => {
       router.push('/login');
+      await notices( `${email} signed up today. Your total users are now ${totalUsers}. and details ${result} `);
+
       loadingBtn.value = false;
     }, 500);
     
+
+
   } catch (err) {
     console.error("Registration failed:", err);
     loadingBtn.value = false;

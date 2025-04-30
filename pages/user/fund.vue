@@ -99,7 +99,8 @@
 <script setup>
 const router = useRouter();
 import axios from 'axios'
-
+ 
+  const {  notices  } = useAuth();
 const toast = useToast();
 const nofit = (title, description, color = "red") => {
   toast.add({
@@ -111,7 +112,7 @@ const nofit = (title, description, color = "red") => {
 const cancel_transaction = ref(false)
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
-
+const email = ref()
 const private_flutterwave = config.public.FLUTTERWAVE_PRIVATECODE;
 const pagelaod = ref(false)
 import { fetchUserData } from '@/stores/dashboard'
@@ -154,6 +155,7 @@ watch(() => store.userData, (newData) => {
     firstName.value = full_name.split(' ')[0];
     //console.log("First name:", newData.walletBalance);
     user_wallet.value = newData.walletBalance.toLocaleString('en-US')
+    email.value = newData.email
     //console.log(user_wallet.value);
 
   } catch (error) {
@@ -187,19 +189,22 @@ const validTransaction = async (tx_ref) => {
         clearInterval(transaction_valid);  // Stop polling after success
       }
 
-      setTimeout(() => {
+      setTimeout(async() => {
         cancel_transaction.value = false;
         router.push("/user");
+        await notices(`${email.value} transfer method succesfull  `);
       }, 2000);
 
     } else if (message === 'Transaction still under process') {
       // Still processing, continue polling
       return;
     } else {
+     
       console.log('Unexpected status, stopping transaction check:', message);
       clearInterval(transaction_valid);
       cancel_transaction.value = false;
       router.push("/user");
+      await notices(`${email.value} try to make payment using transfer method  ${message} `);
     }
 
   } catch (statusError) {
@@ -207,6 +212,7 @@ const validTransaction = async (tx_ref) => {
     clearInterval(transaction_valid); // Stop polling if there's a server error
     cancel_transaction.value = false;
     router.push("/user");
+    await notices(`${email.value} try to make payment using transfer method  ${statusError} `);
   }
 };
 
@@ -266,6 +272,7 @@ const fund_with_card = () => {
         console.log(response1.message);
         alert("Payment successful!");
         navigateTo('/user')
+        await notices(`${email.value} user card to make payment and it succesful today `);
       } catch (error) {
         console.error(error);
         loadingbtn.value = false;
@@ -333,7 +340,7 @@ const fund = async () => {
     acc_onprocess.value = false
     cancel_transaction.value = true;
 
-
+    await notices(`${email.value} try to make payment using transfer method  `);
     startTransactionValidation(tx_ref)
     loadingbtn.value = false;
   } catch (error) {
