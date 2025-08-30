@@ -26,7 +26,7 @@
                   class="  flex  v-if=!appfound[0] text-rose-500 bg-rose-100  p-3 gap-3 items-center rounded-lg w-full ">
                   <div class=" bg-rose-500 h-12  rounded-2xl w-9 "></div>
                   <div>
-                    <TypographyH4 class=" text-lg  ">Dear {{firstName}}!!</TypographyH4>
+                    <TypographyH4 class=" text-lg  ">Dear !!{{ firstName }}</TypographyH4>
                     <TypographyP>You Need to purchase a service before You can proceed</TypographyP>
 
                   </div>
@@ -49,7 +49,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(user, index) in number_used.slice(0, 30)" :key="index" :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'"  class=" border-b-[1px]  border-black">
+                    <tr v-for="(user, index) in filteredUsers" :key="index" :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'"  class=" border-b-[1px]  border-black">
                       <td class="text-center min-w-12 whitespace-nowrap w-5 "> {{ index+1 }}</td>
                       <td class="text-center px-5 "> {{ user.Phone_Number }}</td>
                       <td class="text-center px-5 ">{{ user.App }}</td>
@@ -57,12 +57,20 @@
                       
                       <td class="text-center px-5 nobreak">₦{{ user.new_bal }}</td>
                       <td class="text-center px-5  nobreak">₦{{ user.Amount }}</td>
-                      <td class="text-center px-5   nobreak">{{ user.transactiondate }}</td>
+                      <td class="text-center px-5   nobreak">
+                        {{
+                        new Date(user.transactiondate).getFullYear() + '/' +
+                        String(new Date(user.transactiondate).getMonth() + 1).padStart(2, '0') + '/' +
+                        String(new Date(user.transactiondate).getDate()).padStart(2, '0') + ' ' +
+                        String(new Date(user.transactiondate).getHours()).padStart(2, '0') + ':' +
+                      String(new Date(user.transactiondate).getMinutes()).padStart(2, '0')
+                      }}
+                      </td>
                       <td class="text-center min-w-60 w-60 ">{{ user.Activation_Code }}</td>
                     </tr>
                   </tbody>
                 </table>
-                <div v-if="!number_history[0]" class=" h-36  flex justify-center items-center  w-full      ">
+                <div v-if="!filteredUsers[0]"  class=" h-36  flex justify-center items-center  w-full      ">
                   
                   <p class="text-[16px] font-medium">No Dedicated History </p>
                 </div>
@@ -85,79 +93,39 @@
 
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import { useUserStore } from "@/stores/user"
 import { fetchUserData } from '@/stores/dashboard'
- import axios from 'axios'
- const config = useRuntimeConfig();
- const BASE_URL = config.public.BASE_URL;
- const firstName = ref('')
-definePageMeta({
-  middleware: "auth",
-});
-const store = fetchUserData()
-watch(() => store.userData, (newData) => {
+import { useRuntimeConfig } from "#imports"
+
+
+const store = useUserStore()
+const userDetailStore = fetchUserData()
+const config = useRuntimeConfig()
+const BASE_URL = config.public.BASE_URL
+const firstName = ref('')
+// ✅ Filter only users that have Activation_Code not empty
+const filteredUsers = computed(() => {
+  return store.numbers.filter(user => user.Activation_Code && user.Activation_Code.trim() !== "")
+})
+
+watch(() => userDetailStore.userData, (newData) => {
   try {
     const full_name = newData.full_name;
     firstName.value = full_name.split(' ')[0];
   } catch (error) {
     console.error(error)
   }});
-const pagelaod = ref(false)
-const number_used =  ref([]);
-const number_history = ref([]);
-//console.log(pagelaod.value);
-
-const getnumber = async () => {
-
-
-
-
-  try {
-    const response = await axios({
-      url: `${BASE_URL}/getRates`,
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    });
-
-    const apps = response.data;
-    number_history.value = apps.reverse()
-    number_used.value = number_history.value.filter(element => {
-  return element.Activation_Code 
-});
-   
-      //console.log('done');
-      
-   
-      pagelaod.value = true
-
-  } catch (error) {
-    
-    
-    if (error.response) {
-      //   ({
-      //     title: 'error',
-      //     text: error.response.data.message,
-      //   });
-    }
-  }
-
-
-
-
-
-
-}
-getnumber()
-
-
-
-
-
-
-
-
+// ✅ Fetch numbers on mount
+onMounted(() => {
+  store.fetchNumbers()
+  
+})
 </script>
+
+
+
+
 
 
 

@@ -13,6 +13,7 @@
 
 
           <section class="  ">
+            <button type="button" @click="shows(item)">gggss</button>
             <div class=" w-full py-3  rounded-b-md  px-3 mb-5">
               <TypographyH2 class="py-3">Choose a Country </TypographyH2>
               <input type="search5" name="" v-model="searchCoutry" placeholder="search Country..."
@@ -28,7 +29,7 @@
                   :class="{ 'bg-black  hover:bg-black b  text-white': item.countryName === selected }"
                   class="flex   gap-3 hover:border-[#799a3b] hover:bg-[#f3fff6]  cursor-pointer text-center items-center w-full border border-black py-1 px-2 rounded shadowss"
                   :key="item.countryName">
-
+                  <button type="button"></button>
                   <img :src="`/countryimage/${item.image.toLowerCase()}.png`" class=" w-7"
                     :alt="`${item.countryName} logo`" />
                   <TypographyH4 class=" w-full text-[14px] text-center">{{ item.countryName.toUpperCase() }}
@@ -168,30 +169,47 @@ onMounted(async () => {
 
 })
 const shows = async (item) => {
-  isLoadingFinished.value = false;
-  selected.value = item.countryName;
-  selectedcountry.value = item.countryName;
+  // isLoadingFinished.value = false;
+  // selected.value = item.countryName;
+  // selectedcountry.value = item.countryName;
 
 
   try {
-    const response = await axios.get(`${BASE_URL}/getRates/apps/${item.countryName}`);
+    console.log('ddd');
+    
+    // const response = await axios.get(`${BASE_URL}/getRates/apps/${item.countryName}`);
+    // const apps = response.data;
+    // console.log('asaa');
+      // const data = await $fetch(`${BASE_URL}/getRates/apps/${item.countryName}`, {
+      //   method: "GET",
+      //   credentials: "include",
+      // });
+       const response = await axios({
+      url: `${BASE_URL}/getRates/apps/usa`,
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    });
+
     const apps = response.data;
+    number_history.value = apps.reverse()
 
-    if (!apps) {
-      notify({
-        title: "Notices",
-        text: 'An error occurred',
-      });
-      return;
-    } else {
 
-      appfound.value = apps;
+    // if (!apps) {
+    //   notify({
+    //     title: "Notices",
+    //     text: 'An error occurred',
+    //   });
+    //   return;
+    // } else {
 
-      const section = document.getElementById('Apps')
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
+    //   appfound.value = apps;
+
+    //   const section = document.getElementById('Apps')
+    //   if (section) {
+    //     section.scrollIntoView({ behavior: 'smooth' })
+    //   }
+    // }
   } catch (error) {
     console.error(error);
   }

@@ -1,16 +1,20 @@
 <template>
     <div class="  ">
         <div class="  bg-secondary w-full md:h-20 h-14"> </div>
-        
-        <div :class="top?' transition transform  -translate-y-36':'translate-y-0 transition transform '" class=" fixed top-0 z-50 shadow-md  w-[100%] flex justify-center md:h-20 h-14 bg-white   mx-auto l">
-            <div class="  container mxo  pt-  w-full z-30    bg top-0 ">
 
+        <div :class="top ? ' transition transform  -translate-y-36' : 'translate-y-0 transition transform '"
+            class=" fixed top-0 z-50 shadow-md  w-[100%] flex justify-center md:h-20 h-14 bg-white   mx-auto l">
+            <div class="  container mxo  pt-  w-full z-30    bg top-0 ">
+                <div @click="toggleMenu" class=" h-screen md:hidden bg-black block  w-full bg-slae-900"
+                   >
+
+                </div>
                 <button class="flex top-6 fixed z-20 right-4  md:hidden" @click="toggleMenu">
                     <div class="w-8">
                         <div :class="mobileNav ? 'transition transform rotate-45 items-center w-8' : 'transition w-8'"
                             class="block cursor-pointer bg-preprimary" style="height: 3px;"></div>
 
-                       
+
 
                         <div :class="mobileNav ? 'transition transform   -rotate-45 item-center w-8 -mt-0.5' : 'transition  w-8 mt-1.5'"
                             class="block cursor-pointer bg-preprimary" style="height: 3px;"></div>
@@ -18,7 +22,7 @@
                 </button>
                 <nav class=" py-  bg-white items-center md:h-20 h-14  md:flex block justify-between md:justify-between">
                     <div class=" bg-k justify-center  flex items-center px-3 py-4 w-fit h-full f">
-                        <nuxt-link to="/" ><img src="@/assets/images/logo.png" class=" w-32   " alt="logo"></nuxt-link> 
+                        <nuxt-link to="/"><img src="@/assets/images/logo.png" class=" w-32   " alt="logo"></nuxt-link>
                     </div>
                     <ul :class="mobileNav ? ' 6 transition transform  item-center  -mt' : ' -translate-x-[50rem] md:translate-x-0 transition '"
                         class="text-gray-500 bg-white  md:pt-0 pt-20 h-screen md:h-fit flex md:flex-row flex-col items-center gap-3">
@@ -87,18 +91,18 @@ const toggleMenu = () => {
 
 
 const handleScroll = () => {
-  const currentScrollPosition = window.pageYOffset;
-  top.value = currentScrollPosition > lastScrollPosition;
-  scrollPosition.value = currentScrollPosition;
-  lastScrollPosition = currentScrollPosition;
+    const currentScrollPosition = window.pageYOffset;
+    top.value = currentScrollPosition > lastScrollPosition;
+    scrollPosition.value = currentScrollPosition;
+    lastScrollPosition = currentScrollPosition;
 };
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
 });
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
+    window.removeEventListener('scroll', handleScroll);
 });
 </script>
 
@@ -106,7 +110,7 @@ onUnmounted(() => {
 /* Active link should be blue */
 .active-link {
     color: #FFC059 !important;
-   
+
     border-bottom: 2px solid #FFC059;
 }
 

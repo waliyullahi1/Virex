@@ -9,30 +9,30 @@
         <div class=" w-full flex  justify-center items-center     left-0   px-4     ">
           <div class=" h-3  bg lg:block md:block flex-none bg-orage-400 lg:min-w-56 md:min-w-7 hidden  ml-[1.5rem] "></div>
           <!-- <div class=" h-3  bg lg:block md:block flex-none bg-orange-400 lg:min-w-56 md:min-w-7 hidden  ml-[1rem] "></div> -->
-          <div class="  w-full flex bg-zinc-50 justify-center">
+          <div class="  w-full flex bg-ter justify-center">
             <div
-              class=" container flex md:h-[4rem] h-fit mt-4 md:mt-7 left-0 right-0 px-4 py-2 shadow-md  text-md  rounded-2xl bg-slate-100    justify-between overflowhidden items-center   w-full ">
+              class="  flex md:h-[4rem] h-fit mt-4 md:mt-7 left-0 right-0 px-4 py-2 shadow-md  text-md  rounded-2xl bg-tertiary    justify-between overflowhidden items-center   w-full ">
               <div class="w-fit flex  gap-3 items-center ">
-                <button class="flex  lef-4  md:hidden" @click="toggleMenu">
+                <button class="flex  lef-4  " @click="toggleMenu">
                   <div class="w-5">
                     <div :class="mobileNav ? 'transition transform rotate-45  items-center w-6' : 'transition w-6'"
-                      class="block cursor-pointer bg-black" style="height: 3px;"></div>
+                      class="block cursor-pointer bg-white" style="height: 3px;"></div>
 
 
 
                     <div
                       :class="mobileNav ? 'transition transform   -rotate-45 item-center w-6 -mt-0.5' : 'transition  w-6 mt-1.5'"
-                      class="block cursor-pointer bg-black" style="height: 3px;"></div>
+                      class="block cursor-pointer bg-white" style="height: 3px;"></div>
                   </div>
                 </button>
-                <TypographyH3 class="  hidden sm:block leading-4">{{ page_tittle }}</TypographyH3>
+                <TypographyH3 class="  hidden sm:block text-white leading-4">{{ page_tittle }}</TypographyH3>
               </div>
 
               <div class="flex gap-3 items-center justify-center w-fit ">
                 <img src="@/assets/images/svg/person.svg" alt="person" class="md:w-10 w-7 " srcset="">
-                <div class="e dark:text-black  flex justify-center items-center flex-col ">
-                  <TypographyH4 class=" ₦ leading-[12px]  dark:text-black ">{{ firstName }} </TypographyH4>
-                  <small>₦{{user_wallet}}</small>
+                <div class="e dark:text-white  flex justify-center items-center flex-col ">
+                  <TypographyH4 class=" ₦ leading-[12px]   dark:text-white ">{{ firstName }} </TypographyH4>
+                  <small class=" text-white">₦{{user_wallet}}</small>
                 </div>
 
 
@@ -49,7 +49,7 @@
       </div>
 
       <div class="  fixed   md:w-fit w-full flex duration-500 z-30  left-0 bg-black h-fit bg-opacity-30 bg-op"
-        :class="mobileNav ? 'md:w-fit overflow-hidden w-full   -translate-x-0  md:-translate-x-0' : ' -translate-x-[200rem]  md:-translate-x-0 w-9   overflow-hidden '">
+        :class="mobileNav ? 'md:w-fit overflow-hidden w-full   -translate-x-0  ' : ' -translate-x-[200rem]   w-9   overflow-hidden '">
 
         <div
           :class="mobileNav ? ' transition transform -translate-x-0  md:-translate-x-0' : ' -translate-x-0  md:-translate-x-0  transition transform '"
@@ -288,12 +288,12 @@ const links = reactive([
 
   {
     label: 'Dashboard', path: '/user',
-    image: ` <div class="text-white"><svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 -0.5 25 25" fill="currentColor">
+    image: ` <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 -0.5 25 25" fill="currentColor">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.918 10.0005H7.082C6.66587 9.99708 6.26541 10.1591 5.96873 10.4509C5.67204 10.7427 5.50343 11.1404 5.5 11.5565V17.4455C5.5077 18.3117 6.21584 19.0078 7.082 19.0005H9.918C10.3341 19.004 10.7346 18.842 11.0313 18.5502C11.328 18.2584 11.4966 17.8607 11.5 17.4445V11.5565C11.4966 11.1404 11.328 10.7427 11.0313 10.4509C10.7346 10.1591 10.3341 9.99708 9.918 10.0005Z" stroke="#currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.918 4.0006H7.082C6.23326 3.97706 5.52559 4.64492 5.5 5.4936V6.5076C5.52559 7.35629 6.23326 8.02415 7.082 8.0006H9.918C10.7667 8.02415 11.4744 7.35629 11.5 6.5076V5.4936C11.4744 4.64492 10.7667 3.97706 9.918 4.0006Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.082 13.0007H17.917C18.3333 13.0044 18.734 12.8425 19.0309 12.5507C19.3278 12.2588 19.4966 11.861 19.5 11.4447V5.55666C19.4966 5.14054 19.328 4.74282 19.0313 4.45101C18.7346 4.1592 18.3341 3.9972 17.918 4.00066H15.082C14.6659 3.9972 14.2654 4.1592 13.9687 4.45101C13.672 4.74282 13.5034 5.14054 13.5 5.55666V11.4447C13.5034 11.8608 13.672 12.2585 13.9687 12.5503C14.2654 12.8421 14.6659 13.0041 15.082 13.0007Z" stroke="#currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.082 19.0006H17.917C18.7661 19.0247 19.4744 18.3567 19.5 17.5076V16.4936C19.4744 15.6449 18.7667 14.9771 17.918 15.0006H15.082C14.2333 14.9771 13.5256 15.6449 13.5 16.4936V17.5066C13.525 18.3557 14.2329 19.0241 15.082 19.0006Z" stroke="#currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> </div>`,
+</svg> `,
     magin: true
   },
 
@@ -304,14 +304,14 @@ const links = reactive([
   {
     label: 'Number History',
     path: '/user/number_history',
-    image: `<div " class="ai-icon" aria-expanded="false">
+    image: `
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
                            <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"></path>
                            <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"></path>
                            <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"></path>
                         </svg>
 							
-						</div>`
+						`
   },
 
 
@@ -320,14 +320,14 @@ const links = reactive([
 
   {
     label: 'Deduction History', path: '/user/deduction_history', magin: true,
-    image: `<div " class="ai-icon" aria-expanded="false">
+    image: `
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
                            <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"></path>
                            <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"></path>
                            <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"></path>
                         </svg>
 							
-						</div>`
+					`
 
   },
   {

@@ -26,7 +26,7 @@
                   class="  flex  v-if=!appfound[0] text-rose-500 bg-rose-100  p-3 gap-3 items-center rounded-lg w-full ">
                   <div class=" bg-rose-500 h-12  rounded-2xl w-9 "></div>
                   <div>
-                    <TypographyH4 class=" text-lg  ">Dear {{firstName}}!!</TypographyH4>
+                    <TypographyH4 class=" text-lg  ">Dear waliu!!</TypographyH4>
                     <TypographyP>You Need to purchase a service before You can proceed</TypographyP>
 
                   </div>
@@ -40,26 +40,33 @@
                       <th class="text-center py-0.5">Country</th>
                       <th class="text-center py-0.5">Time</th>
                       <th class="text-center py-0.5">Message</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(user, index) in number_history.slice(0, 30)" :key="index"  :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'" class=" border-b-[1px] border-black">
+                    <tr v-for="user in store.numbers.slice(0, 20)" :key="index"
+                      :class="index % 2 === 0 ? ' bg-zinc-100 ' : 'bg-white'" class=" border-b-[1px] border-black">
                       <td class="text-center py-2 px-3"> {{ user.Phone_Number }}</td>
                       <td class="text-center py-2 px-3">{{ user.App }}</td>
                       <td class="text-center py-2 px-3">{{ user.Country }}</td>
-                      <td class="text-center py-2 px-3">{{ user.transactiondate }}</td>
+                      {{
+                        new Date(user.transactiondate).getFullYear() + '/' +
+                        String(new Date(user.transactiondate).getMonth() + 1).padStart(2, '0') + '/' +
+                        String(new Date(user.transactiondate).getDate()).padStart(2, '0') + ' ' +
+                        String(new Date(user.transactiondate).getHours()).padStart(2, '0') + ':' +
+                      String(new Date(user.transactiondate).getMinutes()).padStart(2, '0')
+                      }}
                       <td class="text-center py-2 px-3  max-w-52">{{ user.Activation_Code }}</td>
                     </tr>
                   </tbody>
                 </table>
-                <div v-if="!number_history[0]" class=" h-36  flex justify-center items-center  w-full      ">
-                  
+                <div v-if="!store.numbers" class=" h-36  flex justify-center items-center  w-full      ">
+
                   <p class="text-[16px] font-medium">No Number History </p>
                 </div>
-              
 
-                
+
+
 
               </div>
 
@@ -82,61 +89,28 @@ import { ref, onMounted } from 'vue'
 import { fetchUserData } from '@/stores/dashboard'
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
- import axios from 'axios'
-
-const firstName = ref('')
-const pagelaod = ref(false)
-
-const number_history = ref([]);
-console.log(pagelaod.value);
-const store = fetchUserData()
-watch(() => store.userData, (newData) => {
-  try {
-    const full_name = newData.full_name;
-    firstName.value = full_name.split(' ')[0];
-  } catch (error) {
-    console.error(error)
-  }});
-const getnumber = async () => {
+import axios from 'axios'
+import { useUserStore } from "@/stores/user";
+import { useRuntimeConfig, useToast } from "#imports"
 
 
-
-
-  try {
-    const response = await axios({
-      url: `${BASE_URL}/getRates`,
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    });
-
-    const apps = response.data;
-    number_history.value = apps.reverse()
-    //console.log('ffff', number_history.value);
-   
-      //console.log('done');
-      
-   
-      pagelaod.value = true
-
-  } catch (error) {
-   // console.log(error);
-    
-    if (error.response) {
-      //   ({
-      //     title: 'error',
-      //     text: error.response.data.message,
-      //   });
-    }
-  }
+const store = useUserStore();
 
 
 
 
 
 
-}
-getnumber()
+
+
+onMounted(() => {
+
+  store.fetchNumbers()
+  console.log(store.numbers.values);
+
+
+});
+
 
 
 

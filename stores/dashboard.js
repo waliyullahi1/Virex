@@ -6,6 +6,12 @@ export const fetchUserData = defineStore('user_detail', () => {
   const config = useRuntimeConfig(); // ✅ Must be inside setup()
   const BASE_URL = config.public.BASE_URL;
 
+  //countrySelected
+  const selectedCountry = ref(null);
+  const selectedApp = ref(null);
+
+
+  
   const iDataEmpty = ref(true);
   const message = ref('Hello from Pinia!');
   const totalNumberUsed = ref(0);
@@ -21,23 +27,11 @@ export const fetchUserData = defineStore('user_detail', () => {
 
       userData.value = response.data.foundUser;
 
-      try {
-        const response = await axios.get(`${BASE_URL}/getRates`, {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        });
-
-        const apps = response.data;
-        const number_used = apps.filter(element => element.Activation_Code);
-        totalNumberUsed.value = number_used.length;
-
-      } catch (error) {
-        console.error(error);
-      }
+     
     } catch (error) {
       console.error("Error fetching user details:", error);
     }
   };
 
-  return { iDataEmpty, message, totalNumberUsed, userData, fetchUserDetail };
+  return { iDataEmpty, message, selectedCountry, selectedApp, totalNumberUsed, userData, fetchUserDetail };
 });

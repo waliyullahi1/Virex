@@ -1,0 +1,78 @@
+[
+    {
+        "appName": "Amazon-R",
+        "image": "Amazon"
+    },
+    {
+        "appName": "Facebook1",
+        "image": "facebook"
+    },
+    {
+        "appName": "Fiverr1",
+        "image": "fiverr"
+    },
+    {
+        "appName": "Facebook33",
+        "image": "facebook"
+    },
+    {
+        "appName": "Facebook",
+        "image": "facebook"
+    },
+    {
+        "appName": "Netflix1",
+        "image": "netflix"
+    },
+    {
+        "appName": "Netflix-R",
+        "image": "netflix"
+    },
+    {
+        "appName": "AWS",
+        "image": "aws"
+    },
+    {
+        "appName": "Facebook12",
+        "image": "facebook"
+    },
+
+    {
+        "appName": "Facebook34",
+        "image": "facebook"
+    },
+    {
+        "appName": "Tinder2",
+        "image": "tinder"
+    },
+       {
+        "appName": "Fiverr40",
+        "image": "fiverr"
+    },
+
+    {
+        "appName": "WhatsApp-R",
+        "image": "whatsapp"
+    },
+    {
+        "appName": "Paypal",
+        "image": "paypal"
+    }, 
+
+     {
+        "appName": "Facebook40",
+        "image": "Facebook"
+    },
+       {
+        "appName": "Fiverr11",
+        "image": "fiverr"
+    },
+
+    {
+        "appName": "match15",
+        "image": "match"
+    },
+    {
+        "appName": "Fiverr",
+        "image": "fiverr"
+    }
+]

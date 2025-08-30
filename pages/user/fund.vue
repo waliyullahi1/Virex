@@ -63,7 +63,7 @@
               <div class=" flex items-center gap-4 mt-5">
                 <img src="@/assets/images/svg/personal.svg" alt="" class="w-12 leading-4">
                 <div class="  text-center">
-                  <TypographyH4 class="lead">{{ store.totalNumberUsed }}</TypographyH4>
+                  <TypographyH4 class="lead"> {{ filteredUsers?.length || 0 }}</TypographyH4>
                   <TypographyP class=" font-bold"> Number</TypographyP>
                 </div>
               </div>
@@ -99,7 +99,11 @@
 <script setup>
 const router = useRouter();
 import axios from 'axios'
- 
+ import { useUserStore } from "@/stores/user";
+import { useRuntimeConfig, useToast } from "#imports"
+
+
+const stores = useUserStore();
   const {  notices  } = useAuth();
 const toast = useToast();
 const nofit = (title, description, color = "red") => {
@@ -135,6 +139,9 @@ const transfer_detail = ref({
 const payment_details = ref({
   amount: '',
   payment_type: ''
+})
+const filteredUsers = computed(() => {
+  return stores.numbers.filter(user => user.Activation_Code && user.Activation_Code.trim() !== "")
 })
 const store = fetchUserData()
 const payment_option = [
@@ -294,7 +301,7 @@ const fund = async () => {
   loadingbtn.value = true;
 
   // Check if the amount is less than 1000
-  if (payment_details.value.amount < 1000) {
+  if (payment_details.value.amount < 100) {
     nofit('Error', "The amount must not be less than ₦1000");
     loadingbtn.value = false;
     return;
@@ -353,6 +360,13 @@ const fund = async () => {
   }
 };
 
+onMounted(() => {
+
+  stores.fetchNumbers()
+
+
+
+});
 
 
 pagelaod.value = true

@@ -4,21 +4,48 @@
         "image": "usa"
 
     },
-    {
-       "countryName": "US",
-        "image": "us"
+   
 
-    },
     {
        "countryName": "UK",
         "image": "uka"
 
     },
     {
-        "countryName": "UK 2",
-         "image": "uka"
- 
-     },
+       "countryName": "Canada",
+        "image": "canada"
+
+    },
+
+    {
+       "countryName": "Australia",
+        "image": "australia"
+
+    },
+
+    {
+       "countryName": "New Zealand",
+        "image": "newzealand"
+
+    },
+
+    {
+       "countryName": "India",
+        "image": "india"
+
+    },
+
+    {
+       "countryName": "South Korea",
+        "image": "southkorea"
+
+    },
+
+    {
+       "countryName": "Japan",
+        "image": "japan"
+
+    },
     {
        "countryName": "Swaziland",
         "image": "swaziland"
