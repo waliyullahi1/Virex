@@ -172,9 +172,7 @@ const loading = ref(true)
 import { fetchUserData } from '@/stores/dashboard'
 import { onMounted, watch } from 'vue'
 
-definePageMeta({
-  middleware: 'auth',
-});
+
 
 
 const validTransaction = async (tx_ref) => {

@@ -10,7 +10,7 @@
   
             <!-- FOR NAME CHANGE -->
             <section class="  rounded-lg  bg-white sm:p-5 p-2  ">
-              <div class=" w-full gap-2 py-3 flex  items-center  bg-primary rounded-lg text-white px-3 mb-5">
+              <div class=" w-full gap-2 py-3 flex  items-center bg-tertiary rounded-lg text-white px-3 mb-5">
                 <img src="@/assets/images/svg/spanner-setting.svg" alt=" spanner setting" class=" w-4 scale-x-[-1] ">
                 <TypographyH4 class="a">  Account Settings  </TypographyH4>
               </div>
@@ -30,7 +30,7 @@
 
 
             <section class="  rounded-lg  bg-white sm:p-5 ">
-              <div class=" w-full py-3 flex  items-center  bg-primary rounded-lg text-white px-3 mb-5">
+              <div class=" w-full py-3 flex  items-center  bg-tertiary rounded-lg text-white px-3 mb-5">
                 <img src="@/assets/images/svg/padlock.svg" alt=" password icon" class=" w-6 scale-x-[-1] ">
                 <TypographyH4 class="a"> Change of Password  </TypographyH4>
               </div>
@@ -50,7 +50,7 @@
   
 
             <section class="  rounded-lg  bg-white sm:p-5 p-2  mb-1 mt-">
-              <div class=" w-full py-3 flex  items-center  bg-primary rounded-lg text-white px-3 mb-5">
+              <div class=" w-full py-3 flex  items-center  bg-tertiary rounded-lg text-white px-3 mb-5">
                 <img src="@/assets/images/svg/padlock.svg" alt=" password icon" class=" w-6 scale-x-[-1] ">
                 <TypographyH4 class="a"> Google Two Factor Authentication  </TypographyH4>
               </div>

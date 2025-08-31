@@ -27,6 +27,7 @@ export const useUserStore = defineStore('userStore', () => {
       const response = await axios({
         url: `${BASE_URL}/numbers`,
         method: "GET",
+        timeout: 30000,
         headers: { "Content-Type": "application/json" },
          withCredentials: true,
       });
@@ -34,7 +35,7 @@ export const useUserStore = defineStore('userStore', () => {
       const apps = response.data;
       numbers.value = apps;
       isNumbersLoading.value = false
-      console.log("Fetched numbers:", numbers);
+
     } catch (error) {
       console.log(error);
 

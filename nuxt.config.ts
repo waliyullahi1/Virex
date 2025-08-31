@@ -11,8 +11,8 @@ export default defineNuxtConfig({
   
   runtimeConfig: {
     public: {
-      //
-      BASE_URL: "https://api.virex.codes",
+      //https://api.virex.codes
+      BASE_URL: "http://localhost:3500",
       FLUTTERWAVE_PRIVATECODE:'FLWPUBK-3441a7d6bfb8753d177f53a0c7136302-X', // 🔹 Base URL for public use
     },
     private: {

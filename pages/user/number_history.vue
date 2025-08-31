@@ -92,7 +92,9 @@ const BASE_URL = config.public.BASE_URL;
 import axios from 'axios'
 import { useUserStore } from "@/stores/user";
 import { useRuntimeConfig, useToast } from "#imports"
-
+  definePageMeta({
+  middleware: "auth",
+});
 
 const store = useUserStore();
 

@@ -18,7 +18,7 @@
                 
 
                 <!-- CHOICE APP  -->
-                <Applist></Applist>
+                <Applist pageDetect="USER"></Applist>
               
             </div>
 
@@ -49,7 +49,9 @@
 
 <script setup>
 
-
+  definePageMeta({
+  middleware: "auth",
+});
 
 
 

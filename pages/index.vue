@@ -12,11 +12,11 @@ useHead({
 
 
 <template>
-    <div class=" dark:bg-white bg-white ">
+    <div class=" dark:bg-white lg:w- bg-white ">
         <Navbar ></Navbar>
 
-        <section id="hero" class=" dark:text-black bg-secondary px-4 hero-section">
-            <div class="container  mx-auto block md:flex gap-5 justify-between py-7 items-center">
+        <section id="hero" class=" dark:text-black bg-secondary px-4  w-full hero-section">
+            <div class="container  lg:w-[90%] w-full mx-auto block md:flex gap-5 justify-between py-7 items-center">
                 <div class=" text-center md:text-left ">
                     <span class="  text-preprimary">
                         
@@ -38,7 +38,7 @@ useHead({
         </section>
 
         <section id="our-service" class="  dark:text-black dark:bg-white px-4  my-20">
-            <div class=" container  text-center s rounded-2xl   mx-auto">
+            <div class=" container  lg:w-[90%] w-full text-center s rounded-2xl   mx-auto">
                 <TypographyH2>Our Services</TypographyH2>
                 <div class=" mx-auto md:w-[60%] w-[100%]"> 
                    <TypographyP>We provide virtual phone numbers from various countries, including the USA, UK, Canada, and many more. Our services cater to freelancers, businesses, individuals, and apps like PayPal, Fiverr, Upwork, and Etsy
@@ -59,7 +59,7 @@ useHead({
         </section>
 
         <section id="how-it-work" class=" px-4 dark:text-black dark:bg-white how-it-work-section">
-            <div class="container mx-auto gap-5  py-10 items-center how-it-work-wrapper ">
+            <div class="container lg:w-[90%] w-full  mx-auto gap-5  py-10 items-center how-it-work-wrapper ">
                 <div class="">
                     <TypographyH2 class=" text-lg">How it works</TypographyH2>
                     <TypographyP class=" ">Three easy steps to receive SMS messages
@@ -93,7 +93,7 @@ useHead({
         </section>
 
         <section id="features" class="feature-section px-4 text-black  m bg-gray-50">
-            <div class="container flex flex-col   items-center mx-auto py-10 ">
+            <div class="container lg:w-[90%] w-full  flex flex-col   items-center mx-auto py-10 ">
                 <TypographyH2 class="text-center mb-10">Features</TypographyH2>
                 <div class="md:w-[80%] w-[100%]  pt-7  justify-center">
                     <div class=" sm:flex block  gap-5 ">
@@ -123,7 +123,7 @@ useHead({
         </section>
 
         <section id="contact-us" class=" dark:text-black dark:bg-white   px-4">
-            <div class="container rounded-md flex flex-col bg-secondary  items-center mx-auto py-10">
+            <div class="container lg:w-[90%] w-full  rounded-md flex flex-col bg-secondary  items-center mx-auto py-10">
                 <TypographyH2> From the <span class=" bg-preprimary text-white px-2 rounded-md">cloud</span> to Customers,
                     We Bring all the Answers</TypographyH2>
                 <ButtonsPrimary @click="$router.push('/register')" class="my-5">Get start</ButtonsPrimary>

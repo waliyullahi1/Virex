@@ -22,6 +22,7 @@ export const fetchUserData = defineStore('user_detail', () => {
     try {
       const response = await axios.get(`${BASE_URL}/dashbord`, {
         headers: { "Content-Type": "application/json" },
+        timeout: 30000,
         withCredentials: true,
       });
 

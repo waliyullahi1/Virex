@@ -17,7 +17,7 @@
                             class="block cursor-pointer bg-preprimary" style="height: 3px;"></div>
                     </div>
                 </button>
-                <nav class=" py-  bg-white items-center md:h-20 h-14  md:flex block justify-between md:justify-between">
+                <nav class=" py- lg:w-[90%] w-full  mx-auto  bg-white items-center md:h-20 h-14  md:flex block justify-between md:justify-between">
                     <div class=" bg-k justify-center  flex items-center px-3 py-4 w-fit h-full f">
                         <nuxt-link to="/"><img src="@/assets/images/logo.png" class=" w-32   " alt="logo"></nuxt-link>
                     </div>
@@ -76,9 +76,7 @@ let flex = ref(false);
 let scrollPosition = ref(0);
 let top = ref(false);
 let lastScrollPosition = 0;
-defineProps({
-    keep_button_hovered: Boolean,
-});
+
 
 const toggleMenu = () => {
     mobileNav.value = !mobileNav.value;

@@ -15,7 +15,7 @@
           Click refresh button next to Number to get Code.
         </span>
       </TypographyP>
-      <nuxt-link to="/deduction_history">
+      <nuxt-link to="/user/deduction_history">
         <TypographyP>
           <span class="font-medium text-orange-500 text-[14px]">
             Credit Deduction History
@@ -58,7 +58,8 @@
             <!-- Message Info -->
             <div class="text-left pt-3 md:text-center font-semibold">
               <TypographyP class="font-semibold leading-[4px]">
-                No message yet...
+               <span  v-if="!item.Activation_Code" >No message yet...</span> 
+                 <span  v-if="item.Activation_Code" >{{item.Activation_Code}}</span> 
               </TypographyP>
               <TypographyP class="tracking-tighter font-semibold text-sm">
                 <!-- Countdown -->
@@ -169,7 +170,7 @@ async function updateCountdown() {
       try {
         const response = await axios.put(
           `${BASE_URL}/otp/${item.Phone_Number}`,
-          {},
+          {timeout: 30000},
           { withCredentials: true }
         );
         nofit("Notices", response.data.success, "green");
@@ -189,7 +190,7 @@ async function updateCountdown() {
         try {
           const response = await axios.put(
             `${BASE_URL}/otp/${item.Phone_Number}`,
-            {},
+            {timeout: 30000},
             { withCredentials: true }
           );
           nofit("Notices", response.data.success, "green");
@@ -207,16 +208,25 @@ async function updateCountdown() {
 // ----------------REJECT NUMBER ----------------
 const rejectNumber = async (item) => {
   try {
+     item.remaining = "EXPIRED";
+     console.log('idowu');
+     
+      item.expired = true;
     const response = await axios({
       url: `${BASE_URL}/rejectNumber/${item.Phone_Number}`,
+
+    timeout: 30000, // 30s
       method: "POST",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
-    });
+    });console.log('reject number');
+    
 
     const apps = response.data;
     nofit('Notices', apps, "green")
     await store.fetchNumbers();
+    console.log('number fetch finished');
+    
   } catch (error) {
     console.log(error);
   }
@@ -228,6 +238,7 @@ const reloadSms = async (item) => {
     const response = await axios({
       url: `${BASE_URL}/otp/${item.Phone_Number}`,
       method: "PUT",
+    timeout: 30000, // 30s
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });

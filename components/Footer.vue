@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div class="  text-white bg-tertiary">
-            <div class=" px-4 mx-auto py-10 sm:flex block gap-5 container ">
+            <div class=" px-4 mx-auto py-10 sm:flex block gap-5 container lg:w-[90%] w-full  ">
                 <div>
                     <TypographyH4> virex pin</TypographyH4>
                     <ul>

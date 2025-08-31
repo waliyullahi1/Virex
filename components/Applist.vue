@@ -112,11 +112,15 @@ const searchTerm = ref("")
 const selectedApp = ref(null)
 const isLoadingFinished = ref(false)
 
+//pops
+const { pageDetect } = defineProps({
+  pageDetect: String,
+})
 
 // filter apps from store
 const filteredApps = computed(() => {
   if (searchTerm.value) {
-    console.log("Filtering apps with search term:", searchTerm.value);
+  
 
     return store.apps.filter((app) =>
       app.full_name.toLowerCase().includes(searchTerm.value.toLowerCase())
@@ -150,7 +154,7 @@ const convertToNaira = async () => {
   try {
     const res = await axios.get("https://open.er-api.com/v6/latest/USD")
     usdToNgn.value = res.data.rates.NGN + 420
-    console.log(usdToNgn.value, "Naira")
+   
   } catch (err) {
     console.error("Error fetching rate:", err.message)
   }
@@ -158,6 +162,12 @@ const convertToNaira = async () => {
 
 // ---------------- GENERATE NUMBER ----------------
 const generateNumber = async (item) => {
+  // console.log(pageDetect);
+  
+  if (pageDetect !== "USER"){
+    nofit('Notices', 'Login to process', "green")
+   return 
+  } 
   console.log(item, "Selected app:");
 isLoadingFinished.value = true;
   selectedApp.value = item.full_name;
@@ -171,6 +181,7 @@ isLoadingFinished.value = true;
       method: "POST",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
+    timeout: 30000, // 30s
       data: {
         country: store.selectedCountry.full_name, 
         app: selectedApp.value,

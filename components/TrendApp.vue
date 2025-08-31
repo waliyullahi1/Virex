@@ -160,6 +160,7 @@ const generateNumber = async (item) => {
         const response = await axios({
             url: `${BASE_URL}/generateNumber`,
             method: "POST",
+            timeout: 30000,
             headers: { "Content-Type": "application/json" },
             withCredentials: true,
             data: {
@@ -185,9 +186,9 @@ const generateNumber = async (item) => {
 
 const convertToNaira = async () => {
     try {
-        const res = await axios.get("https://open.er-api.com/v6/latest/USD")
+        const res = await axios.get("https://open.er-api.com/v6/latest/USD",{timeout: 30000,})
         usdToNgn.value = res.data.rates.NGN + 420
-        console.log(usdToNgn.value, "Naira")
+        
     } catch (err) {
         console.error("Error fetching rate:", err.message)
     }

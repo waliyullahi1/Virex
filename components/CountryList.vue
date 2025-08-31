@@ -69,7 +69,7 @@ const fetchCountries = async () => {
     const url = `${BASE_URL}/countries`
 
 
-    const response = await axios.get(url)
+    const response = await axios.get(url,{timeout: 30000})
 
     // ✅ Correct way to update Pinia ref
     countryNames.value = (response.data || [])
@@ -107,8 +107,8 @@ const fetchApps = async (item) => {
       ? `${BASE_URL}/apps/${item.id}`
       : `${BASE_URL}/apps/${store.selectedCountry.id}`
 
-    const response = await axios.get(url)
-    console.log(response.data);
+    const response = await axios.get(url,{timeout: 30000})
+
     // ✅ Correct way to update Pinia ref
     store.setApps(response.data || [])
     store.isAppLoading = false
