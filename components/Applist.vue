@@ -168,10 +168,10 @@ const generateNumber = async (item) => {
     nofit('Notices', 'Login to process', "green")
    return 
   } 
-  console.log(item, "Selected app:");
+
 isLoadingFinished.value = true;
   selectedApp.value = item.full_name;
-  console.log(store.selectedCountry.id, 'the nathe');
+
   
   
 
@@ -210,7 +210,7 @@ isLoadingFinished.value = true;
 
 
 watch(store.apps, (newVal, oldVal) => {
-  console.log('Apps updated:', newVal)
+  // console.log('Apps updated:', newVal)
   // do something, like refresh UI or trigger another API
 })
 onMounted(() => {

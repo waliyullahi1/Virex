@@ -108,7 +108,7 @@ const store = useUserStore();
 onMounted(() => {
 
   store.fetchNumbers()
-  console.log(store.numbers.values);
+ 
 
 
 });

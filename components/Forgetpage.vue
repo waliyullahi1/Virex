@@ -80,8 +80,8 @@ try {
     withCredentials: true,
     data: { email: userData.email }
   });
-console.log(response.sucess);
-console.log(response);
+// console.log(response.sucess);
+// console.log(response);
 nofit('Success',response.data.sucess, "green")
 
  

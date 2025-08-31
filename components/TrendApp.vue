@@ -135,7 +135,7 @@ const preGenerateNumber = async (item) => {
         const matchingApp = response.data.find(element => element.full_name === selected.value.app);
         selected.value.price = matchingApp.deduct;
         selected.value.image = item.image.replace(/\s+/g, '').toLowerCase();
-        console.log(selected.value);
+  
 
     } catch (error) {
         console.log(error);
@@ -151,7 +151,7 @@ const generateNumber = async (item) => {
         nofit('Notices', 'Loading in progress', "green")
         return
     };
-    console.log(item, "Selected app:");
+ 
     isLoadingFinished.value = true;
 
 

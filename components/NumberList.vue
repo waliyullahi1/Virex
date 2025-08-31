@@ -209,7 +209,7 @@ async function updateCountdown() {
 const rejectNumber = async (item) => {
   try {
      item.remaining = "EXPIRED";
-     console.log('idowu');
+    
      
       item.expired = true;
     const response = await axios({
@@ -219,13 +219,13 @@ const rejectNumber = async (item) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
-    });console.log('reject number');
+    });
     
 
     const apps = response.data;
     nofit('Notices', apps, "green")
     await store.fetchNumbers();
-    console.log('number fetch finished');
+   
     
   } catch (error) {
     console.log(error);
@@ -244,7 +244,7 @@ const reloadSms = async (item) => {
     });
 
     const apps = response.data;
-    console.log(apps);
+   
 
     nofit('Notices', apps.success, "green");
     await store.fetchNumbers();

@@ -158,15 +158,15 @@ watch(() => store.userData, (newData) => {
   try {
 
     const full_name = newData.full_name;
-   // console.log(full_name);
+   // .log(full_name);
     firstName.value = full_name.split(' ')[0];
-    //console.log("First name:", newData.walletBalance);
+    //.log("First name:", newData.walletBalance);
     user_wallet.value = newData.walletBalance.toLocaleString('en-US')
     email.value = newData.email
-    //console.log(user_wallet.value);
+    //.log(user_wallet.value);
 
   } catch (error) {
-  //  console.error(error)
+  //  .error(error)
   }
 
 });
@@ -207,7 +207,7 @@ const validTransaction = async (tx_ref) => {
       return;
     } else {
      
-      console.log('Unexpected status, stopping transaction check:', message);
+    
       clearInterval(transaction_valid);
       cancel_transaction.value = false;
       router.push("/user");
@@ -215,7 +215,7 @@ const validTransaction = async (tx_ref) => {
     }
 
   } catch (statusError) {
-    console.error('Error checking transaction status:', statusError);
+   
     clearInterval(transaction_valid); // Stop polling if there's a server error
     cancel_transaction.value = false;
     router.push("/user");
@@ -244,12 +244,10 @@ const cancel_traction = () => {
   clearInterval(transaction_valid);
   cancel_transaction.value = false
   loadingbtn.value = false;
-  console.log('done');
 
 }
 const fund_with_card = () => {
   const tx_ref = `TX-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
-  console.log(store.userData);
 
   FlutterwaveCheckout({
     public_key:private_flutterwave,
@@ -262,7 +260,7 @@ const fund_with_card = () => {
       name: store.userData.full_name,
     },
     callback: async function (response) {
-      console.log(response, 'ddddd');
+      
       try {
         const response1 = await axios({
           url: `${BASE_URL}/fund/card`,
@@ -276,12 +274,12 @@ const fund_with_card = () => {
 
         });
         loadingbtn.value = true;
-        console.log(response1.message);
+    
         alert("Payment successful!");
         navigateTo('/user')
         await notices(`${email.value} user card to make payment and it succesful today `);
       } catch (error) {
-        console.error(error);
+        
         loadingbtn.value = false;
       }
 
