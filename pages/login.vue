@@ -115,7 +115,7 @@ const handleLogin = async () => {
   nofit('Sucess', 'Login Sucessfully', "green" )
   
   navigateTo("/user");
-  await notices(`${userData['email/phone']} signed in today `);
+  await notices(`${userData['email/phone']} login in today `);
 
  
   

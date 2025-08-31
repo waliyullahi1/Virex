@@ -5,10 +5,7 @@
         <div :class="top ? ' transition transform  -translate-y-36' : 'translate-y-0 transition transform '"
             class=" fixed top-0 z-50 shadow-md  w-[100%] flex justify-center md:h-20 h-14 bg-white   mx-auto l">
             <div class="  container mxo  pt-  w-full z-30    bg top-0 ">
-                <div @click="toggleMenu" class=" h-screen md:hidden bg-black block  w-full bg-slae-900"
-                   >
-
-                </div>
+                
                 <button class="flex top-6 fixed z-20 right-4  md:hidden" @click="toggleMenu">
                     <div class="w-8">
                         <div :class="mobileNav ? 'transition transform rotate-45 items-center w-8' : 'transition w-8'"
@@ -70,7 +67,7 @@
 
 import { useRouter } from 'vue-router';
 import { ref, onMounted, onUnmounted } from 'vue';
-
+import { fetchUserData } from '@/stores/dashboard'
 
 const router = useRouter();
 const menuRevealed = ref(false);

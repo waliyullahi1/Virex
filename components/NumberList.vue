@@ -26,6 +26,7 @@
 
     <button @click="store.fetchNumbers()">fetch number</button>
 
+
     <!-- SMS List -->
     <div class="relative w-full">
       <div id="SMS" class="z-20 px-3 w">
@@ -34,8 +35,14 @@
           class=" flex justify-center items-center absolute bg-opacity-20 h-full  w-full bg-primary">
           <img class="w-16 " src="@/assets/images/svg/preload.svg" alt="" srcset="">
         </div>
-        <div class="w-full space-y-4 h-fit gap-2">
-          <div v-for="item in store.numbers.slice(0, 7)" :key="item._id"
+        <div v-if="store.isNumbersLoading" class="w-full space-y-4 h-fit gap-2">
+          <div v-for="item in 5"   class="">
+            <UserSkeleton />
+          </div>
+        </div>
+
+        <div v-if="store.numbers!== null" class="w-full space-y-4 h-fit gap-2">
+          <div v-for="item in store.numbers.slice(0, 7)"  :key="item._id"
             class="md:flex block group overflow-hidden shadow-sm border-l-4 rounded-lg border-green-700 items-center justify-between gap-2 hover:border-primary transform duration-300 text-left h-fit w-full border py-1 px-2">
             <!-- Number Info -->
             <div class="sm:block flex justify-between font-semibold">
@@ -137,26 +144,22 @@ const nofit = (title, description, color = "red") => {
 // Env
 const config = useRuntimeConfig()
 const BASE_URL = config.public.BASE_URL
-
+const loading = ref(true)  
 // ✅ Countdown function
 async function updateCountdown() {
 
 
   const now = new Date();
-  console.log("run");
+
 
   const tasks = store.numbers.map(async (item) => {
-    console.log(item.status, item.Phone_Number, 'ssss');
 
     if (item.status.toLowerCase() !== "active" && item.status.toLowerCase() !== "expire") return;
-    console.log('log ', item.Phone_Number);
+
     const expire = new Date(item.expireAt);
     const diff = expire - now;
-    console.log(diff <= 0);
-    console.log(diff);
-    if (diff <= 0) {
 
-      console.log('ass');
+    if (diff <= 0) {
 
 
       item.remaining = "Expired";
@@ -182,7 +185,7 @@ async function updateCountdown() {
 
       if (minutes === 0 && seconds === 0 && item.status.toLowerCase() !== "rejected") {
         if (item.status.toLowerCase() !== "active") return;
-        console.log('ass');
+
         try {
           const response = await axios.put(
             `${BASE_URL}/otp/${item.Phone_Number}`,

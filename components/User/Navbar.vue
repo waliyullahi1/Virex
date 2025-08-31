@@ -7,7 +7,8 @@
 
 
         <div class=" w-full flex  justify-center items-center     left-0   px-4     ">
-          <div class=" h-3  bg lg:block md:block flex-none bg-orage-400 lg:min-w-56 md:min-w-7 hidden  ml-[1.5rem] "></div>
+          <div class=" h-3  bg lg:block md:block flex-none bg-orage-400 lg:min-w-56 md:min-w-7 hidden  ml-[1.5rem] ">
+          </div>
           <!-- <div class=" h-3  bg lg:block md:block flex-none bg-orange-400 lg:min-w-56 md:min-w-7 hidden  ml-[1rem] "></div> -->
           <div class="  w-full flex bg-ter justify-center">
             <div
@@ -30,9 +31,14 @@
 
               <div class="flex gap-3 items-center justify-center w-fit ">
                 <img src="@/assets/images/svg/person.svg" alt="person" class="md:w-10 w-7 " srcset="">
-                <div class="e dark:text-white  flex justify-center items-center flex-col ">
+                <div  v-if="loading" class="e dark:text-white   space-y-1 w-14   flex justify-center items-center flex-col ">
+                  <div class=" w-full  h-4 duration-300 bg-gray-700 rounded animate-pulse"></div>
+                  <div class=" w-full  h-4 duration-300 bg-gray-700 rounded animate-pulse"></div>
+                </div>
+                <!-- amont and first name -->
+                <div v-if="!loading" class="e dark:text-white  flex justify-center items-center flex-col ">
                   <TypographyH4 class=" ₦ leading-[12px]   dark:text-white ">{{ firstName }} </TypographyH4>
-                  <small class=" text-white">₦{{user_wallet}}</small>
+                  <small class=" text-white">₦{{ user_wallet }}</small>
                 </div>
 
 
@@ -84,27 +90,32 @@
                       </div>
 
                     </div>
-                  </button>                 
+                  </button>
                 </div>
                 <button @click="loginout()" class="group   w-fit   ">
+                  <div
+                    class="px-4 cursor-pointer  group bg-whe w-full   text-white py-2   group-hover:shadow-xl group-hover:translate-y-0 ease-in-out rounded-md duration-200  group-hover:bg-gradient-to-r group-hover:from-slate-600   group-hover:border-l-4  ">
                     <div
-                      class="px-4 cursor-pointer  group bg-whe w-full   text-white py-2   group-hover:shadow-xl group-hover:translate-y-0 ease-in-out rounded-md duration-200  group-hover:bg-gradient-to-r group-hover:from-slate-600   group-hover:border-l-4  ">
-                      <div 
-                        class="flex   justify-center     items-center      group-hover:translate-x-1 ease-in-out  duration-500  group-hover:gap-1  gap-3">
-                        <div class=" group:r:absolute block">
-                          <div >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-                           <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"></path>
-                           <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"></path>
-                        </svg>
-                          </div>
+                      class="flex   justify-center     items-center      group-hover:translate-x-1 ease-in-out  duration-500  group-hover:gap-1  gap-3">
+                      <div class=" group:r:absolute block">
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                            class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                              d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z">
+                            </path>
+                            <path fill-rule="evenodd"
+                              d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z">
+                            </path>
+                          </svg>
                         </div>
-                        <TypographyP class="font- text-white md:hidden lg:block  sm:block   whitespace-nowrap truncate">
-                         log out</TypographyP>
                       </div>
-
+                      <TypographyP class="font- text-white md:hidden lg:block  sm:block   whitespace-nowrap truncate">
+                        log out</TypographyP>
                     </div>
-                  </button>
+
+                  </div>
+                </button>
 
               </div>
 
@@ -152,13 +163,18 @@
 import { ref, reactive, toRaw } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 const { login, logout, accessToken, startTokenRefresh } = useAuth();
- import axios from 'axios'
+import axios from 'axios'
+
 const transaction_history = ref([]);
 const config = useRuntimeConfig();
 const BASE_URL = config.public.BASE_URL;
+const loading = ref(true)
 import { fetchUserData } from '@/stores/dashboard'
 import { onMounted, watch } from 'vue'
 
+definePageMeta({
+  middleware: 'auth',
+});
 
 
 const validTransaction = async (tx_ref) => {
@@ -171,24 +187,24 @@ const validTransaction = async (tx_ref) => {
       data: { tx_ref },
     });
 
-  
+
     const message = statusResponse.data.message;
 
     if (["successful", "failed", "pending"].includes(message)) {
-     
 
-  
 
-      
+
+
+
     } else if (message === 'Transaction still under process') {
-     // console.log('Transaction still processing, waiting to retry...');
+      // console.log('Transaction still processing, waiting to retry...');
       return; // Keep polling if it's still in process
     } else {
-     // console.log('Unexpected status, stopping transaction check:', message);
-      
+      // console.log('Unexpected status, stopping transaction check:', message);
+
     }
   } catch (statusError) {
-   // console.error('Error checking transaction status:', statusError);
+    // console.error('Error checking transaction status:', statusError);
 
   }
 };
@@ -206,40 +222,39 @@ const transaction_history_function = async () => {
 
     // Reverse and store the transaction history
     transaction_history.value = response.data.reverse();
-   
+
 
     //console.log('done');
-   // Update page load status
+    // Update page load status
   } catch (error) {
     if (error.response) {
       //console.error('API error:', error.response.data); // Handle API error
     } else {
-     // console.error('Unexpected error:', error.message);
+      // console.error('Unexpected error:', error.message);
     }
   }
 };
 
 const store = fetchUserData()
 const firstName = ref('')
-const user_wallet =ref('')
+const user_wallet = ref('')
 
-onMounted( async() => {
+onMounted(async () => {
   store.fetchUserDetail()
-  
-  
+   
   await nextTick();
   await transaction_history_function();
-  
-   const transaction_with_verify = transaction_history.value.filter(element => {
-    return  element.status === 'processing'  || element.status === 'Expired';
+
+  const transaction_with_verify = transaction_history.value.filter(element => {
+    return element.status === 'processing' || element.status === 'Expired';
   });
 
   await Promise.all(transaction_with_verify.map(async (element) => {
-  // console.log(element.tx_ref);
-   await validTransaction(element.tx_ref)
-  
+    // console.log(element.tx_ref);
+    await validTransaction(element.tx_ref)
+
   }));
-  
+
   // Fetch user data when component mounts
 })
 
@@ -249,12 +264,12 @@ watch(() => store.userData, (newData) => {
     const full_name = newData.full_name;
     //console.log(full_name);
     firstName.value = full_name.split(' ')[0];
-   // console.log("First name:", newData.walletBalance);
+    // console.log("First name:", newData.walletBalance);
     user_wallet.value = newData.walletBalance.toLocaleString('en-US')
     //console.log(user_wallet.value);
-    
+     loading.value = false
   } catch (error) {
-   // console.error(error)
+    // console.error(error)
   }
 
 });
@@ -276,7 +291,7 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
- 
+
   page_tittle: String,
   dashboardbtn: {
     type: Boolean,
@@ -382,7 +397,7 @@ const getScaleStyle = (index) => {
 };
 
 const toggleMenu = () => {
- 
+
 
   mobileNav.value = !mobileNav.value;
   menuRevealed.value = !menuRevealed.value;
@@ -390,9 +405,9 @@ const toggleMenu = () => {
 
 
 const loginout = async () => {
-  
-  
-await logout();
+
+
+  await logout();
 
 };
 

@@ -21,8 +21,32 @@
                 class=" flex justify-center z-10 items-center absolute bg-opacity-20 h-full  w-full bg-primary">
                 <img class="w-16 " src="@/assets/images/svg/preload.svg" alt="" srcset="">
               </div>
+              <!-- SKELETON  -->
           <div class="w-full md:grid-cols-2 sm:grid-cols-3 h-fit grid gap-2">
-            <div
+
+             <div v-for="item in 50" v-if="store.isAppLoading" :key="item" class="bg-gray-100  justify-between flex animate-pulse cursor-pointer h-fit w-full  py-1 px-2 rounded" >
+              <!-- Left: logo + name -->
+              <div class="flex items-center gap-2">
+                 <div class="w-7 h-6  duration-300 bg-gray-300 rounded animate-pulse"></div>
+                  <div class="w-7 h-4  duration-300 bg-gray-300 rounded animate-pulse"></div>
+              </div>
+
+              <!-- Right: rate -->
+              <div class=" flex gap-1  p-1 items-center bg-gray-300 rounded animate-pulse">
+                <div class="w-4 h-4  duration-300 bg-gray-100  animate-pulse"></div>
+                  <div class="w-2 h-2  duration-300 bg-gray-100  animate-pulse"></div>
+              </div>
+            </div>
+
+           
+          </div>
+            <!-- APP LIST  -->
+          <div v-if="!store.isAppLoading" class="w-full md:grid-cols-2 sm:grid-cols-3 h-fit grid gap-2">
+
+            
+
+          
+            <div 
               v-for="item in filteredApps" @click="generateNumber(item)"
               :key="item.app"
               :class="{
@@ -53,6 +77,8 @@
               </div>
             </div>
           </div>
+
+
         </div>
       </div>
     </section>
@@ -148,12 +174,14 @@ isLoadingFinished.value = true;
       data: {
         country: store.selectedCountry.full_name, 
         app: selectedApp.value,
+        
         country_code: store.selectedCountry.id
       }
     });
 
     const apps = response.data;
     nofit('Notices', apps, "green")
+    
     store.fetchNumbers()
 
    isLoadingFinished.value = false;

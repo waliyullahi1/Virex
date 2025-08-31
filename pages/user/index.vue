@@ -3,7 +3,7 @@
   <div class="dark:bg-slate-50 overflow-x-hidden   dark:text-black">
     <UserNavbar page_tittle="  Buy Number" class=" text-[poppins] w-full hiddn "></UserNavbar>
 
-
+ 
     <div class="  w-full mt-5 gap-3 ">
 
       <div class=" sm:px-2 px-0  w-full   shrink  flex-initial ">
@@ -48,42 +48,14 @@
 
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted, watch, nextTick } from "vue"
-const selected = ref(null);
-
-import countryNames from '../../data/country.json';
 
 
 
-// Refs
-
-const searchCoutry = ref("")
 
 
-// ---------------- FETCH COUNTRIES ----------------
-const filteredcountry = computed(() => {
-
-  if (searchCoutry.value) {
-    const countryfilter = countryNames.filter(app => app.countryName.toLowerCase().includes(searchCoutry.value.toLowerCase()))
-    return countryfilter
-  } else {
-
-    return countryNames;
-  }
-
-});
 
 
-// ---------------- NOTIFICATION ----------------
-const nofit = (title, description, color = "red") => {
-  toast.add({ title, description, color })
-}
 
-
-// ---------------- LIFECYCLE ----------------
-onMounted(async () => {
- 
-})
 </script>
 
 <style>
